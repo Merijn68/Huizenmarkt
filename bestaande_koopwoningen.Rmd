@@ -1,0 +1,153 @@
+---
+title: "Bestaande koopwoningen, aantalen en verkoopprijzen"
+author: "Merijn"
+date: "25/02/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+## Ontwikkeling van huizenprijzen in Nederland
+
+ 1. Start with a **PROBLEM** (or question)
+ 1. You devise a **PLAN** to solve the problem (or answer the question)
+ 1. You collect **DATA** to execute the plan (or perform an experiment)
+ 1. You **ANALYZE** the data
+ 1. Finally, you draw a **CONCLUSION** from the analysis
+ 1. You probably start the cycle again
+
+```{r}
+library (tidyverse)
+library (here)
+library(ggplot2)
+library(stringr)
+library(readr)
+library(lubridate)
+```
+
+
+```{r}
+
+df <-
+  read_csv2(
+    "data/Bestaande_koopwoningen__verkoopprijzen_prijsindex_2015_100_25022021_153530.csv",
+    trim_ws = TRUE,
+    skip = 3,
+    col_types = 'cdddddddd'
+  )
+
+# Drop first and last row of the dataset
+df <- df[-1, ]
+df <- df[-nrow(df), ]
+
+# kolom namen toevoegen
+names(df) = c(
+  'period',
+  'prijs_index',
+  'prijs_index_d_1period',
+  'prijs_index_d_1jaar',
+  'aantal',
+  'aantal_d_1period',
+  'aantal_d_1jaar',
+  'gem_verkoop_prijs',
+  'totale_waarde'
+)
+
+
+#Splitsen van kolom Periode
+# Waarom is het handig om maand en jaar als Factor op te slaan?
+df$jaar <- word(df$period, 1)
+maanden <-
+  c(
+    'januari',
+    'februari',
+    'maart',
+    'april',
+    'mei',
+    'juni',
+    'juli',
+    'augustus',
+    'september',
+    'oktober',
+    'november',
+    'december'
+  )
+
+df$maand <- word(df$period, 2)
+df$maand <- factor(df$maand, levels = maanden)
+
+# Filter een jaarlijkse dataset
+df_j <-
+  df %>%
+  filter(is.na(maand))
+
+df_j$date <- ISOdate(df_j$jaar,1, 1)
+
+# Filter en een maandelijkse dataset
+df_m <-
+  df %>%
+  filter(!is.na(maand))
+
+df_m$date <-ym(paste(df_m$jaar, " ", as.numeric(df_m$maand)))
+
+  
+```
+
+Data tabel is nu gesplitst in Jaar en Maand data.
+
+Jaren
+
+```{r}
+DT::datatable(df_j)
+```
+
+Maanden
+
+```{r}
+DT::datatable(df_m)
+```
+
+
+Time Series object?
+
+```{r}
+df_j %>%
+  ggplot(aes (x = date, 
+              y = aantal)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula= y~x)
+```
+```{r}
+df_j %>%
+  ggplot(aes (x = date, 
+              y = gem_verkoop_prijs)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula= y~x)
+```
+
+
+```{r}
+df_m %>%
+  ggplot(aes (x = date,
+              y = gem_verkoop_prijs)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula= y~x)
+```
+```{r}
+df_m %>%
+  mutate(highlow = case_when(aantal_d_1period >= 0 ~ "higher", 
+                                 aantal_d_1period < 0 ~ "lower")) %>%
+  ggplot(aes (x = date,
+              y = aantal_d_1period, fill = as.factor(highlow))) +
+  geom_col() +
+  scale_fill_manual(values = c("higher" = "dodgerblue", "lower" = "lightcoral")) +
+  theme_bw()+
+  theme(legend.position = "none") + # remove legend
+  labs(
+    title = "Periodieke mutatie aantal verkochte woningen",
+    x = "Maand",
+    y = "Aantal"
+  )
+```
