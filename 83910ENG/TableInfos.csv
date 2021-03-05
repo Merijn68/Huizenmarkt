@@ -1,0 +1,94 @@
+"ID","Title","ShortTitle","Identifier","Summary","Modified","ReasonDelivery","ExplanatoryText","Language","Catalog","Frequency","Period","ShortDescription","Description","DefaultPresentation","DefaultSelection","GraphTypes","OutputStatus","Source","MetaDataModified","SearchPriority"
+0,"Existing own homes; purchase price indices by type of dwelling 2015=100 ","Existing own homes; type, 2015=100","83910ENG","Existing own homes, price index 2015=100
+Sold dwellings, average purchase price, type of dwelling","2021-01-22T02:00:00","Update","","en","CBS","Quarterly","1st quarter 1995- 4th quarter 2020","
+The figures of existing own homes are related to the stock of existing own homes. Besides the price indices, figures are also published about the numbers sold, the average purchase price, and the total sum of the purchase prices of the sold dwellings. The House Price Index of existing own homes is based on a complete registration of sales of dwellings by the Dutch Land Registry Office (Kadaster) and the (WOZ) value of all dwellings in the Netherlands. Indices may fluctuate, for example if a small number of a certain type of dwellings are sold. In such cases we recommended using the long-term figures.
+The average purchase price of existing own homes may differ from the price index of existing own homes. The change in the average purchase price, however, is not an indicator for price developments of existing own homes.
+
+Data available from: 1st quarter 1995
+
+Status of the figures:
+The figures in this table are immediately definitive. The calculation of these figures is based on the number of notary transactions that are registered every month by the Dutch Land Registry Office (Kadaster). A revision of the figures is exceptional and occurs specifically if an error significantly exceeds the acceptable statistical margins. The numbers of existing owner-occupied sold homes can be recalculated by Kadaster at a later date. These figures are usually the same as the publication on Statline, but in some periods  they differ. Kadaster calculates the average purchasing prices based on the most recent data. These may have changed since the first publication. Statistics Netherlands uses figures from the first publication in accordance with the revision policy described above.
+
+Changes as of 22 January 2021:
+Figures of the 4th quarter and the year 2020 have been added.
+
+When will new figures be published?
+New figures are published about 22 days after the period under review. 
+","CONTENTS
+
+1. General information
+2. Definitions and explanation of symbols
+3. Links to relevant tables and articles
+4. Sources and methods
+5. Further information
+
+1. GENERAL INFORMATION
+
+The figures of existing own homes are related to the stock of existing own homes. Besides the price indices, figures are also published about the numbers sold, the average purchase price, and the total sum of the purchase prices of the sold dwellings. The House Price Index of existing own homes is based on a complete registration of sales of dwellings by the Dutch Land Registry Office (Kadaster) and the (WOZ) value of all dwellings in the Netherlands. Indices may fluctuate, for example if a small number of a certain type of dwellings are sold. In such cases we recommended using the long-term figures.
+The average purchase price of existing own homes may differ from the price index of existing own homes. The change in the average purchase price, however, is not an indicator for price developments of existing own homes.
+
+Data available from: 1st quarter 1995
+
+Status of the figures:
+The figures in this table are immediately definitive. The calculation of these figures is based on the number of notary transactions that are registered every month by the Dutch Land Registry Office (Kadaster). A revision of the figures is exceptional and occurs specifically if an error significantly exceeds the acceptable statistical margins. The numbers of existing owner-occupied sold homes can be recalculated by Kadaster at a later date. These figures are usually the same as the publication on Statline, but in some periods  they differ. Kadaster calculates the average purchasing prices based on the most recent data. These may have changed since the first publication. Statistics Netherlands uses figures from the first publication in accordance with the revision policy described above.
+
+Changes as of 22 January 2021:
+Figures of the 4th quarter and the year 2020 have been added.
+
+When will new figures be published?
+New figures are published about 22 days after the period under review. 
+
+2. DEFINITIONS AND EXPLANATION OF SYMBOLS
+
+Definitions:
+The figures of existing own homes are related to dwellings sold to a private person and intended for permanent residence by that private person.
+
+Existing own homes:
+Existing own homes are dwellings that are occupied by the owner and that is already on the sales market.
+
+House Price Index of existing own homes:
+The price index of existing homes are related to the stock of existing dwellings sold. The dwelling is located on Dutch territory and sold by private buyers.
+
+Sold dwellings:
+The number of sold dwellings are the number of registered transactions at Kadaster of a dwelling bought by a private buyer at the end of the reporting period.
+
+Explanation of symbols:
+Empty cell	: figure not applicable
+. 		: figure is unknown, insufficiently reliable or confidential
+*		: provisional figure 
+**		: revised provisional figure
+
+3. LINKS TO RELEVANT TABLES AND ARTICLES
+
+Relevant tables: 
+-<a href='https://opendata.cbs.nl/statline/#/CBS/en/dataset/83906ENG'>Existing own homes; purchase prices, price indices 2015 = 100</a>
+-<a href='https://opendata.cbs.nl/statline/#/CBS/en/dataset/83913ENG'>Existing own homes; purchase prices indices by region 2015 = 100</a>
+-<a href='https://opendata.cbs.nl/statline/#/CBS/en/dataset/81885ENG'>House Price Index by region; existing own homes; 2010 = 100</a>
+-<a href='https://opendata.cbs.nl/statline/#/CBS/en/dataset/81886ENG'>House Price Index by type of dwelling; existing own homes; 2010 = 100</a>
+-<a href='https://opendata.cbs.nl/statline/#/CBS/en/dataset/80330eng'>House Price Index by COROP and municipality; existing own homes; 1995-2012</a>
+-<a href='https://opendata.cbs.nl/statline/#/CBS/en/dataset/71533eng'>House Price Index by type of dwelling, region; existing own homes; 1995-2012</a>
+-<a href='https://opendata.cbs.nl/statline/#/CBS/nl/dataset/7413'>Dwelling stock; till 2011</a> (only available in Dutch)
+-<a href='https://opendata.cbs.nl/statline/#/CBS/nl/dataset/81955NED'>Dwelling stock; from 2012</a> (only available in Dutch)
+-<a href='https://opendata.cbs.nl/statline/#/CBS/nl/dataset/37610'>WOZ values dwellings </a>(only available in Dutch)
+-<a href='https://opendata.cbs.nl/statline/#/CBS/en/dataset/83625ENG'>Existing own homes; average purchase prices, region</a>
+
+
+Eurostat publishes on a quarterly basis <a href='http://ec.europa.eu/eurostat/web/housing-price-statistics'>House price indices</a> for the European Union, the euro area, Ireland and Norway. These Indices cover both existing as well as newly built owner-occupied dwellings. This publication furthermore contains separate figures for Netherlands.
+
+From 1 January 2015, the land registry introduced a new method for typing of homes. Analysis shows that this method hardly affects the price indices and has no impact on the total number of transactions. More information can be found at the <a href='https://www.kadaster.nl/-/woningtypering' >Kadaster</a>.
+
+More information can be found in the theme <a href='https://www.cbs.nl/en-GB/economy/prices'>Prices </a>and <a href='https://www.cbs.nl/en-GB/economy/construction-and-housing'>Construction and housing</a>.
+
+4. SOURCES AND METHODS
+
+The survey method for this table can be found in the survey description 
+<a href='https://www.cbs.nl/en-gb/our-services/methods/surveys/korte-onderzoeksbeschrijvingen/price-index-existing-own-homes-2015-100'>Price index existing own homes (PBK), 2015=100</a> 
+The article “Why the average purchase price is no house price indicator” (PDF) can be found in the research description of this table price index existing owner-occupied homes</a> <a href='https://www.cbs.nl/en-gb/our-services/methods/surveys/korte-onderzoeksbeschrijvingen/price-index-existing-own-homes-2015-100'>Price index existing own homes (PBK), 2015=100</a>.
+
+5. FURTHER INFORMATION
+
+<a href='https://www.cbs.nl/en-gb/about-us/contact/infoservice'>Infoservice</a>
+
+Copyright (c) Statistics Netherlands, The Hague/Heerlen
+Reproduction is permitted, provided Statistics Netherlands is quoted as the source. 
+","ts=1611236428548&graphtype=Table&r=Periods&k=Topics,TypeOfDwelling","$filter=((TypeOfDwelling eq 'T001100') or (TypeOfDwelling eq 'ZW10290') or (TypeOfDwelling eq 'ZW25805') or (TypeOfDwelling eq 'ZW25806') or (TypeOfDwelling eq 'ZW10300') or (TypeOfDwelling eq 'ZW10320') or (TypeOfDwelling eq 'ZW25810')) and ((Periods eq '1995JJ00') or (Periods eq '2000JJ00') or (Periods eq '2005JJ00') or (Periods eq '2010JJ00') or (Periods eq '2015JJ00') or (Periods eq '2016KW01') or (Periods eq '2016KW02') or (Periods eq '2016KW03') or (Periods eq '2016KW04') or (Periods eq '2016JJ00') or (Periods eq '2017KW01') or (Periods eq '2017KW02') or (Periods eq '2017KW03') or (Periods eq '2017KW04') or (Periods eq '2017JJ00') or (Periods eq '2018KW01') or (Periods eq '2018KW02') or (Periods eq '2018KW03') or (Periods eq '2018KW04') or (Periods eq '2018JJ00') or (Periods eq '2019KW01') or (Periods eq '2019KW02') or (Periods eq '2019KW03') or (Periods eq '2019KW04') or (Periods eq '2019JJ00') or (Periods eq '2020KW01') or (Periods eq '2020KW02') or (Periods eq '2020KW03') or (Periods eq '2020KW04') or (Periods eq '2020JJ00'))&$select=TypeOfDwelling, Periods, PriceIndexPurchasePrices_1, ChangesComparedToOneYearEarlier_3","Table,Bar,Line","Regular","Statistics Netherlands, Kadaster","2021-01-22T02:00:00","3"

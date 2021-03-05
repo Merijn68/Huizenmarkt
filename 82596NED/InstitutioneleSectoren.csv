@@ -1,0 +1,95 @@
+"Key","Title","Description","CategoryGroupID"
+"0000S1","Totale binnenlandse sectoren","De totale economie bestaat uit de sectoren niet-financiële vennootschappen, financiële instellingen, overheid, huishoudens en instellingen zonder winstoogmerk ten behoeve van huishoudens. Het onderscheid tussen de sectoren wordt bepaald aan de hand van internationaal vastgestelde regels.",2
+"000S11","Niet-financiële vennootschappen","De sector niet-financiële vennootschappen bevat alle vennootschappen met als hoofdfunctie het produceren van goederen en verhandelbare niet-financiële diensten. 
+
+Tot de niet-financiële vennootschappen behoren:
+- alle vennootschappen (nv's, bv's, cv’s, vof’s) en coöperatieve verenigingen die niet tot de financiële instellingen worden gerekend. Ook grote zelfstandig opererende (niet-financiële) ondernemingen zonder rechtspersoonlijkheid worden tot de niet-financiële vennootschappen gerekend. Voorbeelden van deze zogenoemde quasi-vennootschappen zijn grote familiebedrijven; 
+- alle instellingen zonder winstoogmerk (stichtingen en verenigingen) die voor de markt produceren en niet tot de financiële instellingen worden gerekend. Voorbeelden zijn bejaardentehuizen, ziekenhuizen en woningcorporaties. Minimaal 50 procent van de productiekosten dient door de verkoop gedekt te worden anders wordt de betreffende instelling gerekend tot de sector overheid of de sector instellingen zonder winstoogmerk ten behoeve van huishoudens;
+- overheidsbedrijven (vennootschappen die geheel of gedeeltelijk eigendom zijn van de overheid) zoals de Nederlandse Spoorwegen.
+",2
+"000S12","Financiële instellingen","De sector financiële instellingen bevat alle (quasi-)vennootschappen met als hoofdfunctie financiële intermediatie, dat wil zeggen het aantrekken, transformeren en distribueren van financiële middelen of het verlenen van financiële hulpdiensten. Ook vennootschappen die financiële diensten verstrekken en die het merendeel van hetzij hun activa hetzij hun passiva niet op open markten verhandelen behoren tot de sector financiële instellingen.",2
+"00S12A","Monetaire financiële instellingen","Onder monetaire financiële instellingen (MFI's) vallen alle institutionele eenheden in de subsectoren centrale bank, overige deposito-instellingen  en geldmarktfondsen (GMF's).",4
+"00S121","Centrale bank","De subsector centrale bank bestaat uit  financiële instellingen met als hoofdfunctie de uitgifte van betaalmiddelen, handhaving van de interne en externe waarde van de valuta en het aanhouden van alle of een gedeelte van de internationale reserves van het land. In Nederland bestaat deze subsector uit één instelling, De Nederlandsche Bank (DNB).",4
+"0S12AA","Ov. deposito-instellingen en GMF's","De subsector overige deposito-instellingen en geldmarktfondsen  bestaat uit financiële instellingen, die zich hoofdzakelijk bezighouden met financiële intermediatie en waarvan de activiteiten erin bestaan deposito's en/of daarmee vergelijkbare financiële titels van andere institutionele eenheden in ontvangst te nemen en voor eigen rekening leningen toe te kennen en/of beleggingen in effecten te verrichten. Geldmarktfondsen zijn 
+financiële instellingen, die zich hoofdzakelijk bezighouden met financiële intermediatie en waarvan de activiteiten bestaan uit het uitgeven van aandelen of rechten van deelneming in geldmarktfondsen die met deposito's van institutionele eenheden vergelijkbare financiële titels zijn, en voor eigen rekening beleggingen te verrichten, vooral in aandelen of rechten van deelneming in geldmarktfondsen, kortlopende schuldbewijzen, en/of deposito's.
+",4
+"00S12B","Overige financiële instellingen","Deze groep van subsectoren bevat het totaal van beleggingsfondsen (m.u.v. geldmarktfondsen), overige financiële intermediairs (m.u.v. verzekeringsinstellingen en pensioenfondsen), financiële hulpbedrijven  en financiële instellingen en kredietverstrekkers binnen concernverband.",5
+"00S124","Beleggingsfondsen m.u.v geldmarktfondsen","De subsector beleggingsfondsen m.u.v. geldmarktfondsen  bestaat uit collectieve-beleggingsprogramma'sdie zich hoofdzakelijk bezighouden met het uitgeven van aandelen of rechten van deelneming in beleggingsfondsen en voor eigen rekening beleggingen te verrichten, vooral in langlopende financiële activa (zoals obligaties en aandelen) en in niet-financiële activa (gewoonlijk onroerend goed).",5
+"0S1257","Ov. fin. inst. excl. beleggingsfondsen","Deze combinatie van subsectoren bevat de subsector overige financiële intermediairs (m.u.v. verzekeringsinstellingen en pensioenfondsen), de financiële hulpbedrijven en de subsector financiële instellingen en kredietverstrekkers binnen concernverband.
+
+De subsector overige financiële intermediairs (m.u.v. verzekeringsinstellingen en pensioenfondsen) bestaat uit financiële instellingen met als hoofdfunctie financiële intermediatie door het aangaan van verplichtingen, andere dan in chartaal geld, deposito's, aandelen in beleggingsfondsen of in verband met verzekerings-, pensioen- en standaardgarantieregelingen, bij institutionele eenheden.
+
+Financiële hulpbedrijven  bestaan uit financiële instellingen die zich vooral bezighouden met activiteiten die nauw verband houden met financiële intermediatie, maar zelf geen financiële intermediairs zijn.
+Voorbeelden van financiële hulpbedrijven zijn:
+- financiële hulpbedrijven voor het bankwezen zoals de Amsterdamse Effectenbeurs (Euronext), de optiebeurs, creditcard organisaties en bedrijven op het gebied van krediet- en hypotheekbemiddeling.
+- financiële hulpbedrijven voor het verzekeringswezen zoals assurantietussenpersonen, een deel van de waarborgfondsen, pensioenadviesbureaus en verzekeringsbeurzen.
+
+De subsector financiële instellingen en kredietverstrekkers binnen concernverband bestaat uit financiële instellingen die zich noch met financiële intermediatie, noch met het verlenen van financiële hulpdiensten bezighouden en waarvan het merendeel van hetzij de activa hetzij de passiva niet op open markten wordt verhandeld.
+Met name de volgende financiële instellingen worden in deze subsector ingedeeld:
+- eenheden met rechtspersoonlijkheid zoals trusts, nalatenschappen, derdenrekeningen, of brievenbusmaatschappijen;
+- holdings die een zeggenschapsbelang bezitten in een groep dochterondernemingen en waarvan de hoofdactiviteit bestaat in het bezitten van de groep zonder dat andere diensten worden verleend aan de ondernemingen waarin zij dat belang bezitten, m.a.w. zij besturen of beheren geen andere eenheden;",5
+"0S1256","Ov. fin.  intermediairs en hulpbedrijven","Deze combinatie van subsectoren bevat overige financiële intermediairs (m.u.v. verzekeringsinstellingen en pensioenfondsen) en financiële hulpbedrijven.
+De overige financiële intermediairs (m.u.v. verzekeringsinstellingen en pensioenfondsen) bestaan uit financiële instellingen met als hoofdfunctie financiële intermediatie door het aangaan van verplichtingen, andere dan in chartaal geld, deposito's, aandelen in beleggingsfondsen of in verband met verzekerings-, pensioen- en standaardgarantieregelingen, bij institutionele eenheden.
+Financiële hulpbedrijven  bestaan uit financiële instellingen die zich vooral bezighouden met activiteiten die nauw verband houden met financiële intermediatie, maar zelf geen financiële intermediairs zijn.
+Voorbeelden van financiële hulpbedrijven zijn:
+- financiële hulpbedrijven voor het bankwezen zoals de Amsterdamse Effectenbeurs (Euronext), de optiebeurs, creditcard organisaties en bedrijven op het gebied van krediet- en hypotheekbemiddeling.
+- financiële hulpbedrijven voor het verzekeringswezen zoals assurantietussenpersonen, waarborgfondsen, pensioenadviesbureaus en verzekeringsbeurzen.
+",5
+"00S127","Fin. instellingen binnen concernverband","De subsector financiële instellingen en kredietverstrekkers binnen concernverband bestaat uit financiële instellingen die zich noch met financiële intermediatie, noch met het verlenen van financiële hulpdiensten bezighouden en waarvan het merendeel van hetzij de activa hetzij de passiva niet op open markten wordt verhandeld.
+Met name de volgende financiële instellingen worden in deze subsector ingedeeld:
+- eenheden met rechtspersoonlijkheid zoals trusts, nalatenschappen, derdenrekeningen, of brievenbusmaatschappijen;
+- holdings die een zeggenschapsbelang bezitten in een groep dochterondernemingen en waarvan de hoofdactiviteit bestaat in het bezitten van de groep zonder dat andere diensten worden verleend aan de ondernemingen waarin zij dat belang bezitten, m.a.w. zij besturen of beheren geen andere eenheden;
+- SPE's die als institutionele eenheden worden aangemerkt en op open markten financiële middelen aantrekken ten behoeve van hun moederonderneming;
+- eenheden die uitsluitend met eigen financiële middelen of met door een sponsor verstrekte middelen financiële diensten verlenen aan een reeks cliënten en die het financiële risico van het in gebreke blijven van de schuldenaar op zich nemen. Dit zijn bijvoorbeeld kredietverstrekkers, instellingen die leningen aan studenten of voor buitenlandse handel verstrekken en daarvoor gebruikmaken van financiële middelen die zij van een sponsor zoals een overheidsinstelling of een instelling zonder winstoogmerk hebben ontvangen, en pandhuizen die zich hoofdzakelijk bezighouden met het verstrekken van leningen;
+- overheidsfondsen voor specifieke doeleinden, gewoonlijk staatsinvesteringsfondsen genoemd, indien zij als financiële instelling worden ingedeeld.
+",5
+"00S12C","Verzekeringsinstel. en pensioenfondsen","Financiële intermediairs die zich bezighouden met het poolen van risico's, zijn verzekeringsinstellingen en pensioenfondsen. Zij bestaan uit de subsectoren verzekeringsinstellingen en pensioenfondsen.
+De subsector verzekeringsinstellingen  bestaat uit financiële instellingen met als hoofdfunctie financiële intermediatie door middel van het poolen van risico's, hoofdzakelijk in de vorm van directe verzekering of herverzekering.
+De subsector pensioenfondsen  bestaat uit financiële instellingen met als hoofdfunctie financiële intermediatie door middel van het poolen van sociale risico's en behoeften van de verzekerden (sociale verzekering). Pensioenfondsen en socialeverzekeringsregelingen verschaffen een inkomen aan gepensioneerden en vaak uitkeringen bij overlijden en invaliditeit.
+",6
+"00S128","Verzekeringsinstellingen","De subsector verzekeringsinstellingen  bestaat uit financiële instellingen met als hoofdfunctie financiële intermediatie door middel van het poolen van risico's, hoofdzakelijk in de vorm van directe verzekering of herverzekering.",6
+"00S129","Pensioenfondsen","De subsector pensioenfondsen  bestaat uit financiële instellingen met als hoofdfunctie financiële intermediatie door middel van het poolen van sociale risico's en behoeften van de verzekerden (sociale verzekering). Pensioenfondsen en socialeverzekeringsregelingen verschaffen een inkomen aan gepensioneerden en vaak uitkeringen bij overlijden en invaliditeit.",6
+"000S13","Overheid","De overheid bestaat ten eerste uit eenheden die uitvoerende, wetgevende en rechterlijke bevoegdheden op nationaal of regionaal niveau hebben. Zij hebben daarmee de bevoegdheid belastingen en andere verplichte heffingen op te leggen en wetten vast te stellen die het gedrag van economische eenheden beïnvloeden. Het gaat hierbij in Nederland om het rijk, gemeenten, provincies, waterschappen en dergelijke. Daarnaast worden die instellingen tot de overheid gerekend die gecontroleerd en voornamelijk gefinancierd worden door de eerder genoemde eenheden, én daarbij niet voor de markt produceren. Van niet-marktproductie is sprake als de verkoopopbrengsten structureel minder zijn dan 50 procent van de productiekosten. Dergelijke entiteiten zijn vaak opgericht voor specifieke taken, zoals de aanleg van wegen of de niet-marktproductie van diensten op het gebied van gezondheidszorg, onderwijs of onderzoek. Op deze wijze worden onder meer ook ProRail en de Open Universiteit tot de overheid gerekend. Nederlandse overheidsinstellingen die werkzaam zijn in het buitenland, zoals ambassades, behoren ook tot de Nederlandse overheid. Omgekeerd worden buitenlandse ambassades en internationale instellingen, zoals Europol en het Internationaal gerechtshof, daar niet toe gerekend. 
+
+Niet tot de sector overheid behoren bijvoorbeeld De Nederlandsche Bank (DNB), de NS, ziekenhuizen en energiebedrijven, maar ook sommige Zelfstandige Bestuursorganen (ZBO's) als het Kadaster. Zij worden wel in min of meerdere mate gecontroleerd door de overheid. Hun diensten en goederen worden echter (grotendeels) gefinancierd via tarieven, waardoor er sprake is van marktproductie. De sector overheid bestaat uit drie subsectoren: centrale overheid, lokale overheid en socialezekerheidsfondsen.
+
+De belangrijkste economische functies van de overheid zijn:
+a) het verschaffen van goederen en diensten aan de gemeenschap, hetzij voor collectieve consumptie, zoals bij openbaar bestuur, defensie en wetshandhaving, hetzij voor individuele consumptie, zoals bij onderwijs, gezondheidszorg, recreatie en culturele voorzieningen, en de financiering hiervan uit belastingmiddelen en andere inkomsten;
+b) het herverdelen van inkomen en vermogen door middel van overdrachten, zoals door belastingen en sociale uitkeringen;
+c) het verrichten van andere vormen van niet-marktproductie.",2
+"0S1311","Centrale overheid","Een subsector van de sector overheid. Tot de centrale overheid (CO) behoren:
+- het Rijk (ministeries en begrotingsfondsen, zoals Gemeentefonds, Provinciefonds en Infrastructuurfonds);
+- universiteiten;
+- product- en bedrijfschappen;
+- een groep van landelijke stichtingen en organisaties.
+Voorbeelden van deze landelijke stichtingen en organisaties zijn:
+- onderzoeksinstellingen (onder andere NWO, KNAW en aan de universiteiten gelieerde instituten);
+- ideële organisaties (onder andere Oxfam Novib);
+- verzelfstandigde overheidsdiensten als ProRail en het Centraal Bureau voor de Statistiek.",8
+"0S1313","Lagere overheid","Naast de gemeenten behoren tot de subsector lokale overheid:
+- provincies en waterschappen;
+- gemeenschappelijke regelingen, zoals samenwerkingsverbanden van gemeenten op het gebied van afvalverwerking, waterzuivering, brandweer, sociale werkvoorziening;
+- verzelfstandigde lokale overheidsdiensten, zoals bureaus voor arbeidsbemiddeling (sinds 2009 ondergebracht bij het UWV, onderdeel van de sector wettelijke socialee verzekeringsinstellingen) en regionale politiekorpsen (sinds 2013 onderdeel van de Nationale Politie);
+- privaatrechtelijke lokale instellingen op het gebied van arbeid, maatschappelijk werk, cultuur en onderwijs zoals banenpools, het Jeugd Werk Garantieplan, centra voor asielzoekers, musea, bibliotheken, scholen voor bijzonder onderwijs en studiebegeleidingsdiensten.
+ 
+",8
+"0S1314","Socialezekerheidsfondsen","Een subsector van de overheid. Tot de socialezekerheidsfondsen behoren:
+- de toezichts- en uitvoeringsorganen van de wettelijke sociale verzekeringsregelingen zoals het Uitvoeringsinstituut Werknemersverzekeringen (UWV), waarin de vroegere uitvoeringsinstanties zijn samengegaan;
+- de sociale fondsen (bijvoorbeeld AOW-fonds, WW-fonds en WIA). De vroegere arbeidsongeschiktheidsregelingen voor overheidspersoneel (FAOP) vallen ook onder de wettelijke sociale verzekering.",8
+"000S1A","Huishoudens incl. IZW's t.b.v. huish.","Huishoudens inclusief Instellingen zonder winstoogmerk ten behoeve van de huishoudens (IZWh). 
+
+Tot de sector huishoudens behoren alle natuurlijke personen die langer dan een jaar in Nederland verblijven, ongeacht hun nationaliteit. Omgekeerd worden Nederlanders die langer dan een jaar in het buitenland verblijven niet tot de Nederlandse huishoudens gerekend.
+Huishoudens omvatten niet alleen op zichzelf of in gezinsverband wonende personen, maar ook personen in verpleeginrichtingen, bejaardentehuizen, gevangenissen en internaten.
+Indien de tot de huishoudens gerekende personen een eigen bedrijf hebben, wordt dit bedrijf ook tot de huishoudens gerekend. Dit is het geval bij de zelfstandigen (eenmanszaken). Grote, zelfstandig opererende ondernemingen zonder rechtspersoonlijkheid (quasi-vennootschappen) behoren echter tot de (niet-financiële of financiële) vennootschappen.
+
+Tot de sector instellingen zonder winstoogmerk ten behoeve van de huishouden (IZW huishoudens) behoren stichtingen en verenigingen waarvan de middelen voor het merendeel afkomstig zijn uit vrijwillige bijdragen van huishoudens en uit inkomen uit vermogen. Voorbeelden zijn religieuze instellingen, liefdadigheidsinstellingen, politieke partijen, vakbonden en verenigingen op het gebied van cultuur, sport en recreatie.
+
+",2
+"000S14","Huishoudens","Tot de sector huishoudens behoren alle natuurlijke personen die langer dan een jaar in Nederland verblijven, ongeacht hun nationaliteit. Omgekeerd worden Nederlanders die langer dan een jaar in het buitenland verblijven niet tot de Nederlandse huishoudens gerekend.
+Huishoudens omvatten niet alleen op zichzelf of in gezinsverband wonende personen, maar ook personen in verpleeginrichtingen, bejaardentehuizen, gevangenissen en internaten.
+Indien de tot de huishoudens gerekende personen een eigen bedrijf hebben, wordt dit bedrijf ook tot de huishoudens gerekend. Dit is het geval bij de zelfstandigen (eenmanszaken). Grote, zelfstandig opererende ondernemingen zonder rechtspersoonlijkheid (quasi-vennootschappen) behoren echter tot de (niet-financiële of financiële) vennootschappen.
+",10
+"000S15","IZW's t.b.v. huishoudens","Tot de sector instellingen zonder winstoogmerk ten behoeve van de huishouden (IZW huishoudens) behoren stichtingen en verenigingen waarvan de middelen voor het merendeel afkomstig zijn uit vrijwillige bijdragen van huishoudens en uit inkomen uit vermogen. Voorbeelden zijn religieuze instellingen, liefdadigheidsinstellingen, politieke partijen, vakbonden en verenigingen op het gebied van cultuur, sport en recreatie.
+
+",10
+"0000S2","Buitenland","In de nationale rekeningen is het buitenland als zodanig geen institutionele sector. De  transacties van het buitenland met Nederland zijn transacties tussen ingezeten en niet-ingezeten eenheden.",12

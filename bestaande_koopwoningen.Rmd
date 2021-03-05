@@ -1,5 +1,5 @@
 ---
-title: "Bestaande koopwoningen, aantalen en verkoopprijzen"
+title: "Ontwikkeling Huizenprijzen en aantal transacties in Nederland"
 author: "Merijn"
 date: "25/02/2021"
 output: html_document
@@ -9,7 +9,110 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```
 
-## Ontwikkeling van huizenprijzen in Nederland
+# Ontwikkeling Huizenprijzen en aantal transacties in Nederland
+
+De macro economen van de Volksbank hebben als taak de toestand in de wereld toe te lichten voor directie en beleidsmakers. Een belangrijk onderdeel daarvan heeft betrekking met de ontwikkeling van de hypotheekmarkt in Nederland. De huizenprijzen en aantallen verkochte woningen zijn belangrijke indicatoren voor de ontwikkeling van de hypotheekmarkt.De vraag is of we een beter voorspellend model kunnen ontwikkelen voor de huizenprijzen en aantal verkochte woningen.
+
+# Probleemstelling
+
+Kunnen we een model ontwikkelen om de huizenprijzen op middellange termijn te voorspellen?
+Kunnen we een model ontwikkelen om het aantal transacties op de huizenmarkt op middellange termijn te voorspellen?
+
+Aanvullende vragen / subvragen
+
+Nederland heeft een van de hoogste persoonlijke schulden (hypotheeklast) in de wereld.
+Wat zijn de gevolgen voor de hypotheekmarkt van het gewijzigde beleid? Heeft dit effect op de huizenprijzen?
+
+Hoe ontwikkeld de krapte op de huizenmarkt zich, op termijn? Momenteel zijn er ambiteuze plannen om ergens tussen de 75.000 en 100.000 woningen per jaar te gaan bouwen. Het aanbod aan huizen wordt dus groter - terwijl op termijn verwacht wordt dat de bevolking weer gaat krimpen.
+Geeft dit een probleem? 
+
+Hoe zit het met de bevolkingsgroei? 
+	Welk deel van de aanwas komt door migratie? 
+	Is er nog sprake van verstedelijking na corona? Stroomt het platteland leeg - en de randstad vol? Welk effect heeft dit op de huizenprijzen? 
+
+Zien we demografisch verdeeld verschillen waar mensen willen wonen? Verhuizen gezinnen met kinderen naar het platteland.
+Het aantal huishoudens dat uit 1 persoon bestaat is erg gegroeid in de loop der tijd. Zijn dat ook de mensen die graag in de stad wonen?
+
+Hoe berekent men eigenlijk ‘krapte’ op de huizenmarkt?
+Hoe zit het met de kosten van wonen? Zijn huizen onbetaalbaar?
+
+Hoe ontwikkeld de hypotheekmarkt zich? Gaan mensen door het beleid inderdaad minder lenen voor een huis – of worden ze door de steeds hogere huizenprijzen juist gedwongen om (nog) meer te lenen?
+
+Hoe afhankelijk is de huizenmarkt van de stand van de economie? Gaan huizenprijzen alleen omhoog tijdens de groeifase van de economie? Op lange termijn zou er een evenwicht moeten zijn?
+
+
+## Plan van aanpak
+
+### Welke factoren beinvloeden de prijsstelling van woningen? 
+
+Om deze vraag te beantwoorden ben ik in gesprek gegaan met de specialisten bij de Volksbank. Aanvullend heb ik een korte literatuurstudie gedaan naar de factoren die op lange termijn de prijsstelling zouden beinvloeden.
+
+https://www.cpb.nl/publicatie/oververhitting-op-de-nederlandse-huizenmarkt/CPB-Achtergronddocument-1jun2018-Oververhitting-op-de-nederlandse-huizenmarkt.pdf
+
+https://datawonen.nl/dashboard/dashboard/koopprijs
+
+https://primos.datawonen.nl/
+
+https://www.cbs.nl/nl-nl/achtergrond/2016/16/indicatoren-woningmarkt-op-groen
+
+https://www.cbs.nl/nl-nl/visualisaties/monitor-koopwoningmarkt
+
+
+Mijn hypotheses:
+
+Krapte bepaald de 'doorstroom' (dus mogelijk weinig transacties);
+Levensfase ontwikkeling van 'de Nederlander' bepalend voor de vraag naar type woning;
+Het beleid (aflossen van de hypotheek in 30 jaar) heeft lange termijn een prijsopdrijvend effect;
+Sentiment speelt op korte termijn (nu toeslaan);
+Verstoring woningmarkt door sociale huur, leidt regionaal tot hogere prijzen overige woningen;
+
+### Welke factoren bepalen de omloopsnelheid van de huizen?
+
+Over de factoren die het aantal transacties beinvloeden is minder documentatie te vinden.
+
+Benodigde data
+
+Gewenste informatie (ik weet niet wat er zo voorhanden is). Mogelijk aanvullen met open data statline.
+Waar mogelijk verdeeld per regio, per type woning.
+
+* Aantal transacties
+*	Nominale transactieprijzen
+*	Gem. huizenprijzen per type woning (reele prijsindex)
+*	Gem. huurprijzen (berekenen verhouding koop/huur)
+*	Percentage huur / koop. 
+*	Aantal woningen dat te koop staat + per regio
+*	Demografie (omvang en samenstelling huishoudens) over de jaren heen
+
+Indicatoren Huizenprijzen
+
+*	Aanbod woningen
+* Bouwkosten
+* Beschikbaarheid bouwlocaties
+* Ruimtelijke ordeningbeleid
+*	Vraag woningen		
+* Besteedbaar Inkomen
+* Rentestanden
+* Fiscale behandeling, subsidies, 
+* Toegang tot krediet (kredietruimte in relatie tot inkomen)
+* Financiering hypotheek of eigen geld
+* Voorkeuren van kopers
+* Percentage huursector – prijsvorming huursector mogelijk verschillend
+* Consumenten vertrouwen woningmarkt
+
+Indicatoren aantal transacties
+
+*	Aantal dagen aangeboden (Verschil datum aangeboden en transactie datum)
+*	Aantal inwoners 
+*	Aantal huishoudens
+*	Nieuwbouw
+*	Afschrijvingen woningbestand
+*	Wie woont in wat voor huis / demografische kenmerken per type huis
+*	Doel aankoop (verhuur / particulier)
+* Mogelijk is de omloopsnelheid hoger bij verhuur / beleggingspanden?
+
+# Analyse
+
+# Conclusies
 
  1. Start with a **PROBLEM** (or question)
  1. You devise a **PLAN** to solve the problem (or answer the question)
@@ -17,6 +120,12 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
  1. You **ANALYZE** the data
  1. Finally, you draw a **CONCLUSION** from the analysis
  1. You probably start the cycle again
+ 
+ https://www.youtube.com/watch?v=5UvrPO4eY5A&feature=emb_logo
+ 
+ Huizenmarkt in beeld
+ 
+ https://www.cbs.nl/nl-nl/visualisaties/huizenmarkt-in-beeld
 
 ```{r}
 library (tidyverse)
@@ -26,6 +135,7 @@ library(stringr)
 library(readr)
 library(lubridate)
 ```
+
 
 
 ```{r}

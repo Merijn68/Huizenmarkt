@@ -1,0 +1,18 @@
+"ID","DimensionKey","Title","Description","ParentID"
+0,"InstitutioneleSectoren","Binnenlandse institutionele sectoren",,
+1,"InstitutioneleSectoren","Hoofdsectoren",,0
+2,"InstitutioneleSectoren","Hoofdsectoren",,1
+3,"InstitutioneleSectoren","Subsectoren financiële instellingen",,0
+4,"InstitutioneleSectoren","Monetaire financiële instellingen",,3
+5,"InstitutioneleSectoren","Overige financiële instellingen",,3
+6,"InstitutioneleSectoren","Verzekeringsinstel. en pensioenfondsen",,3
+7,"InstitutioneleSectoren","Subsectoren overheid",,0
+8,"InstitutioneleSectoren","Overheid",,7
+9,"InstitutioneleSectoren","Subsectoren huishoudens incl. IZWh",,0
+10,"InstitutioneleSectoren","Huishoudens incl. IZW's t.b.v. huish.",,9
+11,"InstitutioneleSectoren","Buitenland",,
+12,"InstitutioneleSectoren","Het buitenland",,11
+13,"BalansstandenEnTransacties","Balansstanden en transacties",,
+14,"BalansstandenEnTransacties","Balansstanden en transacties",,13
+15,"BalansstandenEnTransacties","Onderverdeling overige mutaties",,
+16,"BalansstandenEnTransacties","Onderverdeling overige mutaties",,15
