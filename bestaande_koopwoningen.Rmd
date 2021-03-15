@@ -9,43 +9,55 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```
 
-# Ontwikkeling Huizenprijzen en aantal transacties in Nederland
+# Probleemstelling
 
 De macro economen van de Volksbank hebben als taak de toestand in de wereld toe te lichten voor directie en beleidsmakers. Een belangrijk onderdeel daarvan heeft betrekking met de ontwikkeling van de hypotheekmarkt in Nederland. De huizenprijzen en aantallen verkochte woningen zijn belangrijke indicatoren voor de ontwikkeling van de hypotheekmarkt.De vraag is of we een beter voorspellend model kunnen ontwikkelen voor de huizenprijzen en aantal verkochte woningen.
 
-# Probleemstelling
+Zei zijn met de volgende vraagstellingen gekomen:
 
-Kunnen we een model ontwikkelen om de huizenprijzen op middellange termijn te voorspellen?
-Kunnen we een model ontwikkelen om het aantal transacties op de huizenmarkt op middellange termijn te voorspellen?
+1. Kunnen we een model ontwikkelen om de huizenprijzen op middellange termijn te voorspellen?
 
-Aanvullende vragen / subvragen
+1. Kunnen we een model ontwikkelen om het aantal transacties op de huizenmarkt op middellange termijn te voorspellen?
 
-Nederland heeft een van de hoogste persoonlijke schulden (hypotheeklast) in de wereld.
-Wat zijn de gevolgen voor de hypotheekmarkt van het gewijzigde beleid? Heeft dit effect op de huizenprijzen?
+Vanuit de Volksbank is in het verleden al wel statistisch onderzoek gedaan naar deze vebanden. 
+Data wordt verzameld via Datascope (Refinitiv) en geanalyseerd in Excel.
 
-Hoe ontwikkeld de krapte op de huizenmarkt zich, op termijn? Momenteel zijn er ambiteuze plannen om ergens tussen de 75.000 en 100.000 woningen per jaar te gaan bouwen. Het aanbod aan huizen wordt dus groter - terwijl op termijn verwacht wordt dat de bevolking weer gaat krimpen.
-Geeft dit een probleem? 
+Voor de huizenprijzen is gekeken naar een verband tussen huizenprijzen en de werkgelegenheid, lonen, GDP en rente. Hieruit is een eenvoudig model ontwikkeld waarbij met name het verband met GDP wordt gebruikt om de ontwikkeling van de huizenprijzen te voorspellen.
 
-Hoe zit het met de bevolkingsgroei? 
-	Welk deel van de aanwas komt door migratie? 
-	Is er nog sprake van verstedelijking na corona? Stroomt het platteland leeg - en de randstad vol? Welk effect heeft dit op de huizenprijzen? 
+Voor het aantal transacties op de lange termijn wordt een verband verondersteld met het aantal huishoudens. op kortere termijn spelen economische groei, rentestanden en evt. regelgeving ook een rol.
 
-Zien we demografisch verdeeld verschillen waar mensen willen wonen? Verhuizen gezinnen met kinderen naar het platteland.
-Het aantal huishoudens dat uit 1 persoon bestaat is erg gegroeid in de loop der tijd. Zijn dat ook de mensen die graag in de stad wonen?
+## Aanvullende vragen / subvragen
 
-Hoe berekent men eigenlijk ‘krapte’ op de huizenmarkt?
-Hoe zit het met de kosten van wonen? Zijn huizen onbetaalbaar?
 
-Hoe ontwikkeld de hypotheekmarkt zich? Gaan mensen door het beleid inderdaad minder lenen voor een huis – of worden ze door de steeds hogere huizenprijzen juist gedwongen om (nog) meer te lenen?
+1. Nederland heeft een van de hoogste persoonlijke schulden (hypotheeklast) in de wereld. Wat zijn de gevolgen voor de hypotheekmarkt van het gewijzigde beleid? Heeft dit effect op de huizenprijzen?
 
-Hoe afhankelijk is de huizenmarkt van de stand van de economie? Gaan huizenprijzen alleen omhoog tijdens de groeifase van de economie? Op lange termijn zou er een evenwicht moeten zijn?
+
+1. Hoe ontwikkeld de krapte op de huizenmarkt zich, op termijn? Momenteel zijn er ambiteuze plannen om ergens tussen de 75.000 en 100.000 woningen per jaar te gaan bouwen. Het aanbod aan huizen wordt dus groter - terwijl op termijn verwacht wordt dat de bevolking weer gaat krimpen. Kunnen we hier een voorspelling van maken?
+
+
+1. Hoe zit het met de bevolkingsgroei? Welk deel van de aanwas in Nederland komt door migratie? Hoe zit dat regionaal? Is er nog sprake van verstedelijking na corona? 
+Stroomt het platteland leeg - en de randstad vol? Welk effect heeft dit op de huizenprijzen? 
+
+
+1. Zien we demografisch verdeeld verschillen waar mensen willen wonen? Verhuizen gezinnen met kinderen naar het platteland, en ouderen weer naar de stad? 
+Het aantal huishoudens dat uit 1 persoon bestaat is erg gegroeid in de loop der tijd - en zal (denk ik) nog wel doorstijgen met de vergrijzing. Betekend dit dat er meer mensen naar de stad willen verhuizen?
+
+
+1. Hoe berekent men eigenlijk ‘krapte’ op de huizenmarkt? De overheid berekend (hoe eigenlijk?) date een 'krapte' is op de woningmarkt van zo'n 300.000 huizen. 
+
+
+1. Hoe zit het met de kosten van wonen? Zijn huizen onbetaalbaar geworden door hogere prijzen die we de afgelopen jaren hebben gezien?
+
+
+1. Hoe ontwikkeld de hypotheekmarkt zich verder? Gaan mensen door het beleid (sinds ... moeten mensen in 30 jaar hun hypotheek aflossen) inderdaad minder lenen voor een huis – of worden ze door de steeds hogere huizenprijzen, juist gedwongen om (nog) meer te lenen?
+
+
+1. Hoe afhankelijk is de huizenmarkt van de stand van de economie? Gaan huizenprijzen alleen omhoog tijdens de groeifase van de economie? Op lange termijn zou er een evenwicht moeten zijn?
 
 
 ## Plan van aanpak
 
-### Welke factoren beinvloeden de prijsstelling van woningen? 
-
-Om deze vraag te beantwoorden ben ik in gesprek gegaan met de specialisten bij de Volksbank. Aanvullend heb ik een korte literatuurstudie gedaan naar de factoren die op lange termijn de prijsstelling zouden beinvloeden.
+Om deze vragen te beantwoorden ben ik in gesprek gegaan met de specialisten bij de Volksbank. Aanvullend heb ik een korte literatuurstudie gedaan naar de factoren die op lange termijn de prijsstelling zouden beinvloeden. Het CBS publiceert vrij veel over de prijsonwikkeling van bestaande woningen.
 
 https://www.cpb.nl/publicatie/oververhitting-op-de-nederlandse-huizenmarkt/CPB-Achtergronddocument-1jun2018-Oververhitting-op-de-nederlandse-huizenmarkt.pdf
 
@@ -57,207 +69,211 @@ https://www.cbs.nl/nl-nl/achtergrond/2016/16/indicatoren-woningmarkt-op-groen
 
 https://www.cbs.nl/nl-nl/visualisaties/monitor-koopwoningmarkt
 
+https://www.cbs.nl/nl-nl/visualisaties/huizenmarkt-in-beeld
 
-Mijn hypotheses:
+<!-- Mijn hypotheses: -->
 
-Krapte bepaald de 'doorstroom' (dus mogelijk weinig transacties);
-Levensfase ontwikkeling van 'de Nederlander' bepalend voor de vraag naar type woning;
-Het beleid (aflossen van de hypotheek in 30 jaar) heeft lange termijn een prijsopdrijvend effect;
-Sentiment speelt op korte termijn (nu toeslaan);
-Verstoring woningmarkt door sociale huur, leidt regionaal tot hogere prijzen overige woningen;
+<!-- Krapte bepaald de 'doorstroom' (dus mogelijk weinig transacties); -->
+<!-- Levensfase ontwikkeling van 'de Nederlander' bepalend voor de vraag naar type woning; -->
+<!-- Het beleid (aflossen van de hypotheek in 30 jaar) heeft lange termijn een prijsopdrijvend effect; -->
+<!-- Sentiment speelt op korte termijn (nu toeslaan); -->
+<!-- Verstoring woningmarkt door sociale huur, leidt regionaal tot hogere prijzen overige woningen; -->
 
-### Welke factoren bepalen de omloopsnelheid van de huizen?
+## Benodigde / gewenste data
 
-Over de factoren die het aantal transacties beinvloeden is minder documentatie te vinden.
-
-Benodigde data
-
-Gewenste informatie (ik weet niet wat er zo voorhanden is). Mogelijk aanvullen met open data statline.
+Gewenste informatie (ik weet niet wat er zo voorhanden is). Mogelijk aanvullen met open data: CBS:Statline e.d..
 Waar mogelijk verdeeld per regio, per type woning.
 
-* Aantal transacties
-*	Nominale transactieprijzen
-*	Gem. huizenprijzen per type woning (reele prijsindex)
-*	Gem. huurprijzen (berekenen verhouding koop/huur)
-*	Percentage huur / koop. 
-*	Aantal woningen dat te koop staat + per regio
-*	Demografie (omvang en samenstelling huishoudens) over de jaren heen
+* **Aantal transacties**
+*	**Nominale transactieprijzen**
+*	**Gem. huizenprijzen per type woning (reele prijsindex)**
+*	**Gem. huurprijzen (berekenen verhouding koop/huur)**
+*	_Percentage huur / koop._
+*	**Aantal woningen dat te koop staat + per regio**
+*	**Demografie (omvang en samenstelling huishoudens) over de jaren heen**
 
 Indicatoren Huizenprijzen
 
-*	Aanbod woningen
-* Bouwkosten
-* Beschikbaarheid bouwlocaties
-* Ruimtelijke ordeningbeleid
-*	Vraag woningen		
-* Besteedbaar Inkomen
-* Rentestanden
-* Fiscale behandeling, subsidies, 
-* Toegang tot krediet (kredietruimte in relatie tot inkomen)
-* Financiering hypotheek of eigen geld
-* Voorkeuren van kopers
-* Percentage huursector – prijsvorming huursector mogelijk verschillend
-* Consumenten vertrouwen woningmarkt
+Aanbod woningen:
+
+* _Bouwkosten_
+* _Beschikbaarheid bouwlocaties_
+* _Ruimtelijke ordeningbeleid_
+
+Vraag woningen:
+
+* _Besteedbaar Inkomen_
+* _Rentestanden_
+* _Fiscale behandeling, subsidies, _
+* _Toegang tot krediet (kredietruimte in relatie tot inkomen)_
+* _Financiering hypotheek of eigen geld_
+* _Voorkeuren van kopers_
+* _Percentage huursector – prijsvorming huursector mogelijk verschillend_
+* **Consumenten vertrouwen woningmarkt**
 
 Indicatoren aantal transacties
 
-*	Aantal dagen aangeboden (Verschil datum aangeboden en transactie datum)
-*	Aantal inwoners 
-*	Aantal huishoudens
-*	Nieuwbouw
-*	Afschrijvingen woningbestand
-*	Wie woont in wat voor huis / demografische kenmerken per type huis
-*	Doel aankoop (verhuur / particulier)
-* Mogelijk is de omloopsnelheid hoger bij verhuur / beleggingspanden?
+*	**Aantal dagen aangeboden (Verschil datum aangeboden en transactie datum)**
+*	_Aantal inwoners_
+*	**Aantal huishoudens**
+*	**Nieuwbouw**
+*	_Afschrijvingen woningbestand_
+*	_Wie woont in wat voor huis / demografische kenmerken per type huis_
+*	_Doel aankoop (verhuur / particulier)_
+* _Mogelijk is de omloopsnelheid hoger bij verhuur / beleggingspanden?_
 
 # Analyse
-
-# Conclusies
-
- 1. Start with a **PROBLEM** (or question)
- 1. You devise a **PLAN** to solve the problem (or answer the question)
- 1. You collect **DATA** to execute the plan (or perform an experiment)
- 1. You **ANALYZE** the data
- 1. Finally, you draw a **CONCLUSION** from the analysis
- 1. You probably start the cycle again
- 
- https://www.youtube.com/watch?v=5UvrPO4eY5A&feature=emb_logo
- 
- Huizenmarkt in beeld
- 
- https://www.cbs.nl/nl-nl/visualisaties/huizenmarkt-in-beeld
 
 ```{r}
 library (tidyverse)
 library (here)
-library(ggplot2)
-library(stringr)
-library(readr)
-library(lubridate)
+```
+
+```{r}
+# Loading the datasets
+# Not sure yet what would be the preferred option here...
+# I am not saving each data set after ETL in the data tidy directory
+
+dfs<-list.files(here("data","tidy"), pattern = "*.Rdata")
+for(d in dfs) {
+  load(file= here("data","tidy",d ))
+}
+
+```
+
+Prijsontwikkeling woningen
+
+missing values price index per region...
+
+```{r}
+prijsindex_woningen %>%
+  ggplot(aes(x=date )) +
+  geom_line(aes(y=house_price_index)) +
+  theme(legend.position = "bottom") +
+  labs(title = "Prijsindex bestaande woningen")  
+
+prijsindex_per_regio %>%
+  filter(region != "Nederland")  %>%
+  filter(grepl('PV', region)) %>%
+  ggplot(aes(x=date )) +
+  geom_line(aes(y=price_index_existing_houses, color = region)) +
+  theme(legend.position = "bottom") +
+  labs(title = "Prijsindex Nederland")  
+```
+
+```{r}
+prijsindex_woningen %>%
+  full_join(consumenten_aankoopintentie, by="yearqtr") %>%
+  ggplot(aes(x=date )) +
+  geom_line(aes(y=house_price_index)) +
+  geom_line(aes(y=home_purchase_intention)) +
+  theme(legend.position = "bottom") +
+  labs(title = "Prijsindex bestaande woningen")  
+
+```
+
+
+```{r}
+aanbod_huizen %>%
+  filter(set == "Totaal") %>%
+  ggplot(aes(x=datum )) +
+  geom_line(aes(y=vraagprijs)) +
+  theme(legend.position = "bottom") +
+  labs(title = "Vraagprijs woningen")  
+```
+
+```{r}
+aanbod_huizen %>%
+  filter(set != "Totaal") %>%
+  ggplot(aes(x=datum )) +
+  geom_line(aes(y=aantal, color = set)) +
+  theme(legend.position = "bottom")
+```
+
+
+```{r}
+aanbod_huizen %>%
+  filter(set != "Totaal") %>%
+  ggplot(aes(x=datum )) +
+  geom_line(aes(y=aanbodtijd, color = set)) +
+  theme(legend.position = "bottom")
+```
+
+Aantal huishoudens
+
+```{r}
+huishoudens %>%
+  ggplot(aes(x=date, y = number_of_households )) +
+  geom_line() +
+  geom_smooth(method = lm) +
+  theme(legend.position = "bottom") 
+ 
+```
+
+Hypotheek rente
+
+```{r}
+hypotheek_rente  %>%
+  ggplot(aes(x=period, y = mortgage_interest )) +
+  geom_line()
+```
+
+
+Nieuwbouw
+"Province Nederland (niet logisch - en een spatie er voor...)
+NA values
+
+https://opendata.cbs.nl/statline/#/CBS/nl/dataset/81955NED/table?fromstatweb
+
+
+```{r}
+nieuwbouw %>%
+  filter(province == " Nederland") %>%
+  ggplot(aes(x=period, y = value )) +
+  geom_line() +
+  theme(legend.position = "bottom") 
+
+
+nieuwbouw %>%
+  filter(province == " Nederland") %>%
+  drop_na() %>%
+  tail
 ```
 
 
 
+Aantal transacties
+
 ```{r}
+transacties_per_type %>%
+  ggplot(aes(x=monthly , y=aantal_verkocht, color= type_woning, fill = type_woning)) +
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position = "bottom") +
+  labs(x = "", y = "", title = "Aantal verkocht per type")
+```
 
-df <-
-  read_csv2(
-    "data/Bestaande_koopwoningen__verkoopprijzen_prijsindex_2015_100_25022021_153530.csv",
-    trim_ws = TRUE,
-    skip = 3,
-    col_types = 'cdddddddd'
-  )
+Transacties per leeftijd - sluit niet aan op het aantal verkochte woningen...
 
-# Drop first and last row of the dataset
-df <- df[-1, ]
-df <- df[-nrow(df), ]
+```{r}
+transacties_per_leeftijd %>%
+  ggplot(aes(x=period , y=aantal_transacties, color= leeftijd, fill = leeftijd)) +
+  geom_bar(stat="identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position = "bottom") +
+  labs(x = "", y = "", title = "Aantal Transacties per maand per leeftijdscategorie" )  
+```
 
-# kolom namen toevoegen
-names(df) = c(
-  'period',
-  'prijs_index',
-  'prijs_index_d_1period',
-  'prijs_index_d_1jaar',
-  'aantal',
-  'aantal_d_1period',
-  'aantal_d_1jaar',
-  'gem_verkoop_prijs',
-  'totale_waarde'
-)
+Verkochte woningen is nog niet tidy!
 
 
-#Splitsen van kolom Periode
-# Waarom is het handig om maand en jaar als Factor op te slaan?
-df$jaar <- word(df$period, 1)
-maanden <-
-  c(
-    'januari',
-    'februari',
-    'maart',
-    'april',
-    'mei',
-    'juni',
-    'juli',
-    'augustus',
-    'september',
-    'oktober',
-    'november',
-    'december'
-  )
-
-df$maand <- word(df$period, 2)
-df$maand <- factor(df$maand, levels = maanden)
-
-# Filter een jaarlijkse dataset
-df_j <-
-  df %>%
-  filter(is.na(maand))
-
-df_j$date <- ISOdate(df_j$jaar,1, 1)
-
-# Filter en een maandelijkse dataset
-df_m <-
-  df %>%
-  filter(!is.na(maand))
-
-df_m$date <-ym(paste(df_m$jaar, " ", as.numeric(df_m$maand)))
-
+verkochte_woningen_per_provincie_per_maand %>%
   
-```
-
-Data tabel is nu gesplitst in Jaar en Maand data.
-
-Jaren
-
-```{r}
-DT::datatable(df_j)
-```
-
-Maanden
-
-```{r}
-DT::datatable(df_m)
-```
 
 
-Time Series object?
-
-```{r}
-df_j %>%
-  ggplot(aes (x = date, 
-              y = aantal)) +
-  geom_point() +
-  geom_smooth(method = "lm", formula= y~x)
-```
-```{r}
-df_j %>%
-  ggplot(aes (x = date, 
-              y = gem_verkoop_prijs)) +
-  geom_point() +
-  geom_smooth(method = "lm", formula= y~x)
-```
 
 
-```{r}
-df_m %>%
-  ggplot(aes (x = date,
-              y = gem_verkoop_prijs)) +
-  geom_point() +
-  geom_smooth(method = "lm", formula= y~x)
-```
-```{r}
-df_m %>%
-  mutate(highlow = case_when(aantal_d_1period >= 0 ~ "higher", 
-                                 aantal_d_1period < 0 ~ "lower")) %>%
-  ggplot(aes (x = date,
-              y = aantal_d_1period, fill = as.factor(highlow))) +
-  geom_col() +
-  scale_fill_manual(values = c("higher" = "dodgerblue", "lower" = "lightcoral")) +
-  theme_bw()+
-  theme(legend.position = "none") + # remove legend
-  labs(
-    title = "Periodieke mutatie aantal verkochte woningen",
-    x = "Maand",
-    y = "Aantal"
-  )
-```
+# Conclusies
+
+ Deze is ook leuk:
+
+ https://www.youtube.com/watch?v=5UvrPO4eY5A&feature=emb_logo
+ 
