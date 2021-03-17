@@ -71,6 +71,12 @@ https://www.cbs.nl/nl-nl/visualisaties/monitor-koopwoningmarkt
 
 https://www.cbs.nl/nl-nl/visualisaties/huizenmarkt-in-beeld
 
+https://www.rijksoverheid.nl/documenten/rapporten/2019/05/29/socrates-2019---scenarioverkenningen-van-de-woningmarkt-in-2030
+
+https://www.abfresearch.nl/publicaties/vooruitzichten-bevolking-huishoudens-en-woningmarkt-2020-2035/#:~:text=Volgens%20de%20Primos%20Prognose%202020,1%25%2C%20418%20duizend%20woningen.
+
+
+
 <!-- Mijn hypotheses: -->
 
 <!-- Krapte bepaald de 'doorstroom' (dus mogelijk weinig transacties); -->
@@ -127,6 +133,7 @@ Indicatoren aantal transacties
 ```{r}
 library (tidyverse)
 library (here)
+library (lubridate)
 ```
 
 ```{r}
@@ -140,6 +147,35 @@ for(d in dfs) {
 }
 
 ```
+
+
+Aantallen huishoudens
+
+```{r}
+aantal_huishoudens_per_jaar %>%
+  ggplot(aes(x=date )) +
+  geom_line(aes(y=aantal_huishoudens)) 
+  
+```
+
+Aantal huizen
+
+```{r}
+voorraad_woningen %>%
+  filter(Perioden_Date > as.Date("1960-01-01")) %>%
+  ggplot(aes(x=Perioden_Date )) +
+  geom_bar(stat = "identity", aes(y=SaldoVoorraad_7 / (EindstandVoorraad_8 * 1000))) 
+
+```
+
+
+
+
+aanbod woningen tov aantal verkocht
+
+
+
+
 
 Prijsontwikkeling woningen
 
@@ -156,7 +192,7 @@ prijsindex_per_regio %>%
   filter(region != "Nederland")  %>%
   filter(grepl('PV', region)) %>%
   ggplot(aes(x=date )) +
-  geom_line(aes(y=price_index_existing_houses, color = region)) +
+  geom_line(aes(y=prijsindex_bestaande_koopwoningen, color = region)) +
   theme(legend.position = "bottom") +
   labs(title = "Prijsindex Nederland")  
 ```

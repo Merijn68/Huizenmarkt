@@ -1,9 +1,0 @@
-"Key","Title","Description","CategoryGroupID"
-"T001100","Total dwellings","",
-"ZW10290","Single-family dwelling","Every dwelling that is a building in its own right. This includes detached houses, semi-detached houses, farms with a residential unit and all terraced dwellings.",
-"ZW25805","Terraced house","",
-"ZW25806","Corner house","",
-"ZW10300","Semi-detached house","Every dwelling that is a building in its own right. This includes detached houses, semi-detached houses, farms with a residential unit and all terraced dwellings. A semi-detached house is a single-family house with an attachment to one other single-family house.",
-"ZW10320","Detached house","Every dwelling that is a building in its own right. This includes detached houses, semi-detached houses, farms with a residential unit and all terraced dwellings.  A detached house is a single-family house without attachment to any other houses or buildings.",
-"ZW25810","Apartment","A flat is a self-contained residential unit within a larger residential building. A residential unit is defined as a flat, if the building it is situated in has been split up in accordance with strict rules.",
-"ZW25809","Unknown","Objects which cannot be categorised in one of the above groups, because the information currently available is inadequate.",
