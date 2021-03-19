@@ -3,9 +3,13 @@
 library(tidyverse)     # Tidyverse data management
 library(readxl)        # Read Excel files
 library(here)          # location of files
-library(zoo)           # for time serries data
+library(zoo)           # for time series data
+# install.packages("dint")
+library(dint)          # more time series
+library(lubridate)     # more time series
 library(janitor)       # naming variables
 library('cbsodataR')   # CBS Opendata Statline
+
 
 # Helper functions to wrangle data
 # These functions require fixed names for translations::
@@ -53,10 +57,23 @@ encode_qtryear <- function (df, var) {
   
   df <-
     df %>%
-    mutate(yearqtr = as.yearqtr(period,format="Q%q %Y")) %>%
-    mutate(date = as.Date(yearqtr))
+    mutate(yearqtr = as.yearqtr(!!var,format="Q%q %Y")) %>%
+    mutate(date = first_of_year(as.Date(yearqtr)))
   return(df)
 }
+
+encode_year <- function (df, var) {
+  
+  var <- enquo(var)
+  
+  df <-
+    df %>%
+    mutate(date = first_of_year(as.Date(!!var)))
+  return(df)
+ 
+}
+
+
 
 #' encode_mndyear
 #' 
@@ -145,7 +162,8 @@ aantal_huishoudens_per_jaar <-
                   "datastream",
                   "aantal huishoudens.xlsx"), skip = 1) %>% 
   set_names(c('date','aantal_huishoudens')) %>%
-  drop_na()
+  drop_na() %>%
+  encode_year(date)
 
 
 # consumer_confidence 
@@ -434,16 +452,19 @@ aanbod_per_type_per_provincie_per_maand_mgw <- NULL
 # CBS Statline ------------------------------------------------------------
 
 
-# Inhoudsopgave <- cbs_get_toc("Language" = "nl") %>% 
-#    filter(str_detect(ShortDescription, 'voorraad woningen'))
-# View(Inhoudsopgave)
+Inhoudsopgave <- cbs_get_toc("Language" = "nl") %>% 
+  filter(str_detect(ShortDescription, 'prognose woning'))
+View(Inhoudsopgave)
 # ds_nl <- cbs_get_datasets("Language" = "nl")
 # voorraad_woningen_meta <- cbs_get_meta("82235NED")$DataProperties
 
-voorraad_woningen <- cbs_get_data("82235NED") %>%
-  cbs_add_date_column() %>%
-  cbs_add_label_columns()
 
+voorraad_woningen <- cbs_get_data("82235NED") %>%
+  cbs_add_date_column() 
+
+voorraad_woningen_naar_eigendom <- cbs_get_data("82900NED",
+                                               RegioS = "NL01  ") %>%
+  cbs_add_date_column() 
 
 
 # Saving the datasets...

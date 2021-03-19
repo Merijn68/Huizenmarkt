@@ -28,9 +28,7 @@ Voor het aantal transacties op de lange termijn wordt een verband verondersteld 
 
 ## Aanvullende vragen / subvragen
 
-
 1. Nederland heeft een van de hoogste persoonlijke schulden (hypotheeklast) in de wereld. Wat zijn de gevolgen voor de hypotheekmarkt van het gewijzigde beleid? Heeft dit effect op de huizenprijzen?
-
 
 1. Hoe ontwikkeld de krapte op de huizenmarkt zich, op termijn? Momenteel zijn er ambiteuze plannen om ergens tussen de 75.000 en 100.000 woningen per jaar te gaan bouwen. Het aanbod aan huizen wordt dus groter - terwijl op termijn verwacht wordt dat de bevolking weer gaat krimpen. Kunnen we hier een voorspelling van maken?
 
@@ -102,12 +100,16 @@ Indicatoren Huizenprijzen
 
 Aanbod woningen:
 
+* Woningvoorraad
+* Nieuwbouw
+* Sloop
 * _Bouwkosten_
 * _Beschikbaarheid bouwlocaties_
 * _Ruimtelijke ordeningbeleid_
 
 Vraag woningen:
 
+*	_Aantal huishoudens_
 * _Besteedbaar Inkomen_
 * _Rentestanden_
 * _Fiscale behandeling, subsidies, _
@@ -120,20 +122,20 @@ Vraag woningen:
 Indicatoren aantal transacties
 
 *	**Aantal dagen aangeboden (Verschil datum aangeboden en transactie datum)**
-*	_Aantal inwoners_
-*	**Aantal huishoudens**
+*	Aantal huishoudens
 *	**Nieuwbouw**
 *	_Afschrijvingen woningbestand_
 *	_Wie woont in wat voor huis / demografische kenmerken per type huis_
 *	_Doel aankoop (verhuur / particulier)_
 * _Mogelijk is de omloopsnelheid hoger bij verhuur / beleggingspanden?_
 
-# Analyse
 
 ```{r}
 library (tidyverse)
 library (here)
 library (lubridate)
+library(ggpubr)
+library(reshape2)
 ```
 
 ```{r}
@@ -146,36 +148,160 @@ for(d in dfs) {
   load(file= here("data","tidy",d ))
 }
 
+C_HOUSES = '#9999CC'
+C_POPULATION = 'seagreen1'
+
 ```
 
 
-Aantallen huishoudens
+## Analyse 
+
+Factoren die de prijs bepalen
+
+Factoren die het aantal transactie bepalen
+
+Aantallen huishoudens + woningen
+
+In onderstaande grafiek zien we dat het aantal woningen al decenia lang gelijke tred houdt met het aantal woningen. Er is daarbij een klein tekort zichtbaar. Dit is veel kleiner dan het gerapporteerde tekort van 331.000 woningen (Staat van de woningmarkt, 2020 https://www.rijksoverheid.nl/actueel/nieuws/2020/06/15/staat-van-de-woningmarkt-2020 ). 
 
 ```{r}
-aantal_huishoudens_per_jaar %>%
-  ggplot(aes(x=date )) +
-  geom_line(aes(y=aantal_huishoudens)) 
+
+#82235NED CBS Aantal Woningen
+#Aantal huishoudens: NLHSTOTP Thomson Reuters
+
+# Tidy data 
+df <- 
+  aantal_huishoudens_per_jaar %>%
+  full_join(voorraad_woningen, by = c("date" = "Perioden_Date")) %>%
+  select (date, aantal_huishoudens, EindstandVoorraad_8) %>%
+  set_names('date','aantal_huishoudens','eindstand_voorraad') %>%
+  mutate(te_kort = (eindstand_voorraad - aantal_huishoudens)) %>%
+  filter(date > as.Date("1980-01-01")) %>%
+  melt(id = c('date'))
+
+# Line plot
+lp<- 
+  df %>%
+  filter (variable != 'te_kort') %>%
+  ggplot(aes (x = date)) +
+  geom_line(aes(y=value, color = variable)) +
+  labs(
+    title = "Aantal huishoudens vs voorraad woningen",
+    y = "Aantal (x 1000)",
+    x = '',
+    color = ''
+    ) +
+  scale_color_manual(values=c(C_POPULATION,C_HOUSES))
+
+# Bar plot
+bp <- 
+  df %>%
+  filter (variable == 'te_kort') %>%
+  ggplot(aes (x = date)) +
+  geom_bar(stat = "identity" , aes(y = value, color = variable, fill = variable )) +
+  labs ( y = "Te kort (x 1000)",
+         x = "",
+         color = "", fill = "") +
+  theme( axis.text.x = element_blank(),
+         axis.ticks = element_blank()) 
   
+
+ggarrange(lp, bp,  
+          heights = c(2, 0.7),
+          ncol = 1, nrow = 2, align = "v"
+          )
+
 ```
 
-Aantal huizen
+Daarnaast zien we landelijk ook nog een fors aantal leegstaande woningen. 
+Mogelijk is er meer sprake van een mismatch in type woning, of regionaal effect.
+
+```{r}
+
+# Zo'n 340.000 niet bewoonde huizen...
+
+voorraad_woningen_naar_eigendom %>%
+select(Perioden_Date, StatusVanBewoning, TotaleWoningvoorraad_1) %>%
+filter (StatusVanBewoning =='A028726') %>%
+mutate(totaal = TotaleWoningvoorraad_1 / 1000) %>%
+ggplot(aes (x = Perioden_Date)) +
+geom_line(aes(y=totaal, color = StatusVanBewoning)) +
+labs(
+    title = "Aantal huizen onbewoond",
+    y = "Aantal (x 1000)",
+    x = 'Jaar',
+    color = ''
+    )
+
+```
+
+Meer dan de helft van de woningen in Nederland zijn koopwoningen. 
+De tijdreeks van deze gegevens is helaas vrij kort. In de afgelopen jaren zien we weinig verschuivingen in deze verhoudeningen.
+
+```{r}
+voorraad_woningen_naar_eigendom %>%
+  filter (StatusVanBewoning =='T001235') %>%
+  filter( Perioden_Date == as.Date("2020-01-01")) %>%
+  select(Perioden_Date, 
+       Koopwoningen_2,
+       EigendomWoningcorporatie_4, 
+       EigendomOverigeVerhuurders_5,
+       EigendomOnbekend_6 ) %>%
+  set_names("Periode",
+            "Koopwoningen",
+            "Eigendom Woningcorporatie",
+            "Eigendom Overige Verhuurders",
+            "Eigendom Onbekend") %>%
+  melt(id = c("Periode")) %>%
+  mutate(value = value / 1000) %>%
+  ggplot(aes (x = reorder(variable , value))) +
+  geom_bar(stat = "identity" , aes(y = value, fill = variable)) +
+  coord_flip() +
+  labs(
+    title = "Aantal woningen naar eigendom 2020",
+    y = "Aantal (x 1000)",
+    x = ''
+    ) + 
+  theme(legend.position = "none")
+```
+
+Demografische ontwikkelingen
+
+Steeds meer alleenstaanden > 65 + en migratie
+
+Woningvoorraad
+
+Toevoegingen door Nieuwbouw 
+
+Wanneer we een wat langere termijn trend kijken naar het aantal gerealiseerde nieuwbouwhuizen zien we dat het aantal nieuwbouwhuizen eingelijk nu niet bijzonder hoog is. Ondanks dat er meer dan 70.000 huizen bijgebouwd wordt per jaar is dat vergeleken met de totale woningvoorraad eigenlijk niet veel. We zagen al dat de woningvoorraad lange termijn tred houdt met het aantal huishoudens.
+
+-- prognose nieuwbouwhuizen toevoegen ---
+
 
 ```{r}
 voorraad_woningen %>%
-  filter(Perioden_Date > as.Date("1960-01-01")) %>%
-  ggplot(aes(x=Perioden_Date )) +
-  geom_bar(stat = "identity", aes(y=SaldoVoorraad_7 / (EindstandVoorraad_8 * 1000))) 
+  select(Perioden_Date,
+         Nieuwbouw_2) %>%
+  mutate(nieuwbouw = Nieuwbouw_2 / 1000) %>%
+  filter(Perioden_Date > as.Date("1980-01-01")) %>%
+  ggplot(aes(x=Perioden_Date, y = nieuwbouw )) +
+  geom_line(color = c(C_HOUSES)) +
+  labs ( title = "Toevoegingen door Nieuwbouw",
+         y = "Aantal (x 1000)",
+         x = "Jaar") 
 
 ```
 
 
+In lijn met ontwikkeling aantal huishoudens?
 
+* _Bouwkosten_
+* _Beschikbaarheid bouwlocaties_
+* _Ruimtelijke ordeningbeleid_
 
 aanbod woningen tov aantal verkocht
 
-
-
-
+Regionaal zijn er grote verschillen...
 
 Prijsontwikkeling woningen
 
@@ -198,41 +324,41 @@ prijsindex_per_regio %>%
 ```
 
 ```{r}
-prijsindex_woningen %>%
-  full_join(consumenten_aankoopintentie, by="yearqtr") %>%
-  ggplot(aes(x=date )) +
-  geom_line(aes(y=house_price_index)) +
-  geom_line(aes(y=home_purchase_intention)) +
-  theme(legend.position = "bottom") +
-  labs(title = "Prijsindex bestaande woningen")  
+# prijsindex_woningen %>%
+#   full_join(consumenten_aankoopintentie, by="yearqtr") %>%
+#   ggplot(aes(x=date )) +
+#   geom_line(aes(y=house_price_index)) +
+#   geom_line(aes(y=home_purchase_intention)) +
+#   theme(legend.position = "bottom") +
+#   labs(title = "Prijsindex bestaande woningen")  
 
 ```
 
 
 ```{r}
-aanbod_huizen %>%
-  filter(set == "Totaal") %>%
-  ggplot(aes(x=datum )) +
-  geom_line(aes(y=vraagprijs)) +
-  theme(legend.position = "bottom") +
-  labs(title = "Vraagprijs woningen")  
+# aanbod_huizen %>%
+#   filter(set == "Totaal") %>%
+#   ggplot(aes(x=datum )) +
+#   geom_line(aes(y=vraagprijs)) +
+#   theme(legend.position = "bottom") +
+#   labs(title = "Vraagprijs woningen")  
 ```
 
 ```{r}
-aanbod_huizen %>%
-  filter(set != "Totaal") %>%
-  ggplot(aes(x=datum )) +
-  geom_line(aes(y=aantal, color = set)) +
-  theme(legend.position = "bottom")
+# aanbod_huizen %>%
+#   filter(set != "Totaal") %>%
+#   ggplot(aes(x=datum )) +
+#   geom_line(aes(y=aantal, color = set)) +
+#   theme(legend.position = "bottom")
 ```
 
 
 ```{r}
-aanbod_huizen %>%
-  filter(set != "Totaal") %>%
-  ggplot(aes(x=datum )) +
-  geom_line(aes(y=aanbodtijd, color = set)) +
-  theme(legend.position = "bottom")
+# aanbod_huizen %>%
+#   filter(type != "Totaal") %>%
+#   ggplot(aes(x=datum )) +
+#   geom_line(aes(y=aanbodtijd, color = set)) +
+#   theme(legend.position = "bottom")
 ```
 
 Aantal huishoudens
@@ -249,9 +375,9 @@ huishoudens %>%
 Hypotheek rente
 
 ```{r}
-hypotheek_rente  %>%
-  ggplot(aes(x=period, y = mortgage_interest )) +
-  geom_line()
+# hypotheek_rente  %>%
+#   ggplot(aes(x=period, y = mortgage_interest )) +
+#   geom_line()
 ```
 
 
@@ -303,6 +429,8 @@ Verkochte woningen is nog niet tidy!
 
 verkochte_woningen_per_provincie_per_maand %>%
   
+Regionale verschillen
+
 
 
 
