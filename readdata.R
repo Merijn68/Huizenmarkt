@@ -9,7 +9,7 @@ library(dint)          # more time series
 library(lubridate)     # more time series
 library(janitor)       # naming variables
 library('cbsodataR')   # CBS Opendata Statline
-
+library(sjlabelled)    # CBS Data comes in with labels
 
 # Helper functions to wrangle data
 # These functions require fixed names for translations::
@@ -58,7 +58,7 @@ encode_qtryear <- function (df, var) {
   df <-
     df %>%
     mutate(yearqtr = as.yearqtr(!!var,format="Q%q %Y")) %>%
-    mutate(date = first_of_year(as.Date(yearqtr)))
+    mutate(date = first_of_quarter(as.Date(yearqtr)))
   return(df)
 }
 
@@ -173,8 +173,11 @@ aantal_huishoudens_per_jaar <-
 consumenten_vertrouwen <- 
   read_excel(here("data",
                   "datastream",
-                  "consumentenvertrouwen.xlsx"), skip = 1, range = ('A1:D420')) %>% 
-  set_names(c('period','eigen_huis_market_indicator','consumer_confidence_economic_climate','consumer_confidence_purchase_propensity')) %>%
+                  "consumentenvertrouwen.xlsx"), 
+             skip = 1, range = ('A1:D420')) %>% 
+  set_names(c('period','eigen_huis_market_indicator',
+              'consumer_confidence_economic_climate',
+              'consumer_confidence_purchase_propensity')) %>%
   encode_mndyear(period)
 
 # Consumer_home_purchase_intention 
@@ -184,7 +187,8 @@ consumenten_vertrouwen <-
 consumenten_aankoopintentie <- 
   read_excel(here("data",
                   "datastream",
-                  "consumentenvertrouwen.xlsx"), skip = 1, range = ('G1:H142')) %>% 
+                  "consumentenvertrouwen.xlsx"), 
+             skip = 1, range = ('G1:H142')) %>% 
   drop_na() %>%
   set_names(c('period','home_purchase_intention_12M')) %>%
   encode_qtryear(period)
@@ -199,7 +203,10 @@ prijsindex_woningen <-
              sheet = 'Sheet2',
              skip = 1, 
              range = ('E2:H106')) %>% 
-  set_names(c('period','house_price_index', 'imputed_rent_value','price_to_rent_ratio'))  %>%
+  set_names(c('period',
+              'house_price_index', 
+              'imputed_rent_value',
+              'price_to_rent_ratio'))  %>%
   encode_qtryear(period)
   
 # Hypotheekrente
@@ -248,7 +255,7 @@ prijsindex_per_regio <-
                values_to = 'prijsindex_bestaande_koopwoningen') %>%
   mutate(region = str_trim(region)) %>%
   mutate(region = factor(region))  %>%
-  encode_qtryear()
+  encode_qtryear(period)
 
 # Prijsindex type woning
 # Bron: Datastream
@@ -262,7 +269,8 @@ prijsindex_type_woning <-
                names_to = c('type_woning'),
                values_to = 'prijsindex_type_woning') %>%
   mutate(type_woning = str_trim(type_woning)) %>%
-  encode_qtryear(period)
+  encode_qtryear(period) %>%
+  drop_na()
 
 # Nieuwbouw
 
@@ -273,9 +281,6 @@ nieuwbouw_per_regio <-
                names_to = c('region')) %>%
   mutate(region = str_trim(region)) %>%
   encode_mndyear(period)
-
-
-
 
 
 # Transacties per leeftijd
@@ -354,8 +359,8 @@ aantal_verkocht_per_regio_per_type_per_maand <-
   filter(subtype != "Totaal") %>%
   encode_mndyear(period)
 
-aantal_verkocht_per_regio_per_type$subtype[aantal_verkocht_per_regio_per_type$subtype == 'Vrijstaand'] <- "Vrijstaande woning"
-aantal_verkocht_per_regio_per_type$subtype[aantal_verkocht_per_regio_per_type$subtype == '2-onder-1-kap'] <- "2-onder-1-kapwoning"
+aantal_verkocht_per_regio_per_type_per_maand$subtype[aantal_verkocht_per_regio_per_type_per_maand$subtype == 'Vrijstaand'] <- "Vrijstaande woning"
+aantal_verkocht_per_regio_per_type_per_maand$subtype[aantal_verkocht_per_regio_per_type_per_maand$subtype == '2-onder-1-kap'] <- "2-onder-1-kapwoning"
 
 
 # Provincie is hier nog str -> bevat meer dat alleen provincies...
@@ -367,7 +372,7 @@ verkochte_woningen_per_provincie_per_kwartaal <-
                names_to = 'provincie',
                values_to = 'aantal_verkochte_woningen') %>%
   mutate(provincie = str_trim(provincie)) %>%
-  encode_qtryear
+  encode_qtryear(period)
 
 # Aantal verkocht per kwartaal per kwartaal
 verkochte_woningen_per_type_per_kwartaal <-
@@ -380,7 +385,8 @@ verkochte_woningen_per_type_per_kwartaal <-
   mutate(subtype = str_trim(subtype)) %>%
   encode_type %>%
   filter(subtype != "EGW") %>%
-  encode_qtryear(period)
+  encode_qtryear(period) %>% 
+  drop_na
 
 # Gemiddelde verkoopprijs per type per kwartaal
 gemiddelde_verkoopprijs_per_type_per_kwartaal <-
@@ -427,7 +433,7 @@ aanbod_per_type_per_provincie_per_maand_egw <-
                values_to = 'aantal_te_koop') %>%
   mutate(provincie = str_trim(provincie)) %>%
   mutate(type = "EGW") %>%
-  encode_mndyear()
+  encode_mndyear(period)
 
 aanbod_per_type_per_provincie_per_maand_mgw <-
   read_huizenmarkt(sheet = 'COROPCIJFERS AANTAL & PRIJS MGW') %>%
@@ -449,22 +455,143 @@ aanbod_per_type_per_provincie_per_maand_mgw <- NULL
 
 
 
-# CBS Statline ------------------------------------------------------------
+# CBS fStatline data--------------------------------------------------------
 
 
-Inhoudsopgave <- cbs_get_toc("Language" = "nl") %>% 
-  filter(str_detect(ShortDescription, 'prognose woning'))
-View(Inhoudsopgave)
+tables <-
+  tribble(
+    ~report, ~table_name,
+    #----------/------------------
+    "82235NED", "voorraad_woningen",
+    "84064NED", "prijsindex_woningen_cbs",
+    "82900NED", "voorraad_woningen_naar_eigendom",
+    "83226NED", "prognose_huishoudens",
+    "83908NED", "bouwkosten_prijsindex",
+    "83739NED", "inkomen"
+  )
+
+column_names<-
+  tribble(
+  ~report, ~column_name,  ~new_name,
+  #----------/----------------------/------------
+  
+  "82235NED", "BeginstandVoorraad_1","beginstand",
+  "82235NED", "Nieuwbouw_2","nieuwbouw",
+  "82235NED", "OverigeToevoeging_3","overige_toevoegingen",
+  "82235NED", "Sloop_4","sloop",
+  "82235NED", "OverigeOnttrekking_5","Overige_onttrekking",
+  "82235NED", "Correctie_6","correctie",
+  "82235NED", "SaldoVoorraad_7","saldo_voorraad",
+  "82235NED", "EindstandVoorraad_8", "voorraad",
+  "84064NED", "SoortKoopwoning_label","soort_koopwoning",
+  "84064NED", "PrijsindexVerkoopprijzen_1","prijsindex",
+  "82900NED", "StatusVanBewoning_label","status_bewoning",
+  "82900NED", "TotaleWoningvoorraad_1","totale_woningvoorraad",
+  "82900NED", "Koopwoningen_2","koopwoningen",
+  "82900NED", "EigendomWoningcorporatie_4","eigendom_woningcooperatie",
+  "82900NED", "EigendomOverigeVerhuurders_5","overige",
+  "82900NED", "EigendomOnbekend_6","eigendom_onbekend",
+  "83226NED", "Eenpersoonshuishouden_10","eenpersoonshuishoudens",
+  "83226NED", "TotaalMeerpersoonshuishoudens_17","meerpersoonshuishoudens",
+  "83908NED", "Prijsindex_1","prijsindex",
+  "83739NED", "KenmerkenVanHuishoudens_label","kenmerk_huishouden",
+  "83739NED", "GemiddeldBesteedbaarInkomen_2","besteedbaar_inkomen",
+  "83739NED", "MediaanVermogen_5","mediaan_vermogen"
+)
+
+
+
+cbs_set_columns <- function(df, name) {
+  
+  names_vec <- 
+    column_names %>% 
+    filter(report == name) %>%
+    pull(column_name)
+  
+  replace_vec <- 
+    column_names %>% 
+    filter(report == name) %>%
+    pull(new_name)
+  
+  
+  colnames(df)[colnames(df)      # Rename variable names
+               %in% names_vec] <- replace_vec
+  
+  colnames(df)[colnames(df) == "Perioden"]       <- "period"
+  colnames(df)[colnames(df) == "Perioden_Date"]  <- "date"
+  colnames(df)[colnames(df) == "Perioden_freq"]  <- "freq"
+  
+  df<- remove_all_labels(df)
+  
+  # Select columns
+  df <- select (df, 
+                all_of(c("period","date","freq",replace_vec ))
+  )
+  
+  return (df)
+} 
+
+get_cbs_data <- function (tables) {
+  
+  for(i in 1:nrow(tables)) {
+    report <- tables[[i,"report"]]
+    table_name <- tables[[i, "table_name"]]
+    
+    print ('---Load CBS data------')
+    print (table_name)
+    print (typeof(table_name))
+    
+  
+    df <- cbs_get_data(report) %>%
+      cbs_add_date_column() %>% 
+      cbs_set_columns(report)
+      
+    assign(table_name, df, envir = .GlobalEnv )
+    # %>%  # Add CBS date columns
+    #   cbs_set_columns(report)
+  }
+}
+  
+get_cbs_data(tables)
+# Inhoudsopgave <- cbs_get_toc("Language" = "nl") %>% 
+#   filter(str_detect(ShortDescription, '83906NED'))
+# View(Inhoudsopgave)
 # ds_nl <- cbs_get_datasets("Language" = "nl")
 # voorraad_woningen_meta <- cbs_get_meta("82235NED")$DataProperties
 
+voorraad_woningen <- 
+  cbs_get_data("82235NED") %>%
+  cbs_add_date_column() %>%  # Add CBS date columns
+  cbs_set_columns("82235NED")
+  
+voorraad_woningen_naar_eigendom <- cbs_get_data("82900NED", 
+                                                RegioS = "NL01  ") %>%
+  cbs_add_date_column() %>%
+  cbs_add_label_columns() %>%
+  cbs_set_columns("82900NED") 
 
-voorraad_woningen <- cbs_get_data("82235NED") %>%
-  cbs_add_date_column() 
+prognose_huishoudens <- cbs_get_data("83226NED") %>%
+  cbs_add_date_column() %>%
+  cbs_set_columns("83226NED") 
 
-voorraad_woningen_naar_eigendom <- cbs_get_data("82900NED",
-                                               RegioS = "NL01  ") %>%
-  cbs_add_date_column() 
+bouwkosten_price_index <- cbs_get_data("83908NED")  %>%
+  cbs_add_date_column() %>%
+  filter(Perioden_freq == 'Q') %>%
+  cbs_set_columns("83908NED") 
+
+prijsindex_woningen_cbs <-cbs_get_data("84064NED") %>%
+  cbs_add_date_column() %>%
+  cbs_add_label_columns()  %>%
+  cbs_set_columns("84064NED") %>%
+  filter(freq == 'Q') %>%
+  filter(soort_koopwoning != 'Totaal koopwoningen') 
+  
+inkomen <- cbs_get_data("83739NED")  %>%
+  cbs_add_date_column() %>%
+  cbs_add_label_columns()  %>%
+  cbs_set_columns("83739NED") %>%
+  filter(freq == 'Y') 
+
 
 
 # Saving the datasets...

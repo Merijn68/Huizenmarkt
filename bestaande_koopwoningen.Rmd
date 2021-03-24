@@ -1,17 +1,29 @@
 ---
-title: "Ontwikkeling Huizenprijzen en aantal transacties in Nederland"
-author: "Merijn"
+title: "Ontwikkeling huizenmarkt in Nederland"
+author:
+- Merijn van Miltenburg
 date: "25/02/2021"
-output: html_document
+output: 
+    html_document:
+      code_folding: hide
+      toc: true
+      toc_depth: 2
+      number_sections: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
+
+# Inleiding
+
+De macro economen van de Volksbank hebben als taak de toestand in de wereld toe te lichten voor directie en beleidsmakers. Een belangrijk onderdeel daarvan heeft betrekking met de ontwikkeling van de hypotheekmarkt in Nederland. De huizenprijzen en aantallen verkochte woningen zijn belangrijke indicatoren voor de ontwikkeling van de hypotheekmarkt.
+
+In deze analyse volg ik de PPDAC cyclus. In de volgende paragraaf wordt de probleemstelling nader toegelicht. Vervolgens heb ik in een literatuurstudie uitgevoerd om de belangrijkste factoren te bepalen die nodig zijn om de een antwoord te formuleren op de business vraag. De data hiervoor is vervolgens verzameld en geanalyseerd. Op basis daarvan worden een aantal conclusies getrokken.
 
 # Probleemstelling
 
-De macro economen van de Volksbank hebben als taak de toestand in de wereld toe te lichten voor directie en beleidsmakers. Een belangrijk onderdeel daarvan heeft betrekking met de ontwikkeling van de hypotheekmarkt in Nederland. De huizenprijzen en aantallen verkochte woningen zijn belangrijke indicatoren voor de ontwikkeling van de hypotheekmarkt.De vraag is of we een beter voorspellend model kunnen ontwikkelen voor de huizenprijzen en aantal verkochte woningen.
+De vraag is of we een beter voorspellend model kunnen ontwikkelen voor de huizenprijzen en aantal verkochte woningen.
 
 Zei zijn met de volgende vraagstellingen gekomen:
 
@@ -22,58 +34,27 @@ Zei zijn met de volgende vraagstellingen gekomen:
 Vanuit de Volksbank is in het verleden al wel statistisch onderzoek gedaan naar deze vebanden. 
 Data wordt verzameld via Datascope (Refinitiv) en geanalyseerd in Excel.
 
-Voor de huizenprijzen is gekeken naar een verband tussen huizenprijzen en de werkgelegenheid, lonen, GDP en rente. Hieruit is een eenvoudig model ontwikkeld waarbij met name het verband met GDP wordt gebruikt om de ontwikkeling van de huizenprijzen te voorspellen.
+Voor de huizenprijzen is eerder gekeken naar een verband tussen huizenprijzen en de werkgelegenheid, lonen, GDP en rente. Hieruit is een eenvoudig model ontwikkeld waarbij met name het verband met GDP wordt gebruikt om de ontwikkeling van de huizenprijzen te voorspellen. Voor het aantal transacties op de lange termijn wordt een verband verondersteld met het aantal huishoudens. op kortere termijn spelen economische groei, rentestanden en evt. regelgeving ook een rol.
 
-Voor het aantal transacties op de lange termijn wordt een verband verondersteld met het aantal huishoudens. op kortere termijn spelen economische groei, rentestanden en evt. regelgeving ook een rol.
+In deze exploratie wil ik kijken naar mogelijke factoren die effect hebben op de marktprijs. Het is in deze fase nog niet de ambitie om ook daadwerkelijk een alternatief model te ontwikkelen voor het voorspellen van de marktprijzen en aantal transacties.
 
-## Aanvullende vragen / subvragen
+Aanvullend heb ik vooraf een aantal vragen bedacht waar we middels exploratie mogelijk iets meer over te weten kunnen komen:
 
 1. Nederland heeft een van de hoogste persoonlijke schulden (hypotheeklast) in de wereld. Wat zijn de gevolgen voor de hypotheekmarkt van het gewijzigde beleid? Heeft dit effect op de huizenprijzen?
 
 1. Hoe ontwikkeld de krapte op de huizenmarkt zich, op termijn? Momenteel zijn er ambiteuze plannen om ergens tussen de 75.000 en 100.000 woningen per jaar te gaan bouwen. Het aanbod aan huizen wordt dus groter - terwijl op termijn verwacht wordt dat de bevolking weer gaat krimpen. Kunnen we hier een voorspelling van maken?
 
+1. Hoe zit het met de bevolkingsgroei? Welk deel van de aanwas in Nederland komt door migratie? Hoe zit dat regionaal? Is er nog sprake van verstedelijking na corona?  Stroomt het platteland leeg - en de randstad vol? Welk effect heeft dit op de huizenprijzen? 
 
-1. Hoe zit het met de bevolkingsgroei? Welk deel van de aanwas in Nederland komt door migratie? Hoe zit dat regionaal? Is er nog sprake van verstedelijking na corona? 
-Stroomt het platteland leeg - en de randstad vol? Welk effect heeft dit op de huizenprijzen? 
+1. Zien we demografisch verdeeld verschillen waar mensen willen wonen? Verhuizen gezinnen met kinderen naar het platteland, en ouderen weer naar de stad? Het aantal huishoudens dat uit 1 persoon bestaat is erg gegroeid in de loop der tijd - en zal (denk ik) nog wel doorstijgen met de vergrijzing. Betekent dit dat er meer mensen naar de stad willen verhuizen?
 
+1. Hoe afhankelijk is de huizenmarkt van de stand van de economie? Gaan huizenprijzen alleen omhoog tijdens de groeifase van de economie? 
 
-1. Zien we demografisch verdeeld verschillen waar mensen willen wonen? Verhuizen gezinnen met kinderen naar het platteland, en ouderen weer naar de stad? 
-Het aantal huishoudens dat uit 1 persoon bestaat is erg gegroeid in de loop der tijd - en zal (denk ik) nog wel doorstijgen met de vergrijzing. Betekend dit dat er meer mensen naar de stad willen verhuizen?
+## Plan
 
+Om in ieder geval een begin te maken met het beantwoorden van deze vragen ben ik in gesprek gegaan met de specialisten bij de Volksbank. Aanvullend heb ik een korte literatuurstudie gedaan naar de factoren die op lange termijn de prijsstelling zouden beinvloeden. Het CBS publiceert vrij veel over de prijsonwikkeling van bestaande woningen, nieuwe woningen en de stand van de economie.
 
-1. Hoe berekent men eigenlijk ‘krapte’ op de huizenmarkt? De overheid berekend (hoe eigenlijk?) date een 'krapte' is op de woningmarkt van zo'n 300.000 huizen. 
-
-
-1. Hoe zit het met de kosten van wonen? Zijn huizen onbetaalbaar geworden door hogere prijzen die we de afgelopen jaren hebben gezien?
-
-
-1. Hoe ontwikkeld de hypotheekmarkt zich verder? Gaan mensen door het beleid (sinds ... moeten mensen in 30 jaar hun hypotheek aflossen) inderdaad minder lenen voor een huis – of worden ze door de steeds hogere huizenprijzen, juist gedwongen om (nog) meer te lenen?
-
-
-1. Hoe afhankelijk is de huizenmarkt van de stand van de economie? Gaan huizenprijzen alleen omhoog tijdens de groeifase van de economie? Op lange termijn zou er een evenwicht moeten zijn?
-
-
-## Plan van aanpak
-
-Om deze vragen te beantwoorden ben ik in gesprek gegaan met de specialisten bij de Volksbank. Aanvullend heb ik een korte literatuurstudie gedaan naar de factoren die op lange termijn de prijsstelling zouden beinvloeden. Het CBS publiceert vrij veel over de prijsonwikkeling van bestaande woningen.
-
-https://www.cpb.nl/publicatie/oververhitting-op-de-nederlandse-huizenmarkt/CPB-Achtergronddocument-1jun2018-Oververhitting-op-de-nederlandse-huizenmarkt.pdf
-
-https://datawonen.nl/dashboard/dashboard/koopprijs
-
-https://primos.datawonen.nl/
-
-https://www.cbs.nl/nl-nl/achtergrond/2016/16/indicatoren-woningmarkt-op-groen
-
-https://www.cbs.nl/nl-nl/visualisaties/monitor-koopwoningmarkt
-
-https://www.cbs.nl/nl-nl/visualisaties/huizenmarkt-in-beeld
-
-https://www.rijksoverheid.nl/documenten/rapporten/2019/05/29/socrates-2019---scenarioverkenningen-van-de-woningmarkt-in-2030
-
-https://www.abfresearch.nl/publicaties/vooruitzichten-bevolking-huishoudens-en-woningmarkt-2020-2035/#:~:text=Volgens%20de%20Primos%20Prognose%202020,1%25%2C%20418%20duizend%20woningen.
-
-
+In de bijlage is een referentielijst opgenomen met geraadpleegde literatuur. Met name de Socrates modellen sluiten goed aan bij de vraagstelling. 
 
 <!-- Mijn hypotheses: -->
 
@@ -83,86 +64,255 @@ https://www.abfresearch.nl/publicaties/vooruitzichten-bevolking-huishoudens-en-w
 <!-- Sentiment speelt op korte termijn (nu toeslaan); -->
 <!-- Verstoring woningmarkt door sociale huur, leidt regionaal tot hogere prijzen overige woningen; -->
 
-## Benodigde / gewenste data
+Op basis van deze eerste inventarisatie ben ik gekomen tot de volgende gewenste informatie. 
 
-Gewenste informatie (ik weet niet wat er zo voorhanden is). Mogelijk aanvullen met open data: CBS:Statline e.d..
-Waar mogelijk verdeeld per regio, per type woning.
+```{r}
+# # install.packages("kableExtra")
+# library(kableExtra)
+# library(here)
+# 
+# 
+# tbl_img <- data.frame(
+#   name = c("kableExtra 1", "kableExtra 2"),
+#   Marktprijs  = "",
+#   Transacties = ""
+# )
+# 
+# green <- here("images","green.png")
+# red <- here("images","red.png")
+# 
+# tbl_img %>%
+#   kbl(booktabs = T) %>%
+#   kable_paper(full_width = F) %>%
+#   column_spec(2, image = spec_image(
+#     c(green, red), 50, 50)) %>%
+#   column_spec(3, image = spec_image(
+#     c(red, green), 50, 50))
+```
 
-* **Aantal transacties**
-*	**Nominale transactieprijzen**
-*	**Gem. huizenprijzen per type woning (reele prijsindex)**
-*	**Gem. huurprijzen (berekenen verhouding koop/huur)**
-*	_Percentage huur / koop._
-*	**Aantal woningen dat te koop staat + per regio**
-*	**Demografie (omvang en samenstelling huishoudens) over de jaren heen**
+Op langere termijn is de woningmarkt een markt van vraag en aanbod.
+Vraag en aanbod worden bepaald door:
 
-Indicatoren Huizenprijzen
+:::::: {.columns}
+::: {.column width="48%" data-latex="{0.48\textwidth}"}
+Vraag woningen:
 
+*	Aantal huishoudens
+*	Demografie (omvang en samenstelling huishoudens)
+* (Arbeids)migratie
+:::
+::: {.column width="4%" data-latex="{0.04\textwidth}"}
+\ 
+:::
+:::::: {.column width="48%" data-latex="{0.48\textwidth}"}
 Aanbod woningen:
 
 * Woningvoorraad
-* Nieuwbouw
-* Sloop
-* _Bouwkosten_
-* _Beschikbaarheid bouwlocaties_
-* _Ruimtelijke ordeningbeleid_
+* Nieuwbouw / Sloop 
+* Bouwkosten
+* Beschikbaarheid bouwlocaties
+* Ruimtelijke ordeningbeleid
+:::
+::::::
+\newline
 
-Vraag woningen:
+Daarnaast kunnen meer direct ook andere indicatoren onderzocht worden die van invloed zijn.
 
-*	_Aantal huishoudens_
-* _Besteedbaar Inkomen_
-* _Rentestanden_
-* _Fiscale behandeling, subsidies, _
-* _Toegang tot krediet (kredietruimte in relatie tot inkomen)_
-* _Financiering hypotheek of eigen geld_
-* _Voorkeuren van kopers_
-* _Percentage huursector – prijsvorming huursector mogelijk verschillend_
-* **Consumenten vertrouwen woningmarkt**
+:::::: {.columns}
+::: {.column width="48%" data-latex="{0.48\textwidth}"}
+Indicatoren Huizenprijzen
 
+*	Gem. huizenprijzen (prijsindex)
+*	Gem. huurprijzen (berekenen verhouding koop/huur)
+*	Percentage huur / koop.
+*	Aantal woningen dat te koop staat 
+* Gem. duur dat een woning te koop staat
+* Besteedbaar Inkomen
+* Rentestanden
+* Fiscale behandeling, subsidies
+* Toegang tot krediet
+* Financiering hypotheek of eigen geld
+* Voorkeuren van kopers
+* Percentage huur / koop woningen
+* Consumentenvertrouwen
+:::
+::: {.column width="4%" data-latex="{0.04\textwidth}"}
+\ 
+:::
+:::::: {.column width="48%" data-latex="{0.48\textwidth}"}
 Indicatoren aantal transacties
 
-*	**Aantal dagen aangeboden (Verschil datum aangeboden en transactie datum)**
-*	Aantal huishoudens
-*	**Nieuwbouw**
-*	_Afschrijvingen woningbestand_
-*	_Wie woont in wat voor huis / demografische kenmerken per type huis_
-*	_Doel aankoop (verhuur / particulier)_
-* _Mogelijk is de omloopsnelheid hoger bij verhuur / beleggingspanden?_
+* Aanbod huizen
+* Hypotheek rente
+* Toegang tot krediet
+* Werkloosheid
+* Consumentenvertrouwen
+* verschil aanbodprijs en transactieprijs
+*	Aantal dagen aangeboden
+:::
+::::
+
+# Data
+
+De gewenste informatie is opgevraagd bij de statistici (via Reuters Datastream) en later aangevuld met open data van het CBS (Statline). 
+
+Voor het inlezen van de (spreadsheet) Reutersdata heb ik een aantal functies ontwikkeld. Om de data van het CBS gemakkelijker in te kunnen lezen heb ik een routine ontwikkeld die aan de hand van metadata de gevraagde data inleest.
+
+De data is opgeslagen in Rdata formaat - en kan voor de analyse hier worden ingelezen.
 
 
 ```{r}
-library (tidyverse)
-library (here)
-library (lubridate)
-library(ggpubr)
-library(reshape2)
-```
 
-```{r}
+library (tidyverse)          # standard tidyverse packages
+library (here)               # reletive paths for files
+library (lubridate)          # Work with dates
+library (ggpubr)             # Mix multiple graphs
+library (reshape2)           # for easy melting wide format data
+library (knitr)              # for outputting data tables
+library (kableExtra)         # Nice layout options for data tables
+library (viridis)            # Nicer colors for plots
+library (forcats)            # for handling categorical data
+
+
+library(forecast)            # Time series forecasting
+
+#install.packages("fpp2")
+library(fpp2)                # Time series forecasting
+
+
 # Loading the datasets
-# Not sure yet what would be the preferred option here...
-# I am not saving each data set after ETL in the data tidy directory
 
 dfs<-list.files(here("data","tidy"), pattern = "*.Rdata")
 for(d in dfs) {
   load(file= here("data","tidy",d ))
 }
 
+```
+
+Dit resulteert in vrij veel aparte datasets - met maar een beperkt aantal categorische variabelen.
+
+```{r}
+kable(str_replace(dfs, ".Rdata", ""), col.names = NA,)  %>%
+  kable_styling()
+```
+
+## Analyse 
+
+
+```{r}
+# Kleurcodering grafieken
 C_HOUSES = '#9999CC'
 C_POPULATION = 'seagreen1'
 
 ```
 
+Prijsontwikkeling woningmarkt
 
-## Analyse 
+```{r}
+prijsindex_type_woning %>%
+  filter(type_woning != "Totaal woningen") %>%
+  filter(type_woning != "EGW") %>%
+  ggplot(aes(x=date, y=prijsindex_type_woning)) +
+  geom_line(aes(color = type_woning)) +
+  theme_minimal() +
+  facet_wrap(~ type_woning) +
+  labs(
+    title = "Prijsindex Bestaande Koopwoningen (PBK)",
+    y = "",
+    x = '',
+    color = 'Type woning'
+    ) +
+  theme(legend.position = "none")
+  
+```
 
-Factoren die de prijs bepalen
+We zien kleine verschillen in de type woning. Waarbij met name appartementen de laatste tijd releatief duurder zijn geworden.
 
-Factoren die het aantal transactie bepalen
+
+Aantal transacties
+
+```{r}
+verkochte_woningen_per_type_per_kwartaal %>% 
+  mutate(subtype = factor(subtype, levels=c('Vrijstaande woning',
+                                  '2-onder-1-kapwoning',
+                                  'Hoekwoning',
+                                  'Tussenwoning',
+                                  'Appartement',
+                                  'Onbekend'))) %>% 
+  ggplot(aes(x=date, y=verkochte_bestaande_woningen )) +
+  geom_line(aes(color = subtype)) +
+  theme_minimal() +
+  facet_wrap(~ subtype, ncol = 2, scales = "free") +
+  labs(
+    title = "Verkopen Bestaande Koopwoningen per kwartaal",
+    y = "",
+    x = '',
+    color = 'subtype'
+    ) +
+  theme(legend.position = "none") 
+```
+
+Hier moet ik nog wat met die tijdslijn doen...
+
+
+```{r}
+
+verkochte_woningen_per_type_per_kwartaal %>% 
+  group_by(yearqtr)  %>% 
+  summarise(totaal = sum(verkochte_bestaande_woningen)) %>% 
+  ggplot(aes(x=yearqtr, y=totaal )) +
+  geom_line() +
+  geom_smooth() +
+  theme_minimal() +
+  labs(
+    title = "Verkopen Bestaande Koopwoningen per kwartaal",
+    y = "",
+    x = '',
+    color = 'subtype'
+    ) +
+  theme(legend.position = "none")
+  
+```
+
+Seizoensinvloeden bij het aantal transacties
+
+
+Seizoensinvloeden zien we duidelijk terug in de periode voor 2008.
+De laatste 10 jaar is dat patroon echter meer verstoord.
+
+https://afit-r.github.io/ts_exploration
+
+```{r}
+
+vw <- verkochte_woningen_per_type_per_kwartaal %>% 
+  group_by (yearqtr) %>% 
+  summarise(totaal = sum(verkochte_bestaande_woningen))
+
+
+vwts <- ts(vw["totaal"], 
+              start = c(1995, 1), frequency = 4)
+
+vwts %>% 
+  ggseasonplot(year.labels=FALSE, continuous=TRUE)
+
+ggsubseriesplot(vwts)
+
+ggAcf(vwts)
+
+```
+  
+
+
+
+
+# Vraag naar woningen
+
+Factoren die de vraag naar woningen bepalen.
 
 Aantallen huishoudens + woningen
 
 In onderstaande grafiek zien we dat het aantal woningen al decenia lang gelijke tred houdt met het aantal woningen. Er is daarbij een klein tekort zichtbaar. Dit is veel kleiner dan het gerapporteerde tekort van 331.000 woningen (Staat van de woningmarkt, 2020 https://www.rijksoverheid.nl/actueel/nieuws/2020/06/15/staat-van-de-woningmarkt-2020 ). 
+
 
 ```{r}
 
@@ -172,11 +322,15 @@ In onderstaande grafiek zien we dat het aantal woningen al decenia lang gelijke 
 # Tidy data 
 df <- 
   aantal_huishoudens_per_jaar %>%
-  full_join(voorraad_woningen, by = c("date" = "Perioden_Date")) %>%
-  select (date, aantal_huishoudens, EindstandVoorraad_8) %>%
-  set_names('date','aantal_huishoudens','eindstand_voorraad') %>%
-  mutate(te_kort = (eindstand_voorraad - aantal_huishoudens)) %>%
-  filter(date > as.Date("1980-01-01")) %>%
+  full_join(voorraad_woningen, by = c("date" = "date")) %>%
+  select (date, 
+          aantal_huishoudens, 
+          voorraad) %>%
+  set_names('date',
+            'huishoudens',
+            'woningvoorraad' ) %>%
+  mutate(te_kort = (woningvoorraad - huishoudens)) %>%
+  filter(date > as.Date("2011-01-01")) %>%
   melt(id = c('date'))
 
 # Line plot
@@ -198,7 +352,8 @@ bp <-
   df %>%
   filter (variable == 'te_kort') %>%
   ggplot(aes (x = date)) +
-  geom_bar(stat = "identity" , aes(y = value, color = variable, fill = variable )) +
+  geom_bar(stat = "identity" , 
+           aes(y = value, color = variable, fill = variable )) +
   labs ( y = "Te kort (x 1000)",
          x = "",
          color = "", fill = "") +
@@ -213,7 +368,104 @@ ggarrange(lp, bp,
 
 ```
 
-Daarnaast zien we landelijk ook nog een fors aantal leegstaande woningen. 
+
+Demografische ontwikkelingen
+
+Nederlanders worden steeds ouder, en gezinnen worden kleiner. Ontwikkeling leidt mogelijk tot een verschuiving in de vraag - van eensgezinswoningen naar kleinere woningen. Daarnaast komt de groei in Nederlands in steeds grotere mate van migratie.
+
+De prognose van het CBS laat deze trend zien voor de aankomende jaren. Op langere termijn neemt de groei geleidelijk af. Deze cijfers zijn overigens van 2018 - en houden dus nog geen rekening met een afname in de bevolkingsgroei als gevolg van de Corona crisis.
+
+
+```{r}
+prognose_huishoudens %>%
+    select (date,
+            eenpersoonshuishoudens,
+            meerpersoonshuishoudens) %>%
+  mutate(eenpersoonshuishoudens = eenpersoonshuishoudens / 1000) %>%
+  mutate(meerpersoonshuishoudens =  meerpersoonshuishoudens / 1000 ) %>%
+  melt(id = c('date')) %>%
+  filter(date <= as.Date("2035-01-01")) %>%
+  ggplot(aes (x = date)) +
+  geom_line(aes(y=value,  color = variable)) +
+  labs(
+    title = "Prognose huishoudens",
+    y = "Aantal (x 1000)",
+    x = ''
+    ) 
+
+```
+
+Besteedbaar Inkomen huishoudens
+
+```{r}
+inkomen %>%
+  filter(kenmerk_huishouden == "Particuliere huishoudens") %>%
+  ggplot( aes(x=date, y=besteedbaar_inkomen)) +
+  geom_line() +
+  labs(
+    title = "Besteedbaar inkomen huishoudens",
+    y = "Bruto inkomen",
+    x = ''
+    ) 
+```
+
+Vermogen van huishoudens
+
+Het vermogen van huishoudens is de laatste jaren sterk gestegen. 
+Dit betreft ook vermogen opgebouwd in de eigen woning. Doordat overwaarde bij verhuizing meestal wordt gebruikt voor de financiering van de woning kan dit een prijsopdrijvend effect hebben.
+
+```{r}
+inkomen %>%
+  filter(kenmerk_huishouden == "Particuliere huishoudens") %>%
+  ggplot( aes(x=date, y=mediaan_vermogen)) +
+  geom_line() +
+  labs(
+    title = "Vermogen huishoudens",
+    y = "Mediaan vermogen",
+    x = ''
+    ) 
+```
+
+Rente stand
+
+De rente is historisch laag. De lage rentestand maakt lenen goedkoper. Wat een prijsopdrijvend effect kan hebben op de huizenprijzen.
+
+
+```{r}
+hypotheek_rente %>%
+  ggplot( aes(x=period, y=hypotheek_rente)) +
+  geom_line()  +
+  labs(
+    title = "Hypotheekrente",
+    y = "gemiddelde rente",
+    x = ''
+    ) 
+
+```
+
+Betaalbaarheid huizen
+
+Statline geen goede bron...
+
+
+Financiering huizen (inleg eigen geld)
+
+
+
+
+Hypotheek
+
+Nog altijd een groot deel van de woonhuizen in Nederland wordt gefinancieerd met een hypotheek.
+
+
+Consumer confidence...
+
+
+
+# Aanbod van Woningen...
+
+
+Landelijk zien we ook een fors aantal leegstaande woningen. 
 Mogelijk is er meer sprake van een mismatch in type woning, of regionaal effect.
 
 ```{r}
@@ -221,11 +473,11 @@ Mogelijk is er meer sprake van een mismatch in type woning, of regionaal effect.
 # Zo'n 340.000 niet bewoonde huizen...
 
 voorraad_woningen_naar_eigendom %>%
-select(Perioden_Date, StatusVanBewoning, TotaleWoningvoorraad_1) %>%
-filter (StatusVanBewoning =='A028726') %>%
-mutate(totaal = TotaleWoningvoorraad_1 / 1000) %>%
-ggplot(aes (x = Perioden_Date)) +
-geom_line(aes(y=totaal, color = StatusVanBewoning)) +
+select(date, status_bewoning, totale_woningvoorraad) %>%
+filter (status_bewoning =='Niet bewoonde woningen') %>%
+mutate(totaal = totale_woningvoorraad / 1000) %>%
+ggplot(aes (x = date)) +
+geom_line(aes(y=totaal, color = status_bewoning)) +
 labs(
     title = "Aantal huizen onbewoond",
     y = "Aantal (x 1000)",
@@ -235,24 +487,28 @@ labs(
 
 ```
 
+Te koop staande huizen...
+
+Gem. aanbodtijd...
+
+Verschil tussen vraagprijs en koopprijs
+
+
+Woningvoorraad
+
 Meer dan de helft van de woningen in Nederland zijn koopwoningen. 
 De tijdreeks van deze gegevens is helaas vrij kort. In de afgelopen jaren zien we weinig verschuivingen in deze verhoudeningen.
 
 ```{r}
 voorraad_woningen_naar_eigendom %>%
-  filter (StatusVanBewoning =='T001235') %>%
-  filter( Perioden_Date == as.Date("2020-01-01")) %>%
-  select(Perioden_Date, 
-       Koopwoningen_2,
-       EigendomWoningcorporatie_4, 
-       EigendomOverigeVerhuurders_5,
-       EigendomOnbekend_6 ) %>%
-  set_names("Periode",
-            "Koopwoningen",
-            "Eigendom Woningcorporatie",
-            "Eigendom Overige Verhuurders",
-            "Eigendom Onbekend") %>%
-  melt(id = c("Periode")) %>%
+  filter (status_bewoning =='Totaal') %>%
+  filter( date == as.Date("2020-01-01")) %>%
+  select(date, 
+       koopwoningen,
+       eigendom_woningcooperatie, 
+       overige,
+       eigendom_onbekend ) %>%
+  melt(id = c("date")) %>%
   mutate(value = value / 1000) %>%
   ggplot(aes (x = reorder(variable , value))) +
   geom_bar(stat = "identity" , aes(y = value, fill = variable)) +
@@ -265,63 +521,64 @@ voorraad_woningen_naar_eigendom %>%
   theme(legend.position = "none")
 ```
 
-Demografische ontwikkelingen
-
-Steeds meer alleenstaanden > 65 + en migratie
-
-Woningvoorraad
-
 Toevoegingen door Nieuwbouw 
 
 Wanneer we een wat langere termijn trend kijken naar het aantal gerealiseerde nieuwbouwhuizen zien we dat het aantal nieuwbouwhuizen eingelijk nu niet bijzonder hoog is. Ondanks dat er meer dan 70.000 huizen bijgebouwd wordt per jaar is dat vergeleken met de totale woningvoorraad eigenlijk niet veel. We zagen al dat de woningvoorraad lange termijn tred houdt met het aantal huishoudens.
 
--- prognose nieuwbouwhuizen toevoegen ---
-
-
 ```{r}
 voorraad_woningen %>%
-  select(Perioden_Date,
-         Nieuwbouw_2) %>%
-  mutate(nieuwbouw = Nieuwbouw_2 / 1000) %>%
-  filter(Perioden_Date > as.Date("1980-01-01")) %>%
-  ggplot(aes(x=Perioden_Date, y = nieuwbouw )) +
+  select(date,
+         nieuwbouw) %>%
+  mutate(nieuwbouw = nieuwbouw / 1000) %>%
+  filter(date > as.Date("1980-01-01")) %>%
+  ggplot(aes(x=date, y = nieuwbouw )) +
   geom_line(color = c(C_HOUSES)) +
   labs ( title = "Toevoegingen door Nieuwbouw",
          y = "Aantal (x 1000)",
          x = "Jaar") 
-
 ```
 
 
-In lijn met ontwikkeling aantal huishoudens?
+Nieuwbouw
 
-* _Bouwkosten_
+https://opendata.cbs.nl/statline/#/CBS/nl/dataset/81955NED/table?fromstatweb
+
+gegevens per maand, per regio 
+
+```{r}
+nieuwbouw_per_regio %>%
+  filter(region == "Nederland") %>%
+  ggplot(aes(x=period, y = value )) +
+  geom_line() +
+  theme(legend.position = "bottom") 
+```
+
+--- evt. prognose nieuwbouw toevoegen ---
+
+Bouwkosten
+
+De prijzen van nieuwbouw zijn ten opzichte van bestaande woningen de laatste tijd harder gestegen. Een belangrijke factor hiervoor zouden de bouwkosten zijn.
+
 * _Beschikbaarheid bouwlocaties_
 * _Ruimtelijke ordeningbeleid_
 
 aanbod woningen tov aantal verkocht
 
-Regionaal zijn er grote verschillen...
+Regionaal zijn er grote verschillen, hier ga ik later nog even op in.
 
-Prijsontwikkeling woningen
 
-missing values price index per region...
 
 ```{r}
-prijsindex_woningen %>%
-  ggplot(aes(x=date )) +
-  geom_line(aes(y=house_price_index)) +
-  theme(legend.position = "bottom") +
-  labs(title = "Prijsindex bestaande woningen")  
-
 prijsindex_per_regio %>%
   filter(region != "Nederland")  %>%
   filter(grepl('PV', region)) %>%
   ggplot(aes(x=date )) +
   geom_line(aes(y=prijsindex_bestaande_koopwoningen, color = region)) +
   theme(legend.position = "bottom") +
-  labs(title = "Prijsindex Nederland")  
+  labs(title = "Prijsindex Nederland") +
+  facet_wrap(~region)
 ```
+
 
 ```{r}
 # prijsindex_woningen %>%
@@ -361,16 +618,6 @@ prijsindex_per_regio %>%
 #   theme(legend.position = "bottom")
 ```
 
-Aantal huishoudens
-
-```{r}
-huishoudens %>%
-  ggplot(aes(x=date, y = number_of_households )) +
-  geom_line() +
-  geom_smooth(method = lm) +
-  theme(legend.position = "bottom") 
- 
-```
 
 Hypotheek rente
 
@@ -381,38 +628,15 @@ Hypotheek rente
 ```
 
 
-Nieuwbouw
-"Province Nederland (niet logisch - en een spatie er voor...)
-NA values
-
-https://opendata.cbs.nl/statline/#/CBS/nl/dataset/81955NED/table?fromstatweb
-
-
-```{r}
-nieuwbouw %>%
-  filter(province == " Nederland") %>%
-  ggplot(aes(x=period, y = value )) +
-  geom_line() +
-  theme(legend.position = "bottom") 
-
-
-nieuwbouw %>%
-  filter(province == " Nederland") %>%
-  drop_na() %>%
-  tail
-```
-
-
-
 Aantal transacties
 
-```{r}
-transacties_per_type %>%
-  ggplot(aes(x=monthly , y=aantal_verkocht, color= type_woning, fill = type_woning)) +
-  geom_bar(stat="identity") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position = "bottom") +
-  labs(x = "", y = "", title = "Aantal verkocht per type")
-```
+<!-- ```{r} -->
+<!-- transacties_per_type %>% -->
+<!--   ggplot(aes(x=monthly , y=aantal_verkocht, color= type_woning, fill = type_woning)) + -->
+<!--   geom_bar(stat="identity") + -->
+<!--   theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position = "bottom") + -->
+<!--   labs(x = "", y = "", title = "Aantal verkocht per type") -->
+<!-- ``` -->
 
 Transacties per leeftijd - sluit niet aan op het aantal verkochte woningen...
 
@@ -424,20 +648,35 @@ transacties_per_leeftijd %>%
   labs(x = "", y = "", title = "Aantal Transacties per maand per leeftijdscategorie" )  
 ```
 
-Verkochte woningen is nog niet tidy!
-
-
 verkochte_woningen_per_provincie_per_maand %>%
   
 Regionale verschillen
-
-
-
-
 
 # Conclusies
 
  Deze is ook leuk:
 
  https://www.youtube.com/watch?v=5UvrPO4eY5A&feature=emb_logo
+ 
+ 
+# Referenties
+
+Voor dit onderzoek heb ik de onder andere de volgende bronnen geraadpleegd:
+
+https://www.cpb.nl/publicatie/oververhitting-op-de-nederlandse-huizenmarkt/CPB-Achtergronddocument-1jun2018-Oververhitting-op-de-nederlandse-huizenmarkt.pdf
+
+https://datawonen.nl/dashboard/dashboard/koopprijs
+
+https://primos.datawonen.nl/
+
+https://www.cbs.nl/nl-nl/achtergrond/2016/16/indicatoren-woningmarkt-op-groen
+
+https://www.cbs.nl/nl-nl/visualisaties/monitor-koopwoningmarkt
+
+https://www.cbs.nl/nl-nl/visualisaties/huizenmarkt-in-beeld
+
+https://www.rijksoverheid.nl/documenten/rapporten/2019/05/29/socrates-2019---scenarioverkenningen-van-de-woningmarkt-in-2030
+
+https://www.abfresearch.nl/publicaties/vooruitzichten-bevolking-huishoudens-en-woningmarkt-2020-2035/#:~:text=Volgens%20de%20Primos%20Prognose%202020,1%25%2C%20418%20duizend%20woningen.
+
  
