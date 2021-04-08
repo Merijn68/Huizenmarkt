@@ -2,8 +2,11 @@
 
 
 # Helper functions to wrangle data
-# These functions require fixed names for translations::
-#  enquo() may be able to fix this...
+
+
+#' Not in function 
+#' 
+`%notin%` <- Negate(`%in%`)
 
 #' Encode type - leidt een type woning af van een subtype
 #' Het type woning kan zijn een eensgezinswoning (EGW), of meersgezinswoning (MGW)
@@ -13,6 +16,12 @@
 #'
 #' @return altered df - with a new column Type added
 encode_type <- function (df) {
+  
+  if (!is.data.frame(df))
+  {
+    cat("First argument to function should be a data frame \n");
+    stop
+  }
   
   df <-
     df %>%
@@ -43,6 +52,12 @@ encode_type <- function (df) {
 #' @return altered df - added column 'yearqtr'
 encode_qtryear <- function (df, var) {
   
+  if (!is.data.frame(df))
+  {
+    cat("First argument to function should be a data frame \n");
+    stop
+  }
+ 
   var <- enquo(var)
   
   df <-
@@ -52,7 +67,23 @@ encode_qtryear <- function (df, var) {
   return(df)
 }
 
+#' encode_year
+#' 
+#' Takes the var column and generates 
+#' a date column with the first day of the year
+#'
+#' @param df, var
+#' 
+#' Var should be per data column in the dataframe
+#'
+#' @return altered df - added column 'date'
 encode_year <- function (df, var) {
+  
+  if (!is.data.frame(df))
+  {
+    cat("First argument to function should be a data frame \n");
+    stop
+  }
   
   var <- enquo(var)
   
@@ -79,6 +110,12 @@ encode_year <- function (df, var) {
 #' @examples
 encode_mndyear <- function (df, var) {
   
+  if (!is.data.frame(df))
+  {
+    cat("First argument to function should be a data frame \n");
+    stop
+  }
+  
   var <- enquo(var)
   
   df <-
@@ -95,6 +132,12 @@ encode_mndyear <- function (df, var) {
 #'
 #' @return df, with leeftijd encoded in factors
 encode_leeftijd <- function (df) {
+  
+  if (!is.data.frame(df))
+  {
+    cat("First argument to function should be a data frame \n");
+    stop
+  }
   
   leeftijd_levels <- c('< 25 jaar','25-35 jaar','35-45 jaar','45-55 jaar','55-65 jaar','> 65 jaar')
   

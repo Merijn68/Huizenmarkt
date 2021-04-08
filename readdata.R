@@ -1,11 +1,11 @@
 #
 #  Read Data 
 #
-#  Read Data Routines for analyzing the Dutch Real estate Market
+#  Data Routines for analyzing the Dutch Real estate Market
 #
 #
 
-# Tidy data fWoningmarkt 
+# Tidy data Woningmarkt 
 
 library(tidyverse)     # Tidyverse data management
 library(readxl)        # Read Excel files
@@ -23,6 +23,7 @@ source(here("read_ds.R"))
 # Read CBS functions
 source(here("read_cbs.R"))
 
+# Define levels for categorical variables
 l_provincies = c('Drenthe', 'Flevoland','Fryslân',
                  'Gelderland','Groningen','Limburg',
                  'Noord-Brabant','Noord-Holland', 
@@ -30,7 +31,6 @@ l_provincies = c('Drenthe', 'Flevoland','Fryslân',
 
 l_types = c('2-onder-1-kap','Appartement','Hoekwoning',
             'Onbekend','Tussenwoning','Vrijstaand','Totaal')
-
 
 
 # # of households
@@ -43,7 +43,6 @@ aantal_huishoudens_per_jaar <-
   set_names(c('date','aantal_huishoudens')) %>%
   drop_na() %>%
   encode_year(date)
-
 
 # consumer_confidence 
 # Source Reuters 
@@ -59,35 +58,35 @@ consumenten_vertrouwen <-
               'consumer_confidence_purchase_propensity')) %>%
   encode_mndyear(period)
 
-# Consumer_home_purchase_intention 
-# Source Reuters
-# NLEUSCHOQ 
-
-consumenten_aankoopintentie <- 
-  read_excel(here("data",
-                  "datastream",
-                  "consumentenvertrouwen.xlsx"), 
-             skip = 1, range = ('G1:H142')) %>% 
-  drop_na() %>%
-  set_names(c('period','home_purchase_intention_12M')) %>%
-  encode_qtryear(period)
+# # Consumer_home_purchase_intention 
+# # Source Reuters
+# # NLEUSCHOQ 
+# 
+# consumenten_aankoopintentie <- 
+#   read_excel(here("data",
+#                   "datastream",
+#                   "consumentenvertrouwen.xlsx"), 
+#              skip = 1, range = ('G1:H142')) %>% 
+#   drop_na() %>%
+#   set_names(c('period','home_purchase_intention_12M')) %>%
+#   encode_qtryear(period)
 
 # # Price Index Existing houses
 # Bron: Reuters 
 
-prijsindex_woningen <- 
-  read_excel(here("data",
-                  "datastream",
-                  "huizenprijzen en huren grafiek.xlsx"),
-             sheet = 'Sheet2',
-             skip = 1, 
-             range = ('E2:H106')) %>% 
-  set_names(c('period',
-              'house_price_index', 
-              'imputed_rent_value',
-              'price_to_rent_ratio'))  %>%
-  encode_qtryear(period)
-  
+# prijsindex_woningen <- 
+#   read_excel(here("data",
+#                   "datastream",
+#                   "huizenprijzen en huren grafiek.xlsx"),
+#              sheet = 'Sheet2',
+#              skip = 1, 
+#              range = ('E2:H106')) %>% 
+#   set_names(c('period',
+#               'house_price_index', 
+#               'imputed_rent_value',
+#               'price_to_rent_ratio'))  %>%
+#   encode_qtryear(period)
+#   
 # Hypotheekrente
 # Bron: Reuters
 # NLMORTGR + NLMORTHPR - NL MORTGAGE RATE(DISC.) NADJ
@@ -111,43 +110,42 @@ hypotheek_rente_q <-
 
 # Huizenmarkt
 # Bron: Datastream
-aanbod_huizen_per_type_per_maand <-
-  read_huizenmarkt(sheet = 'NL TOTAAL') %>%
-  set_names(c('datum',
-            'Totaal~te_koop',
-            'Totaal~gemiddelde_aanbodtijd',
-            'Totaal~gemiddelde_vraagprijs',
-            'EGW~te_koop',
-            'EGW~gemiddelde_aanbodtijd',
-            'EGW~gemiddelde_vraagprijs',
-            'MGW~te_koop',
-            'MGW~gemiddelde_aanbodtijd',
-            'MGW~gemiddelde_vraagprijs')) %>%
-  drop_na %>% 
-  pivot_longer(-c('datum'),
-               names_to = c("type", ".value"),
-               names_pattern = "(.+)~(.+)") %>%
-  mutate(type = str_trim(type)) %>%
-  mutate(type = factor(type)) 
+# aanbod_huizen_per_type_per_maand <-
+#   read_huizenmarkt(sheet = 'NL TOTAAL') %>%
+#   set_names(c('datum',
+#             'Totaal~te_koop',
+#             'Totaal~gemiddelde_aanbodtijd',
+#             'Totaal~gemiddelde_vraagprijs',
+#             'EGW~te_koop',
+#             'EGW~gemiddelde_aanbodtijd',
+#             'EGW~gemiddelde_vraagprijs',
+#             'MGW~te_koop',
+#             'MGW~gemiddelde_aanbodtijd',
+#             'MGW~gemiddelde_vraagprijs')) %>%
+#   drop_na %>% 
+#   pivot_longer(-c('datum'),
+#                names_to = c("type", ".value"),
+#                names_pattern = "(.+)~(.+)") %>%
+#   mutate(type = str_trim(type)) %>%
+#   mutate(type = factor(type)) 
 
 
 # Prijsindex betaande koopwoningen Nedereland per regio
 # Bron: Datastream
 
-prijsindex_per_regio <-
-  read_huizenmarkt(sheet = 'prijsindex regio Q') %>%
-  pivot_longer(-c('period'),
-               names_prefix = "Prijsindex bestaande koopwoningen ",
-               names_to = c('region'),
-               values_to = 'prijsindex_bestaande_koopwoningen') %>%
-  mutate(region = str_trim(region)) %>%
-  mutate(region = factor(region))  %>%
-  encode_qtryear(period)
+# prijsindex_per_regio <-
+#   read_huizenmarkt(sheet = 'prijsindex regio Q') %>%
+#   pivot_longer(-c('period'),
+#                names_prefix = "Prijsindex bestaande koopwoningen ",
+#                names_to = c('region'),
+#                values_to = 'prijsindex_bestaande_koopwoningen') %>%
+#   mutate(region = str_trim(region)) %>%
+#   mutate(region = factor(region))  %>%
+#   encode_qtryear(period)
 
 # Prijsindex type woning
 # Bron: Datastream
 # Source: Datastream
-
 
 prijsindex_type_woning <-
   read_huizenmarkt(sheet = 'prijsindex soort Q') %>%
@@ -161,105 +159,102 @@ prijsindex_type_woning <-
 
 # Nieuwbouw
 
-nieuwbouw_per_regio <- 
-  read_huizenmarkt(sheet = 'nieuwbouw cbs') %>%
-  pivot_longer(-c('period'),
-               names_prefix = "Toevoeging woningvoorraad door nieuwbouw",
-               names_to = c('region')) %>%
-  mutate(region = str_trim(region)) %>%
-  encode_mndyear(period)
+# nieuwbouw_per_regio <- 
+#   read_huizenmarkt(sheet = 'nieuwbouw cbs') %>%
+#   pivot_longer(-c('period'),
+#                names_prefix = "Toevoeging woningvoorraad door nieuwbouw",
+#                names_to = c('region')) %>%
+#   mutate(region = str_trim(region)) %>%
+#   encode_mndyear(period)
 
 
 # Transacties per leeftijd
-# Waarom zijn dit er zo weinig?
-
-
-transacties_per_leeftijd <-
-  read_huizenmarkt(sheet = 'transacties per leeftijd M') %>%
-  pivot_longer(-c('period'),
-               names_prefix = 'Transacties ',
-               names_to = c('leeftijd'),
-               values_to = 'aantal_transacties') %>% 
-  encode_mndyear(period) %>% 
-  encode_leeftijd() %>% 
-  drop_na()
+# transacties_per_leeftijd <-
+#   read_huizenmarkt(sheet = 'transacties per leeftijd M') %>%
+#   pivot_longer(-c('period'),
+#                names_prefix = 'Transacties ',
+#                names_to = c('leeftijd'),
+#                values_to = 'aantal_transacties') %>% 
+#   encode_mndyear(period) %>% 
+#   encode_leeftijd() %>% 
+#   drop_na()
 
 # Koopsom 
 # Kadaster
 # Datastream
 # Namen van Gemiddelde koopsom per provincie zijn weggevallen in de data
 
-gemiddelde_koopsom_per_maand <-
-  read_huizenmarkt(sheet = 'gemiddelde koopsom m') %>%
-  encode_mndyear(period) %>%
-  clean_names() %>%
-  drop_na()
+# gemiddelde_koopsom_per_maand <-
+#   read_huizenmarkt(sheet = 'gemiddelde koopsom m') %>%
+#   encode_mndyear(period) %>%
+#   clean_names() %>%
+#   drop_na()
 
-# fkadaster 
+# kadaster 
 # hypotheek_per_provincie
 
-gemiddelde_hypotheek_per_regio_maand <-
-    read_huizenmarkt(sheet = 'Kadaster M') %>%
-    select (period,
-            starts_with("Gemiddelde hypotheek")) %>%
-    pivot_longer(cols = -1,
-             names_prefix = 'Gemiddelde hypotheek ',
-             names_to = 'provincie',
-             values_to = 'gemiddelde_hypotheek') %>%
-    mutate(provincie = factor(str_trim(provincie), levels = l_provincies))
+# gemiddelde_hypotheek_per_regio_maand <-
+#     read_huizenmarkt(sheet = 'Kadaster M') %>%
+#     select (period,
+#             starts_with("Gemiddelde hypotheek")) %>%
+#     pivot_longer(cols = -1,
+#              names_prefix = 'Gemiddelde hypotheek ',
+#              names_to = 'provincie',
+#              values_to = 'gemiddelde_hypotheek') %>%
+#     mutate(provincie = factor(str_trim(provincie), levels = l_provincies))
 
 # Aantal hypotheken per regio
     
-aantal_hypotheken_per_regio_per_maand <-
-  read_huizenmarkt(sheet = 'Kadaster M') %>%
-  select (period,
-          starts_with("Aantal hypotheken")) %>%
-  pivot_longer(cols = -1,
-               names_prefix = 'Aantal hypotheken ',
-               names_to = 'provincie',
-               values_to = 'aantal_hypotheken') %>%
-  mutate(provincie = factor(str_trim(provincie), levels = l_provincies))
+# aantal_hypotheken_per_regio_per_maand <-
+#   read_huizenmarkt(sheet = 'Kadaster M') %>%
+#   select (period,
+#           starts_with("Aantal hypotheken")) %>%
+#   pivot_longer(cols = -1,
+#                names_prefix = 'Aantal hypotheken ',
+#                names_to = 'provincie',
+#                values_to = 'aantal_hypotheken') %>%
+#   mutate(provincie = factor(str_trim(provincie), levels = l_provincies))
     
 # aantal verkochte woningen per regio
 
-aantal_verkocht_per_regio_per_maand <- 
-  read_huizenmarkt(sheet = 'Kadaster M') %>%
-  select (period,
-          starts_with("aantal verkocht")) %>%
-  select (-c(paste('aantal verkocht',l_types))) %>%
-  pivot_longer(cols = -1,
-               names_prefix = 'aantal verkocht ',
-               names_to = 'provincie',
-               values_to = 'aantal_verkocht') %>%
-  mutate(provincie = factor(str_trim(provincie), levels = l_provincies))
+# aantal_verkocht_per_regio_per_maand <- 
+#   read_huizenmarkt(sheet = 'Kadaster M') %>%
+#   select (period,
+#           starts_with("aantal verkocht")) %>%
+#   select (-c(paste('aantal verkocht',l_types))) %>%
+#   pivot_longer(cols = -1,
+#                names_prefix = 'aantal verkocht ',
+#                names_to = 'provincie',
+#                values_to = 'aantal_verkocht') %>%
+#   mutate(provincie = factor(str_trim(provincie), levels = l_provincies))
 
 # aantal verkochte woningen per type per maand
 
-aantal_verkocht_per_regio_per_type_per_maand <- 
-  read_huizenmarkt(sheet = 'Kadaster M') %>%
-  select (period, c(paste('aantal verkocht',l_types))) %>%
-  pivot_longer(cols = -1,
-               names_prefix = 'aantal verkocht ',
-               names_to = 'subtype',
-               values_to = 'aantal_verkocht') %>%
-  encode_type %>%
-  filter(subtype != "Totaal") %>%
-  encode_mndyear(period)
-
-aantal_verkocht_per_regio_per_type_per_maand$subtype[aantal_verkocht_per_regio_per_type_per_maand$subtype == 'Vrijstaand'] <- "Vrijstaande woning"
-aantal_verkocht_per_regio_per_type_per_maand$subtype[aantal_verkocht_per_regio_per_type_per_maand$subtype == '2-onder-1-kap'] <- "2-onder-1-kapwoning"
+# aantal_verkocht_per_regio_per_type_per_maand <- 
+#   read_huizenmarkt(sheet = 'Kadaster M') %>%
+#   select (period, c(paste('aantal verkocht',l_types))) %>%
+#   pivot_longer(cols = -1,
+#                names_prefix = 'aantal verkocht ',
+#                names_to = 'subtype',
+#                values_to = 'aantal_verkocht') %>%
+#   encode_type %>%
+#   filter(subtype != "Totaal") %>%
+#   encode_mndyear(period)
+# 
+# aantal_verkocht_per_regio_per_type_per_maand$subtype[aantal_verkocht_per_regio_per_type_per_maand$subtype == 'Vrijstaand'] <- "Vrijstaande woning"
+# aantal_verkocht_per_regio_per_type_per_maand$subtype[aantal_verkocht_per_regio_per_type_per_maand$subtype == '2-onder-1-kap'] <- "2-onder-1-kapwoning"
 
 
 # Provincie is hier nog str -> bevat meer dat alleen provincies...
-verkochte_woningen_per_provincie_per_kwartaal <-
-  read_huizenmarkt(sheet = 'VERKOCHT Q ') %>%
-  select(period, starts_with("Aantal verkochte woningen")) %>%
-  pivot_longer(-c('period'),
-               names_prefix = 'Aantal verkochte woningen ',
-               names_to = 'provincie',
-               values_to = 'aantal_verkochte_woningen') %>%
-  mutate(provincie = str_trim(provincie)) %>%
-  encode_qtryear(period)
+# verkochte_woningen_per_provincie_per_kwartaal <-
+#   read_huizenmarkt(sheet = 'VERKOCHT Q ') %>%
+#   select(period, starts_with("Aantal verkochte woningen")) %>%
+#   pivot_longer(-c('period'),
+#                names_prefix = 'Aantal verkochte woningen ',
+#                names_to = 'provincie',
+#                values_to = 'aantal_verkochte_woningen') %>%
+#   mutate(provincie = str_trim(provincie)) %>%
+#   encode_qtryear(period)
 
 # Aantal verkocht per kwartaal per kwartaal
 verkochte_woningen_per_type_per_kwartaal <-
@@ -275,40 +270,47 @@ verkochte_woningen_per_type_per_kwartaal <-
   encode_qtryear(period) %>% 
   drop_na
 
+verkochte_woningen_per_kwartaal <-
+  verkochte_woningen_per_type_per_kwartaal %>% 
+  group_by (yearqtr) %>% 
+  summarise(totaal = sum(verkochte_bestaande_woningen) / 1000 ) %>% 
+  mutate(date = first_of_quarter(as.Date(yearqtr)))
+
+
 # Gemiddelde verkoopprijs per type per kwartaal
-gemiddelde_verkoopprijs_per_type_per_kwartaal <-
-  read_huizenmarkt(sheet = 'VERKOCHT Q ') %>%
-  select(period, starts_with("Gemiddelde verkoopprijs ")) %>%
-  drop_na %>% 
-  pivot_longer(-c('period'),
-               names_prefix = 'Gemiddelde verkoopprijs ',
-               names_to = 'subtype',
-               values_to = 'gemiddelde_verkoopprijs') %>%
-  mutate(subtype = str_trim(subtype)) %>%
-  encode_type %>%
-  encode_qtryear(period)
+# gemiddelde_verkoopprijs_per_type_per_kwartaal <-
+#   read_huizenmarkt(sheet = 'VERKOCHT Q ') %>%
+#   select(period, starts_with("Gemiddelde verkoopprijs ")) %>%
+#   drop_na %>% 
+#   pivot_longer(-c('period'),
+#                names_prefix = 'Gemiddelde verkoopprijs ',
+#                names_to = 'subtype',
+#                values_to = 'gemiddelde_verkoopprijs') %>%
+#   mutate(subtype = str_trim(subtype)) %>%
+#   encode_type %>%
+#   encode_qtryear(period)
 
 # Aanbod Woningen per regio per kwartaal
-aanbod_woningen_per_regio_per_maand <-
-  read_huizenmarkt(sheet = 'huizenzoeker') %>%
-  select(period, starts_with("Aanbod aantal woningen ")) %>%
-  pivot_longer(-c('period'),
-               names_prefix = 'Aanbod aantal woningen ',
-               names_to = 'provincie',
-               values_to = 'aanbod_woningen') %>%
-  mutate(provincie = str_trim(provincie)) %>%
-  encode_mndyear(period)
+# aanbod_woningen_per_regio_per_maand <-
+#   read_huizenmarkt(sheet = 'huizenzoeker') %>%
+#   select(period, starts_with("Aanbod aantal woningen ")) %>%
+#   pivot_longer(-c('period'),
+#                names_prefix = 'Aanbod aantal woningen ',
+#                names_to = 'provincie',
+#                values_to = 'aanbod_woningen') %>%
+#   mutate(provincie = str_trim(provincie)) %>%
+#   encode_mndyear(period)
 
 # gem vraagprijs per regio per kwartaal
-gemiddelde_vraagprijs_per_regio_per_maand <-
-  read_huizenmarkt(sheet = 'huizenzoeker') %>%
-  select(period, starts_with("Gem. Vraagprijs per ")) %>%
-  pivot_longer(-c('period'),
-               names_prefix = "Gem. Vraagprijs per ",
-               names_to = 'provincie',
-               values_to = 'gem_vraagprijs') %>%
-  mutate(provincie = str_trim(provincie)) %>%
-  encode_mndyear(period)
+# gemiddelde_vraagprijs_per_regio_per_maand <-
+#   read_huizenmarkt(sheet = 'huizenzoeker') %>%
+#   select(period, starts_with("Gem. Vraagprijs per ")) %>%
+#   pivot_longer(-c('period'),
+#                names_prefix = "Gem. Vraagprijs per ",
+#                names_to = 'provincie',
+#                values_to = 'gem_vraagprijs') %>%
+#   mutate(provincie = str_trim(provincie)) %>%
+#   encode_mndyear(period)
 
 # gem vraagprijs per regio per kwartaal
 
@@ -322,24 +324,24 @@ aanbod_per_type_per_provincie_per_maand_egw <-
   mutate(provincie = str_trim(provincie)) %>%
   mutate(type = "EGW") %>%
   encode_mndyear(period)
-
-aanbod_per_type_per_provincie_per_maand_mgw <-
-  read_huizenmarkt(sheet = 'COROPCIJFERS AANTAL & PRIJS MGW') %>%
-  select(period, starts_with("MGW te koop")) %>%
-  pivot_longer(-c('period'),
-               names_prefix = "MGW te koop ",
-               names_to = 'provincie',
-               values_to = 'aantal_te_koop') %>%
-  mutate(provincie = str_trim(provincie)) %>%
-  mutate(type = "MGW") %>%
-  encode_mndyear(period)
-
-aanbod_per_type_per_provincie_per_maand <-
-  union (aanbod_per_type_per_provincie_per_maand_egw,
-         aanbod_per_type_per_provincie_per_maand_mgw)
-
-aanbod_per_type_per_provincie_per_maand_egw <- NULL
-aanbod_per_type_per_provincie_per_maand_mgw <- NULL
+# 
+# aanbod_per_type_per_provincie_per_maand_mgw <-
+#   read_huizenmarkt(sheet = 'COROPCIJFERS AANTAL & PRIJS MGW') %>%
+#   select(period, starts_with("MGW te koop")) %>%
+#   pivot_longer(-c('period'),
+#                names_prefix = "MGW te koop ",
+#                names_to = 'provincie',
+#                values_to = 'aantal_te_koop') %>%
+#   mutate(provincie = str_trim(provincie)) %>%
+#   mutate(type = "MGW") %>%
+#   encode_mndyear(period)
+# 
+# aanbod_per_type_per_provincie_per_maand <-
+#   union (aanbod_per_type_per_provincie_per_maand_egw,
+#          aanbod_per_type_per_provincie_per_maand_mgw)
+# 
+# aanbod_per_type_per_provincie_per_maand_egw <- NULL
+# aanbod_per_type_per_provincie_per_maand_mgw <- NULL
 
 # Extra data voor lange termijn reeksen datastream
 werkgelegenheid_lt <-
@@ -378,8 +380,6 @@ gdp_lt <-
   encode_qtryear(period)
 
 
-
-
 consumenten_vertrouwen_lt <-
   read_excel(here("data",
                   "datastream",
@@ -400,12 +400,6 @@ consumenten_vertrouwen_lt_q <-
   summarize(consumer_conf = round(mean(consumer_conf))) %>% 
   mutate(date = first_of_quarter(as.Date(yearqtr)))
 
-  
-  
-ta <- tapply(DF$DepressionCount, yq, sum)
-
-
-
 tshuizen <-
   read_excel(here("data",
                   "datastream",
@@ -418,7 +412,6 @@ tshuizen <-
   encode_qtryear(period)
 
 # Recode price index to 2015 = 100
-
 cf <- 
   tshuizen %>% 
   filter (year(date) == '2015') %>% 
@@ -429,7 +422,7 @@ tshuizen <-
   mutate(huisprijsindex = (tshuizen / cf$result) * 100 )
 
 # Join with houseprice index quarterly data
-tshuizen <-
+
 p1 <- 
   tshuizen %>%
     select (huisprijsindex, yearqtr,date ) 
@@ -447,6 +440,7 @@ prijsindex_woningen_lt <-
 rm(p1)
 rm(p2)
 rm(cf)
+rm(tshuizen)
 
 
 # CBS Statline data--------------------------------------------------------
@@ -465,7 +459,8 @@ tables <-
     "83834NED", "vermogen",
     "37296NED", "bevolking",
     "84106NED", "bbp",
-    "83625NED", "verkoopprijs_regio"
+    "83625NED", "verkoopprijs_regio",
+    "84721NED", "gebieden"
   )
 
 column_names<-
@@ -520,28 +515,92 @@ column_names<-
   "37296NED", "TotaleBevolkingsgroei_67",'bevolkingsgroei',
   "37296NED", "Geboorteoverschot_71",'geboorteoverschot',
   "37296NED", "MigratiesaldoInclusiefAdministratie_75",'migratiesaldo',
+  
   "84106NED", "SoortMutaties_label","soort_mutatie",
   "84106NED", "BrutoBinnenlandsProduct_2","brutobinnenlandsproduct",
   
   "83625NED", "RegioS", "regio_code",
   "83625NED", "RegioS_label", "regio",
-  "83625NED", "GemiddeldeVerkoopprijs_1", "verkoopprijs"
+  "83625NED", "GemiddeldeVerkoopprijs_1", "verkoopprijs",
+  
+  "84721NED", "RegioS", "regio_code",
+  "84721NED", "RegioS_label", "regio",
+  "84721NED", "Omgevingsadressendichtheid_53","bevolkingsdichtheid",
+  "84721NED", "Naam_25","gebied"
 )
 
 get_cbs_data(tables)
 
+rm(column_names)
 
+rm(tables)
 
-# Retrieve data with municipal boundaries from PDOK
+# Retrieve data with municipal boundaries from PDOK for geo map
 municipalBoundaries <- st_read("https://geodata.nationaalgeoregister.nl/cbsgebiedsindelingen/wfs?request=GetFeature&service=WFS&version=2.0.0&typeName=cbs_gemeente_2017_gegeneraliseerd&outputFormat=json")
+
+# Regio codes in gebieden contained trailing spaces
+gebieden$regio_code <- str_trim(gebieden$regio_code)
 
 verkoopprijs_regio <- 
   municipalBoundaries %>%
-  left_join(verkoopprijs_regio, by=c(statcode="regio_code"))
+  left_join(verkoopprijs_regio, by=c(statcode="regio_code")) %>% 
+  mutate(jaar = format(date, '%Y'))
+  
+# Create dataset for long term regression
+# Drop record if housepriceindex is unknown
+# Fill consumer confidence with 0 if missing
+# Fill down GDP (missing last record)
 
-#T83625NED <- cbs_get_data("83625NED")
+df_rm_huizenprijzen <- 
+  prijsindex_woningen_lt %>% 
+  full_join (inkomen_lt, by = c('date')) %>% 
+  full_join (werkgelegenheid_lt, by = c('date')) %>% 
+  full_join (gdp_lt, by = c('date')) %>% 
+  full_join (hypotheek_rente_q, by = c('date')) %>% 
+  full_join (consumenten_vertrouwen_lt_q, by = c('date')) %>% 
+  select (date, huisprijsindex, inkomen, werkgelegenheid, gdp_index, consumer_conf) %>% 
+  mutate(consumer_conf = coalesce(consumer_conf, 0)) %>% 
+  fill(gdp_index, .direction = "down") %>% 
+  drop_na(huisprijsindex)
 
-#   filter (Perioden == "1995KW01" )
+# Recalculate inkomen naar inkomenindex (2015 = 100)
+dfi <- 
+  df_rm_huizenprijzen %>% 
+  filter (year(date) == '2015') %>% 
+  summarize(result = mean(inkomen))
+
+df_rm_huizenprijzen <-
+  df_rm_huizenprijzen %>% 
+  mutate(inkomenindex = (inkomen / dfi$result) * 100 ) %>% 
+  select (-inkomen)
+
+# drop temp variables
+rm(dfi)
+
+# Create long term data for regression on Transactions
+# Fill down GDP for missing last entry
+# Fill down aantal huishoudens, Yearly data to Quarterly
+df_rm_transactions <- 
+  prijsindex_woningen_lt %>% 
+  full_join (aantal_huishoudens_per_jaar, by = c('date')) %>% 
+  full_join (inkomen_lt, by = c('date')) %>% 
+  full_join (werkgelegenheid_lt, by = c('date')) %>% 
+  full_join (gdp_lt, by = c('date')) %>% 
+  full_join (hypotheek_rente_q, by = c('date')) %>% 
+  full_join (consumenten_vertrouwen_lt_q, by = c('date')) %>% 
+  full_join (verkochte_woningen_per_kwartaal, by = c('date')) %>% 
+  select (date, huisprijsindex, inkomen, werkgelegenheid, gdp_index, consumer_conf, aantal_huishoudens, totaal) %>% 
+  fill(aantal_huishoudens, .direction = "down") %>% # Only yearly data available
+  fill(gdp_index, .direction = "down") %>% 
+  drop_na(totaal) 
+
+# T84721NED <- cbs_get_data("84721NED")
+# 
+# T84721NED <- T84721NED %>%
+#   cbs_add_label_columns()
+#  
+
+# T83625NED <- cbs_get_data("83625NED")
 
 # Inhoudsopgave <- cbs_get_toc("Language" = "nl") %>% 
 #   filter(str_detect(ShortDescription, '83906NED'))
@@ -549,9 +608,7 @@ verkoopprijs_regio <-
 # ds_nl <- cbs_get_datasets("Language" = "nl")
 # voorraad_woningen_meta <- cbs_get_meta("82235NED")$DataProperties
 
-
 # Saving the datasets...
-# Not sure yet what would be the preferred option here...
 # This saves all dataframes in the current session into Rdata objects
 dfs<-Filter(function(x) is.data.frame(get(x)) , ls())
 for(d in dfs) {

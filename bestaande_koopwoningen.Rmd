@@ -2,29 +2,16 @@
 title: "Ontwikkeling huizenmarkt in Nederland"
 author:
 - Merijn van Miltenburg
-date: "25/02/2021"
+date: "07/04/2021"
 output: 
     html_document:
       code_folding: hide
       toc: true
       toc_depth: 2
       number_sections: true
-bibliography: bibliography.bib
+bibliography: [bibliography.bib, Bibliography of packages.bib]
 csl: apa-6th-edition.csl
-nocite: | 
-  @KennethGopalGerardvanLeeuwenDavidOmtzigt2019,
-  @OldfordR.J.MacKay2000,
-  @Research2020,
-  @Vogt2018,
-  @KennethGopalGerardvanLeeuwenDavidOmtzigt2020,
-  @LeonGroenemeijerKennethGopal2020,
-  @MinisterievanBinnenlandseZakenenKoninkrijksrelaties2021,
-  @CBS2016,
-  @CBS2020,
-  @CBS2020a,
-  CBS2020b,
-  @Groot2018,
-  @Foreman2014
+nocite: '@*'
 ---
 
 ```{r setup, include=FALSE}
@@ -34,11 +21,9 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 # Inleiding
 
 
-De volksbank is het moederbedrijf van ASN, SNS, BLG en Regiobank. Als de vierde bank van Nederland, financiert de volksbank hypotheken, beheert ze spaargeld en biedt de bank klanten een betaalrekening.
+De volksbank is het moederbedrijf van ASN, SNS, BLG en Regiobank. Als de vierde bank van Nederland, financiert de volksbank hypotheken, beheert ze spaargeld en biedt de bank klanten een betaalrekening. Binnen de afdeling Financial Markets van de Volksbank, hebben de macro economen van de Volksbank als taak de toestand in de economie te monitoren en toe te lichten aan directie en beleidsmakers. Een belangrijk onderdeel daarvan heeft betrekking met de ontwikkeling van de hypotheekmarkt in Nederland. De huizenmarkt is een belangrijke factor in de beleidsontwikkeling van de bank, met betrekking tot de hypotheekproductie.
 
-Binnen de afdeling Financial Markets, hebben de macro economen van de Volksbank als taak de toestand in de economie te monitoren en toe te lichten aan directie en beleidsmakers. Een belangrijk onderdeel daarvan heeft betrekking met de ontwikkeling van de hypotheekmarkt in Nederland. De huizenmarkt is een belangrijke factor in de beleidsontwikkeling van de bank, met betrekking tot de hypotheekproductie.
-
-De huizenprijzen en aantallen verkochte woningen zijn belangrijke indicatoren voor de ontwikkeling van de hypotheekmarkt.
+De huizenprijzen en aantallen verkochte woningen zijn de belangrijkste indicatoren voor de ontwikkeling van de hypotheekmarkt.
 
 Voor deze analyse is de PPDAC cyclus ( Problem, Plan, Data, Analysis, and Conclusions) gevolgd. Een methode voor het uitvoeren van statististch onderzoek [OldfordR.J.MacKay2000]. De opbouw van dit verslag volgt deze cyclus. In de volgende paragraaf wordt eerst de probleemstelling nader toegelicht. Vervolgens is in de planningsfase een literatuurstudie uitgevoerd om de belangrijkste factoren te bepalen die nodig zijn om de vraagstelling te beantwoorden. De data benodigd voor dit onderzoek is daarna verzameld en vervolgens geanalyseerd. Op basis daarvan worden tot slot een aantal conclusies getrokken. Deze cyclus is een aantal keer doorlopen - op basis van de uitkomsten. Dit komt terug in de probleemstelling en de uitwerking van deze casus.
 
@@ -48,8 +33,7 @@ Uit het overleg met de macro economen is de vraag naar voren gekomen of een bete
 
 Is het mogelijk om modellen te ontwikkelen die de huizenprijs op middellange termijn voorspelt en het aantal transacties op de huizenmarkt op middellange termijn voorspelt?"
 
-Vanuit de Volksbank is in het verleden al eerder statistisch onderzoek gedaan naar deze vebanden. 
-Data werd hierbij verzameld via Datascope (Refinitiv) en geanalyseerd in Excel.
+Vanuit de Volksbank is in het verleden al eerder statistisch onderzoek gedaan naar deze vebanden. Data werd hierbij verzameld via Datascope (Refinitiv) en geanalyseerd in Excel.
 
 Voor de huizenprijzen is eerder gekeken naar een verband tussen huizenprijzen en de werkgelegenheid, lonen, GDP en rente. Hieruit is een eenvoudig model ontwikkeld waarbij met name het verband met GDP wordt gebruikt om de ontwikkeling van de huizenprijzen te voorspellen. Voor het aantal transacties op de lange termijn wordt een verband verondersteld met het aantal huishoudens. op kortere termijn spelen economische groei, rentestanden en evt. regelgeving ook een rol.
 
@@ -86,30 +70,6 @@ Om in ieder geval een begin te maken met het beantwoorden van deze vragen ben ik
 In eerste instantie richt het onderzoek zich op de vraag en aanbod op de woningmarkt in Nederland. Het CBS publiceert vrij veel over de prijsonwikkeling van bestaande woningen, nieuwe woningen en de stand van de economie. De Socrates modellen sluiten goed aan bij deze vraagstelling [zie @KennethGopalGerardvanLeeuwenDavidOmtzigt2020]. 
 
 
-```{r}
-# # install.packages("kableExtra")
-# library(kableExtra)
-# library(here)
-# 
-# 
-# tbl_img <- data.frame(
-#   name = c("kableExtra 1", "kableExtra 2"),
-#   Marktprijs  = "",
-#   Transacties = ""
-# )
-# 
-# green <- here("images","green.png")
-# red <- here("images","red.png")
-# 
-# tbl_img %>%
-#   kbl(booktabs = T) %>%
-#   kable_paper(full_width = F) %>%
-#   column_spec(2, image = spec_image(
-#     c(green, red), 50, 50)) %>%
-#   column_spec(3, image = spec_image(
-#     c(red, green), 50, 50))
-```
-
 Op langere termijn is de woningmarkt een markt van vraag en aanbod.
 Vraag en aanbod worden bepaald door:
 
@@ -134,13 +94,14 @@ Aanbod woningen:
 * Ruimtelijke ordeningbeleid
 :::
 ::::::
+
 \newline
 
 Daarna is verder ingegaan op de factoren die van invloed zijn bij de prijsonwikkeling op de woningmarkt. Hierbij kan een onderscheidt gemaakt worden in factoren die direct de prijsontwikkeling beinvloeden - en factoren die meer aanduiden of er sprake is van oververhitting [@Groot2018].
 
 :::::: {.columns}
 ::: {.column width="48%" data-latex="{0.48\textwidth}"}
-Indicatoren Huizenprijzen
+Indicatoren
 
 *	Gem. huizenprijzen (prijsindex)
 * Besteedbaar Inkomen
@@ -154,7 +115,9 @@ Indicatoren Huizenprijzen
 * Percentage huur / koop woningen
 * Consumentenvertrouwen
 
-Oververhitting huizenmarkt
+:::
+::: {.column width="48%" data-latex="{0.48\textwidth}"}
+Oververhitting
 
 *	Gem. huurprijzen (berekenen verhouding koop/huur)
 *	Aantal woningen dat te koop staat 
@@ -163,10 +126,10 @@ Oververhitting huizenmarkt
 * Aanbod huizen
 
 :::
-::: {.column width="4%" data-latex="{0.04\textwidth}"}
-\ 
-:::
-:::::: {.column width="48%" data-latex="{0.48\textwidth}"}
+::::::
+
+\newline
+
 Het aantal transacties wordt met name bepaald door het aantal huishoudens. Daarnaast kan door krapte op de woningmarkt een schaarste ontstaan waardoor de woningmarkt 'op slot' geraakt. Tijdelijk zou prijsinelastisiteit er voor kunnen zorgen dat consumenten geen nieuwe woning betrekken omdat zij de huizen te duur vinden. Het consumentenvertrouwen speelt hierbij een belangrijke rol.
 
 Indicatoren aantal transacties
@@ -178,9 +141,6 @@ Indicatoren aantal transacties
 * Consumentenvertrouwen
 * verschil aanbodprijs en transactieprijs
 *	Aantal dagen aangeboden
-
-:::
-::::
 
 # Data
 
@@ -212,25 +172,32 @@ library (viridis)            # Nicer colors for plots
 
 library (forcats)            # for handling categorical data
 
-
 library (forecast)           # Time series forecasting
 library (timetk)             # Time series forecasting
 library (fpp2)               # Time series forecasting
-
-#install.packages("fpp2")
-
 library (zoo)                # handling time series
+library (urca)               # for time serries analyses
 
 library (ggpubr)             # Mix multiple graphs
 library (cowplot)            # for alignin multiple plots 
 
-library (urca)               # for time serries analyses
- 
 library(sjPlot)              # For printing model output
+library(sf)                  # spacial data for geographicals maps
 
-library(sf)                  # spacial data for maps
-#install.packages("sjPlot")
 
+library(rsample)             # data splitting for model fitting
+library(earth)               # fit MARS models
+library(caret)               # automating the tuning process
+# install.packages("vip")
+library(vip)                 # variable importance
+# install.packages("pdp")
+library(pdp)                 # variable relationships
+library(timetk)
+library(corrplot)            # Correlation plot
+
+```
+
+```{r}
 # Loading the datasets
 
 dfs<-list.files(here("data","tidy"), pattern = "*.Rdata")
@@ -238,7 +205,12 @@ for(d in dfs) {
   load(file= here("data","tidy",d ))
 }
 
+# Set default theme for all plots
+
+theme_set(theme_minimal())
+
 ```
+
 
 # Analyse 
 
@@ -253,7 +225,6 @@ prijsindex_type_woning %>%
   filter(type_woning != "EGW") %>%
   ggplot(aes(x=date, y=prijsindex_type_woning)) +
   geom_line(aes(color = type_woning)) +
-  theme_minimal() +
   facet_wrap(~ type_woning) +
   labs(
     title = "Prijsindex Bestaande Koopwoningen (PBK)",
@@ -294,7 +265,6 @@ df %>%
   ggplot( aes( x = variable, y = value, fill = year) ) +
   geom_bar(color = "black",  stat="identity", position="dodge") +
   scale_fill_brewer()  + 
-  theme_minimal() +
   coord_flip() +
   labs(
     title = "Bevolkingssamenstelling",
@@ -322,7 +292,6 @@ bevolking %>%
                                                           "40 > 65 jaar",
                                                           "20 > 40 jaar",
                                                           "< 20 jaar"))  + 
-  theme_minimal() +
   labs(
     title = "Bevolkingsgroei",
     subtitle = "1950 tot 2020",
@@ -347,7 +316,6 @@ bevolking %>%
   drop_na %>% 
   ggplot(aes (x = date, y=value, fill = variable)) +
   geom_bar(stat="identity") +
-  theme_minimal() +
   scale_fill_brewer(palette = "Dark2") +
   labs(
     title = "Bevolkingsgroei",
@@ -387,13 +355,15 @@ aantal_hh %>%
   drop_na() %>% 
   ggplot(aes (x = date)) +
   geom_line(aes(y=value,  color = type_huishouden, linetype = variable )) +
-  theme_minimal() +
   scale_color_brewer(palette = "Accent") +
   labs(
     title = "Prognose huishoudens",
     y = "Aantal (x 1000)",
-    x = ''
-    ) 
+    x = '',
+    colour = "Type huishoudens",
+    linetype = ""
+  ) 
+  
 
 ```
 
@@ -421,7 +391,6 @@ voorraad_woningen %>%
   ggplot(aes(x=date, y = value, fill = variable )) +
   geom_bar(stat="identity") +
   geom_hline(yintercept  = 0, color = "steelblue") +
-  theme_minimal() +
   labs ( title = "Ontwikkelingen woningvoorraad",
          y = "Aantal (x 1000)",
          x = "Jaar") + 
@@ -449,7 +418,7 @@ df <-
             'woningvoorraad' ) %>%
   mutate(te_kort = (woningvoorraad - huishoudens)) %>%
   filter(date > as.Date("2000-01-01")) %>%
-  melt(id = c('date'))
+  melt(id = c('date')) 
 
 # Line plot
 lp<- 
@@ -470,16 +439,16 @@ bp <-
   filter (variable == 'te_kort') %>%
   ggplot(aes (x = date)) +
   geom_bar(stat = "identity" , 
-           aes(y = value, color = variable, fill = variable )) +
+           aes(y = value, fill = factor(variable, labels = c("Te Kort woningen")))) +
   labs ( y = "Te kort (x 1000)",
          x = "",
-         color = "", fill = "") +
+         fill = "") +
   theme( axis.text.x = element_blank(),
          axis.ticks = element_blank()) 
   
 
 ggarrange(lp, bp,  
-          heights = c(2, 0.7),
+          heights = c(2, 1),
           ncol = 1, nrow = 2, align = "v"
           )
 
@@ -512,41 +481,39 @@ Vanwege de (structurele) te korten op de woningmarkt lijken huizen prijzen in be
 
 
 ```{r}
-
-# De percentuale wijzingen zijn hier gecumuleerd. Is dit correct?
+# Huizenprijzen
 
 lp_prijzen <-
   prijsindex_woningen_lt %>% 
   filter(date >= as.Date('1995-01-01')) %>% 
   ggplot(aes(x = date)) +
   geom_line(aes( y = huisprijsindex), color = 'steelblue') +
-  theme_minimal() +
   labs(
-    title = "huizenprijzen",
+    title = "Huizenprijzen",
+    subtitle = "Index (2015 = 100)",
     y = "",
     x = ""
   ) 
 
 
-lp_gdp <-
+# GDP
+lp_gdp <- 
   gdp_lt %>% 
   filter(date >= as.Date('1995-01-01')) %>% 
   ggplot( aes(x=date, y=gdp_index)) +
     geom_line(color = 'steelblue') +
-    theme_minimal() +
     labs(
       title = "Ontwikkeling trend BBP (Bruto Binnenlands Product)",
-      y = "Trend",
+      y = "",
       x = ''
       ) 
 
-
+# Rente
 lp_rente <-
   hypotheek_rente %>%
   filter(period >= as.Date("1995-01-01")) %>% 
   ggplot( aes(x=period, y=hypotheek_rente)) +
   geom_line(color = 'steelblue')  +
-  theme_minimal() +
   labs(
     title = "Hypotheekrente",
     y = "gemiddelde rente",
@@ -560,7 +527,6 @@ lp_werkgelegenheid <-
   filter (date >= as.Date('1995-01-01')) %>% 
   ggplot(aes(x = period, y = werkgelegenheid)) +
   geom_line(color = 'steelblue') +
-  theme_minimal() +
   labs(
     title = "Werkgelegenheid",
     y = "(x 1000)",
@@ -569,18 +535,18 @@ lp_werkgelegenheid <-
 
 # Inkomen
 lp_inkomen <-
-inkomen_lt %>% 
+  inkomen_lt %>% 
   filter (date >= as.Date('1995-01-01')) %>% 
   ggplot(aes(x = period, y = inkomen)) +
   geom_line(color = 'steelblue') +
-  theme_minimal() +
   labs(
-    title = "Inkomen",
-    y = "(x 1000)",
+    title = "Inkomen per medewerker per kwartaal",
+    y = "EUR",
     x = ''
   ) 
 
-lp_conf <- 
+# Consumentenvertrouwen
+lp_conf <-
   consumenten_vertrouwen_lt_q %>% 
   filter (date >= as.Date('1995-01-01')) %>% 
   mutate(pos = ifelse(consumer_conf >= 0,consumer_conf, 0)) %>% 
@@ -588,8 +554,7 @@ lp_conf <-
   ggplot(aes(x = date)) +
   geom_area(aes(y = pos), fill = 'steelblue')  +
   geom_area(aes(y = neg), fill = 'indianred2')  +
-  geom_hline (yintercept = 0) +
-  theme_minimal() +
+  geom_hline (yintercept = 0, color = 'steelblue') +
   labs(
     title = "Consumenten vertrouwen indicator",
     y = "",
@@ -597,11 +562,11 @@ lp_conf <-
   ) 
 
 ggarrange(lp_prijzen, lp_gdp, lp_rente,lp_inkomen, lp_werkgelegenheid,lp_conf,
-          ncol = 1, nrow = 6, align = "v"
+          ncol = 2, nrow = 3, align = "v"
           )
 ```
 
-Over de vermogens van huishoudens is er helaas niet een langere termijn tijdsreeks beschikbaar.
+Over de vermogens van huishoudens is er helaas niet een langere termijn tijdsreeks beschikbaar. Een veronderstelling van dit onderzoek was dat door het gewijzigdde beleid en de stijgende huizenprijzen het vermogen van huishoudens zou stijgen. Daardoor heeft men ook weer meer vermogen beschikbaar voor de aanschaf van woningen wat een prijsopdrijvend effect zou hebben. Dit is door gebrek en data helaas niet verder te verifieren.
 
 ```{r}
 
@@ -631,186 +596,156 @@ rm(df_vermogen)
 
 ```
 
+### Regressie Huizenprijzen
+
+In deze fase voeren we een regressie analyse uit om te zien welke factoren de meest voorspellende waarde hebben voor de huizenprijzen.
+
+Correlatie van huisprijzen
+
+We vinden een zeer sterke correlatie tussen inkomen, werkgelegenheid, BBP en huizenprijzen. De verwachting is dat dit met name wordt veroorzaakt door de tijdswaarde. Over de jaren heen, stijgt het inkomen, daalt de rente, en stijgen de huizenprijzen.
 
 ```{r}
 
+# plot correlations
+corMatrix <- round(cor(df_rm_huizenprijzen %>% 
+                         select(-date)),5)
+
+corCols <- c("huisprijsindex", 
+             "werkgelegenheid",
+             "BBP",
+             "Cons.Vertrouwen", 
+             "Inkomen")
+
+colnames(corMatrix) <- corCols
+rownames(corMatrix) <- corCols
+
+corrplot(corMatrix,
+            title = "Correlatie huizenprijzen",
+            type = "lower", 
+            # tl.cex = 0.8,
+            tl.col = "black", 
+            tl.srt = 45) 
 
 ```
 
-Regressie gdp, huisprijzen en inkomen (stap 1)
-
-We vinden een zeer sterke correlatie tussen inkomen, werkgelegenheid en huizenprijzen. De verwachting is dat dit met name wordt veroorzaakt door de tijdswaarde. Over de jaren heen, stijgt het inkomen, daalt de rente,  en stijgen de huizenprijzen.
+Lineair regressie model voor inkomen en huizenprijzen.
 
 ```{r}
 
-# GDP is een percentuele increase per periode (jaar?)
-# Ik tel deze nu eerst cumulatief op
-
-df <- 
-  prijsindex_woningen_lt %>% 
-  full_join (inkomen_lt, by = c('date')) %>% 
-  full_join (werkgelegenheid_lt, by = c('date')) %>% 
-  full_join (gdp_lt, by = c('date')) %>% 
-  full_join (hypotheek_rente_q, by = c('date')) %>% 
-  full_join (consumenten_vertrouwen_lt_q, by = c('date')) %>% 
-  drop_na() %>% 
-  select (date, huisprijsindex, inkomen, werkgelegenheid, gdp_index, consumer_conf)  
-
-# Recalculate inkomen naar inkomenindex (2015 = 100)
-dfi <- 
-  df %>% 
-  filter (year(date) == '2015') %>% 
-  summarize(result = mean(inkomen))
-
-df <-
-  df %>% 
-  mutate(inkomenindex = (inkomen / dfi$result) * 100 )  
-
-df %>% 
+df_rm_huizenprijzen %>% 
   ggplot(aes(x = inkomenindex, y = huisprijsindex)) +
   geom_point() +
    geom_smooth(method = "lm")
   
 # Inkomen vs huizenprijzen
 
-lm_inkomen = lm(huisprijsindex~inkomenindex, data = df) #Create the linear regression
+lm_inkomen = lm(huisprijsindex~inkomenindex, 
+                data = df_rm_huizenprijzen) 
 
 tab_model(lm_inkomen)
 
 ```
 
-Lineair regressie model voor inkomen en prijsindex huizen.
+Lineair regressie model voor bruto binnenlands product en huizenprijzen.
 
 ```{r}
 
-# GDP geeft de beste match
-df %>% 
+# GDP geeft de beste fit
+
+df_rm_huizenprijzen %>% 
   drop_na() %>% 
   ggplot(aes(x = date, y = gdp_index)) +
   geom_line(color = 'steelblue') +
-  theme_minimal() +
   labs(
     title = "gdp incremental",
     y = "",
     x = ''
   ) 
 
-lm_gdp = lm(huisprijsindex~gdp_index, data = df)
+lm_gdp = lm(huisprijsindex~gdp_index, data = df_rm_huizenprijzen)
 
 tab_model(lm_gdp)
 
-df %>% 
+df_rm_huizenprijzen %>% 
   ggplot(aes(x = gdp_index, y = huisprijsindex)) +
   geom_point() +
   geom_smooth(method = "lm")
 
+df_rm_lm <- df_rm_huizenprijzen
+
 # Residuals tonen wel nog een patroon - dus er zit meer in de data
-df$predicted <- predict(lm_gdp)   # Save the predicted values
-df$residuals <- residuals(lm_gdp) # Save the residual values
+df_rm_lm$predicted <- predict(lm_gdp)   # Save the predicted values
+df_rm_lm$residuals <- residuals(lm_gdp) # Save the residual values
 
-ggplot(df, aes(x = gdp_index, y = residuals )) +
+ggplot(df_rm_lm, aes(x = gdp_index, y = residuals )) +
   geom_point(color = 'red', alpha = 0.5) +
-  theme_minimal() +
   labs(
-    title = "Residuals GDP Lineair Model",
+    title = "Residuals BBP Lineair Model",
     y = "Residuals",
-    x = 'GDP Index'
+    x = 'BBP Index'
   ) 
-
 
 ```
 
-Wanneer het model wordt uitgebreid met consumer confidence, kan marginaal nog een iets hogere correlatie worden gevonden.
-Toevoegen van werkgelegenheid of inkomen geeft geen betere resultaten.
+De residuals na deze correlatie laten wel zien dat er nog andere factoren zijn die van belang zijn voor het voorspellen van de huizenprijzen. 
+
+Wanneer het model wordt uitgebreid met consumer confidence, kan marginaal nog een iets hogere correlatie worden gevonden. Toevoegen van werkgelegenheid of inkomen geeft geen betere resultaten.
 
 ```{r}
 
-# Dit is niet goed. Er zit nog duidelijk wel een patroon in de residuals.
-lm_gdp2 = lm(huisprijsindex~gdp_index + consumer_conf, data = df) 
+lm_gdp2 = lm(huisprijsindex~gdp_index + consumer_conf, 
+             data = df_rm_huizenprijzen) 
+
 #Create a linear regression with a quadratic coefficient
 tab_model(lm_gdp2) #Review the results
 
 #Plot the Cooks Distances.
 ggplot(lm_gdp2, aes(seq_along(.cooksd), .cooksd)) +
-  geom_col(color = 'steelblue') +
-  theme_minimal() 
+  geom_col(color = 'steelblue') 
           
-
 # Multiple regressie, wordt de relatie niet heel veel beter van
-lm_gdp_wg = lm(huisprijsindex~gdp_index+werkgelegenheid, data = df) 
+lm_gdp_wg = lm(huisprijsindex~gdp_index+werkgelegenheid, 
+               data = df_rm_huizenprijzen) 
 tab_model(lm_gdp_wg)
 
 # Multiple regressie, wordt de relatie niet heel veel beter van
-lm_gdp_ink = lm(huisprijsindex~gdp_index+inkomenindex, data = df) 
+lm_gdp_ink = lm(huisprijsindex~gdp_index+inkomenindex, 
+                data = df_rm_huizenprijzen) 
 tab_model(lm_gdp_ink)
 
-# Plot van de multiple regressie
-
 ```
 
-MARS (multivariate adaptive regression splines)
 
-```{r}
-library(rsample)   # data splitting 
-library(ggplot2)   # plotting
-library(earth)     # fit MARS models
-library(caret)     # automating the tuning process
-# install.packages("vip")
-library(vip)       # variable importance
-# install.packages("pdp")
-library(pdp)       # variable relationships
+### Huizenprijzen voorspellen
 
-```
+Tot slot is voor een beter passend model nog gekeken naar MARS (multivariate adaptive regression splines [Friedman (1991a, 1991b)]. Deze methode splits de regressie in meerdere 'splines'. Waardoor een betere fit gevonden kan worden door rekening te houden met een non-lineaire relatie over de tijd.
 
-http://uc-r.github.io/mars
+Het MARS model kiest zelf de meest relevante parameters. Het MARS model komt hierbij uit op Inkomen en GBP. Wanneer met dit model geprobeerd wordt om de prijsontwikkeling van de afgelopen 5 jaar te voorspellen geeft dit model geen betere match.
 
 ```{r}
 
-set.seed(123)
-df_split <- initial_split(df, prop = .7, strata = "huisprijsindex")
-df_train <- training(df_split)
-df_test  <- testing(df_split)
+# Simple MARS model
+df_train <- df_rm_huizenprijzen %>% 
+  filter(date <= (max(df_rm_huizenprijzen$date) - years(5)))
+df_test <- df_rm_huizenprijzen %>% 
+  filter(date > (max(df_rm_huizenprijzen$date) - years(5)))
 
-# Much better fit...
-mars3 <- mda::mars(df$date, df$huisprijsindex, nk = 7, prune = FALSE)
-df %>%
-  mutate(predicted = as.vector(mars3$fitted.values)) %>%
-  ggplot(aes(date, huisprijsindex)) +
-  geom_point(size = 1, alpha = .2) +
-  geom_line(aes(y = predicted), size = 1, color = "blue") +
-  ggtitle("(D) Three knots")
 
-# Fit a basic MARS model
-mars1 <- earth(
-  huisprijsindex ~ .,  
-  data = df_train   
-)
+max(df_test$date)
 
-summary(mars1)
+# Tuning the model
+# Optimal number of defrees and number of variables to prune is calculated
 
-plot(mars1, which = 1)
-
-# Fit a basic MARS model
-mars2 <- earth(
-  huisprijsindex ~ .,  
-  data = df_train,
-  degree = 2
-)
-
-summary(mars2)
-
-plot(mars2, which = 1)
-
-# create a tuning grid
+# create a tuning grid 
 hyper_grid <- expand.grid(
   degree = 1:3, 
-  nprune = seq(2, 100, length.out = 10) %>% floor()
+  nprune = seq(2, 7)
   )
 
-head(hyper_grid)
 
 # for reproducibiity
 set.seed(123)
+
 # cross validated model
 tuned_mars <- train(
   x = subset(df_train, select = -huisprijsindex),
@@ -821,115 +756,72 @@ tuned_mars <- train(
   tuneGrid = hyper_grid
 )
 
-# best model
-tuned_mars$bestTune
-##    nprune degree
-## 14     34      2
-
 # plot results
 ggplot(tuned_mars)
 
-# multiple regression
-set.seed(123)
-cv_model1 <- train(
-  huisprijsindex ~ ., 
-  data = df_train, 
-  method = "lm",
-  metric = "RMSE",
-  trControl = trainControl(method = "cv", number = 10),
-  preProcess = c("zv", "center", "scale")
-  )
-# principal component regression
-set.seed(123)
-cv_model2 <- train(
-  huisprijsindex ~ ., 
-  data = df_train, 
-  method = "pcr",
-  trControl = trainControl(method = "cv", number = 10),
-  metric = "RMSE",
-  preProcess = c("zv", "center", "scale"),
-  tuneLength = 20
-  )
+# fit model
+fit <- earth(huisprijsindex~., df_train, 
+             degree = tuned_mars$bestTune$degree, nprune = tuned_mars$bestTune$nprune)
+# summarize the fit
+summary(fit)
 
-# partial least squares regression
-set.seed(123)
-cv_model3 <- train(
-  huisprijsindex ~ ., 
-  data = df_train, 
-  method = "pls",
-  trControl = trainControl(method = "cv", number = 10),
-  metric = "RMSE",
-  preProcess = c("zv", "center", "scale"),
-  tuneLength = 20
-  )
+# summarize the importance of input variables
+evimp(fit)
 
-# regularized regression
-set.seed(123)
-cv_model4 <- train(
-  huisprijsindex ~ ., 
-  data = df_train,
-  method = "glmnet",
-  trControl = trainControl(method = "cv", number = 10),
-  metric = "RMSE",
-  preProcess = c("zv", "center", "scale"),
-  tuneLength = 10
+# make predictions
+train_predictions <- predict(fit, df_train)
+test_predictions <- predict(fit, df_test)
+
+df_result <-
+  tibble (
+    date = df_train$date, 
+    huisprijsindex = df_train$huisprijsindex,  
+    predicted = train_predictions,
+    variable = 'train'
+  ) %>% 
+  union_all( 
+    tibble(
+      date = df_test$date, 
+      huisprijsindex = df_test$huisprijsindex,  
+      predicted = test_predictions,
+      variable = 'test')
 )
 
-# Dit geeft niets terug
-# extract out of sample performance measures
-summary(resamples(list(
-  Multiple_regression = cv_model1, 
-  PCR = cv_model2, 
-  PLS = cv_model3,
-  Elastic_net = cv_model4,
-  MARS = tuned_mars
-  )))$statistics$RMSE %>%
-  kableExtra::kable() %>%
-  kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
-
-
-# variable importance plots
-p1 <- vip(tuned_mars, num_features = 5, bar = FALSE, value = "gcv") + ggtitle("GCV")
-p2 <- vip(tuned_mars, num_features = 5, bar = FALSE, value = "rss") + ggtitle("RSS")
-gridExtra::grid.arrange(p1, p2, ncol = 2)
-
-coef(tuned_mars$finalModel) %>%
-  tidy() %>%
-  dplyr::filter(stringr::str_detect(names, "\\*"))
+df_result %>% 
+  ggplot(aes(date, huisprijsindex)) +
+  geom_point(size = 1) +
+  geom_line(aes(y = predicted, color = variable), size = 1, alpha = 1) +
+  labs(
+    title = "Voorspelling huizenprijzen MARS Model",
+    y = "huisprijsindex",
+    x = '',
+    color = 'dataset'
+  ) 
 
 
 ```
-
-
-Financiering huizen (inleg eigen geld)
-
-Nog altijd een groot deel van de woonhuizen in Nederland wordt gefinancieerd met een hypotheek.
-Welk deel wordt gefinancieerd met overwaarde - of inleg eigen geld?
-
-
-
-gegevens per maand, per regio 
-
---- evt. prognose nieuwbouw toevoegen ---
-
-Bouwkosten
-
-De prijzen van nieuwbouw zijn ten opzichte van bestaande woningen de laatste tijd harder gestegen. Een belangrijke factor hiervoor zouden de bouwkosten zijn.
-
-* _Beschikbaarheid bouwlocaties_
-* _Ruimtelijke ordeningbeleid_
 
 ### Regionale verschillen
 
 Er bestaan grote regionale verschillen in huisprijzen, en in de prijsonwikkeling over de tijd.
 
 ```{r}
-
+# Distribution
+verkoopprijs_regio %>% 
+  filter(date >= as.Date('2015-01-01')
+            ) %>% 
+  drop_na(verkoopprijs) %>% 
+  mutate(verkoopprijs = verkoopprijs / 1000) %>% 
+  ggplot(aes(x = verkoopprijs, color = '', fill = '') ) +
+  geom_density(alpha = 0.2) +
+  scale_fill_manual( values = c("steelblue")) +
+  scale_color_manual( values = c("steelblue")) +
+  facet_wrap(~jaar) +
+  labs(title = "Distributie verkoopprijzen (2015-2020)",
+        x = "Verkoopprijs (x 1000 eur)") + 
+  theme(legend.position = "none")
 
 # Create a thematic map
-
-verkoopprijs_regio$jaar <- format(verkoopprijs_regio$date, '%Y')
-
 verkoopprijs_regio %>%
   filter(date >= as.Date('2015-01-01')
            ) %>% 
@@ -943,15 +835,17 @@ verkoopprijs_regio %>%
        fill = "(x 1000 eur)") +
   theme_void()
 
+
+# Add house prices per region (Boxplots)
+
 ```
-
-
 
 
 
 ## Aantal transacties
 
 Het aantal transacties heeft inde crisis jaren 2009 - 2012 een duidelijke terugval laten zien. Sindsdien zien we een snele inhaalbeweging, en nog steeds zien we aanzienlijk hogere transactie volumes dan voorheen.
+
 
 ```{r}
 verkochte_woningen_per_type_per_kwartaal %>% 
@@ -963,7 +857,6 @@ verkochte_woningen_per_type_per_kwartaal %>%
                                   'Onbekend'))) %>% 
   ggplot(aes(x=date, y=verkochte_bestaande_woningen )) +
   geom_line(aes(color = subtype)) +
-  theme_minimal() +
   facet_wrap(~ subtype, ncol = 2, scales = "free") +
   labs(
     title = "Verkopen Bestaande Koopwoningen per kwartaal",
@@ -976,29 +869,58 @@ verkochte_woningen_per_type_per_kwartaal %>%
 
 Wanneer we kijken naar het aantal transacties valt verder de piek op in apartementen op in Q4 2020. Dit is te verklaren door de wijziging in de regelgeving voor beleggers. Particuliere beleggens op de woningmarkt moeten vanaf 2021 8% overdrachtsbelasting betalen. Dit heeft gezorgt voor een piek aan aankopen in het laatste kwartaal van 2020.
 
+
+Voorspellen van aantal transacties
+
+Ook hier wordt eerst gekeken naar de correlaties
+
+```{r}
+corMatrix <- round(cor(df_rm_transactions %>% 
+                         select(-date)),5)
+
+corCols <- c("huisprijsindex", 
+             "Inkomen",
+             "werkgelegenheid",
+             "BBP",
+             "Cons.Vertrouwen", 
+             "Aantal huishoudens",
+             "Aantal transacties")
+
+colnames(corMatrix) <- corCols
+rownames(corMatrix) <- corCols
+
+corrplot(corMatrix,
+            title = "Correlatie transacties",
+            type = "lower", 
+            tl.cex = 0.8,
+            tl.col = "black", 
+            tl.srt = 45) 
+
+```
+
+
 Seizoensinvloeden bij het aantal transacties
 
 Om de seizoensinvloeden verder te analyseren heb ik een tijdreeksanalyse uitgevoerd op de data.
 De ACf (auto correlatie) plot toont dat meer recente data significant is, wat een trend aangeeft in de data. De PACF plot (partial auto-correlation function) toont dat recente data en seizoensinvloeden een goede indicatie geven voor het modeleren van de trend.
 
-De uiteindelijke voorspelling heeft niet veel meer waarde dan we hier op het blote oog uit kunnen halen. Bovendien worden recente trends doorgetrokken - waar op termijn juist een terugkeer naar een meer stabiel aantal transacties zou mogen worden verwacht.
+De uiteindelijke voorspelling laat duidelijk het seizoenspatroon zien. Verder wordt door dit model de recente trend doorgetrokken, waar eigenlijk de verwachting zou zijn dat op termijn de huizenmarkt terug keert naar een stabiel aantal transacties.
 
 
 ```{r}
-
-vw <- verkochte_woningen_per_type_per_kwartaal %>% 
-  group_by (yearqtr) %>% 
-  summarise(totaal = sum(verkochte_bestaande_woningen) / 1000 )
+# 
+# vw <- verkochte_woningen_per_type_per_kwartaal %>% 
+#   group_by (yearqtr) %>% 
+#   summarise(totaal = sum(verkochte_bestaande_woningen) / 1000 )
 
 # Time series object
-vwts <- ts(vw["totaal"], 
+vwts <- ts(verkochte_woningen_per_kwartaal["totaal"], 
               start = c(1995, 1), frequency = 4)
 
 v1 <- 
   vwts %>%
   autoplot() +
   geom_smooth() +
-  theme_minimal() +
   labs(
     title = "Verkopen Bestaande Koopwoningen per kwartaal",
     y = "(x 1000)",
@@ -1008,7 +930,6 @@ v1 <-
 v2 <- 
   vwts %>% 
   ggsubseriesplot() +
-  theme_minimal() +
   labs(
     title = "",
     y = "(x 1000)",
@@ -1021,7 +942,7 @@ cowplot::plot_grid(v1, v2, ncol=1, rel_heights = c(1, 1.5))
 # Lag plot of non-seasonal effects
 gglagplot(vwts, do.lines = FALSE) +
   labs(
-    title = "Lagpolt seizoensinvloeden Verkopen Bestaande Koopwoningen",
+    title = "Seizoensinvloeden Verkopen Bestaande Koopwoningen",
     y = "",
     x = '',
     color = 'Quarter'
@@ -1057,8 +978,9 @@ fit <-
   Arima(vwts, order=c(0,1,4), seasonal=c(0,1,1))
 checkresiduals(fit)
 
-fit %>% forecast(h=12) %>% autoplot() +
-  theme_minimal() +
+fit %>% 
+  forecast(h=12) %>% 
+  autoplot() +
   labs(
     title = "Verwachting verkopen bestaande koopwoningen",
     y = "",
@@ -1067,49 +989,86 @@ fit %>% forecast(h=12) %>% autoplot() +
 
 ```
   
+Voorspellen aantal transacties
+
+Ook is het mogelijk om net als bij de huizenprijzen, een MARS model toe te passen op het aantal transacties. 
+
+Het aantal transactie geeft een redelijke prognose. In ieder geval een betere aansluiting dan bij de huizenprijzen. Het MARS model heeft op basis van deze dataset en de gekozen variabelen de periode en het aantal huishoudens aangewezen als de belangrijkse voorspellende factoren.
 
 ```{r}
-# aanbod_huizen %>%
-#   filter(set == "Totaal") %>%
-#   ggplot(aes(x=datum )) +
-#   geom_line(aes(y=vraagprijs)) +
-#   theme(legend.position = "bottom") +
-#   labs(title = "Vraagprijs woningen")
+
+df_train <- df_rm_transactions %>% 
+  filter(date <= (max(df_rm_transactions$date) - years(5)))
+df_test <- df_rm_transactions %>% 
+  filter(date > (max(df_rm_transactions$date) - years(5)))
+
+
+# Tuning the model
+# Optimal number of defrees and number of variables to prune is calculated
+
+# create a tuning grid 
+hyper_grid <- expand.grid(
+  degree = 1:3, 
+  nprune = seq(2, 10)
+  )
+
+
+# for reproducibiity
+set.seed(123)
+
+# cross validated model
+tuned_mars <- train(
+  x = subset(df_train, select = -totaal),
+  y = df_train$totaal,
+  method = "earth",
+  metric = "RMSE",
+  trControl = trainControl(method = "cv", number = 27),
+  tuneGrid = hyper_grid
+)
+
+# plot results
+ggplot(tuned_mars)
+
+# fit model
+fit <- earth(totaal~., df_train, 
+             degree = tuned_mars$bestTune$degree, nprune = tuned_mars$bestTune$nprune)
+# summarize the fit
+summary(fit)
+
+# summarize the importance of input variables
+evimp(fit)
+
+# make predictions
+train_predictions <- predict(fit, df_train)
+test_predictions <- predict(fit, df_test)
+
+df_result <-
+  tibble (
+    date = df_train$date, 
+    totaal = df_train$totaal,  
+    predicted = train_predictions,
+    variable = 'train'
+  ) %>% 
+  union_all( 
+    tibble(
+      date = df_test$date, 
+      totaal = df_test$totaal,  
+      predicted = test_predictions,
+      variable = 'test')
+)
+
+df_result %>% 
+  ggplot(aes(date, totaal)) +
+  geom_point(size = 1) +
+  geom_line(aes(y = predicted, color = variable), size = 1, alpha = 1) +
+  labs(
+    title = "Voorspelling aantal transacties MARS Model",
+    y = "Aantal transacties",
+    x = '',
+    color = 'dataset'
+  ) 
+
 ```
-
-```{r}
-# aanbod_huizen %>%
-#   filter(set != "Totaal") %>%
-#   ggplot(aes(x=datum )) +
-#   geom_line(aes(y=aantal, color = set)) +
-#   theme(legend.position = "bottom")
-```
-
-
-```{r}
-# aanbod_huizen %>%
-#   filter(type != "Totaal") %>%
-#   ggplot(aes(x=datum )) +
-#   geom_line(aes(y=aanbodtijd, color = set)) +
-#   theme(legend.position = "bottom")
-```
-
-
-```{r}
-# hypotheek_rente  %>%
-#   ggplot(aes(x=period, y = mortgage_interest )) +
-#   geom_line()
-```
-
-
-<!-- ```{r} -->
-<!-- transacties_per_type %>% -->
-<!--   ggplot(aes(x=monthly , y=aantal_verkocht, color= type_woning, fill = type_woning)) + -->
-<!--   geom_bar(stat="identity") + -->
-<!--   theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position = "bottom") + -->
-<!--   labs(x = "", y = "", title = "Aantal verkocht per type") -->
-<!-- ``` -->
-
 
 # Conclusies
 
@@ -1117,4 +1076,7 @@ fit %>% forecast(h=12) %>% autoplot() +
 
  https://www.youtube.com/watch?v=5UvrPO4eY5A&feature=emb_logo
  
+
 # Referenties
+
+
