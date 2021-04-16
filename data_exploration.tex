@@ -1,0 +1,2579 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Ontwikkelingen huizenmarkt},
+  pdfauthor={Merijn van Miltenburg},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\title{Ontwikkelingen huizenmarkt}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Huizenprijzen en transactievolumes in Nederland}
+\author{Merijn van Miltenburg}
+\date{08/04/2021}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{inleiding}{%
+\section{Inleiding}\label{inleiding}}
+
+De volksbank is het moederbedrijf van ASN, SNS, BLG en Regiobank. Als de
+vierde bank van Nederland, financiert de volksbank hypotheken, beheert
+ze spaargeld en biedt de bank klanten een betaalrekening. Binnen de
+afdeling Financial Markets van de Volksbank, hebben de macro-economen
+van de Volksbank als taak de toestand in de economie te monitoren en toe
+te lichten aan directie en beleidsmakers. Een belangrijk onderdeel
+daarvan heeft betrekking met de ontwikkeling van de hypotheekmarkt in
+Nederland. De huizenmarkt is een belangrijke factor in de
+beleidsontwikkeling van de bank, met betrekking tot de
+hypotheekproductie.
+
+Voor deze analyse is de PPDAC cyclus ( Problem, Plan, Data, Analysis,
+and Conclusions) gevolgd. Een methode voor het uitvoeren van statistisch
+onderzoek (MacKay \& Oldford, 2000). De opbouw van dit verslag volgt
+deze cyclus. In de volgende paragraaf wordt eerst de probleemstelling
+nader toegelicht. Vervolgens is in de planningsfase gekeken wat de
+belangrijkste indicatoren zijn om de vraagstelling te beantwoorden. De
+data die nodig is voor dit onderzoek is verzameld en vervolgens
+geanalyseerd. Op basis daarvan worden tot slot een aantal conclusies
+getrokken. Deze cyclus is een aantal keer doorlopen - op basis van de
+uitkomsten. De fasering van deze cyclus komt terug in de
+probleemstelling en de hoofdstukindeling van deze studie.
+
+\hypertarget{probleemstelling}{%
+\section{Probleemstelling}\label{probleemstelling}}
+
+Uit het overleg met de macro-economen is de vraag naar voren gekomen of
+een beter voorspellend model kan worden ontwikkeld voor de huizenmarkt
+in Nederland.
+
+Is het mogelijk om modellen te ontwikkelen die de huizenprijs op
+middellange termijn voorspelt en het aantal transacties op de
+huizenmarkt op middellange termijn voorspelt?"
+
+Vanuit de Volksbank is in het verleden al eerder statistisch onderzoek
+gedaan naar deze verbanden. Voor de huizenprijzen is eerder gekeken naar
+een verband tussen huizenprijzen en de werkgelegenheid, lonen, BBP
+(Bruto Binnenlands Product) en rente. In deze exploratie wordt gekeken
+naar mogelijke factoren die effect hebben op de marktprijs. De hier
+genoemde factoren zullen hierbij worden meegenomen.
+
+Welke factoren spelen een belangrijke rol in het bepalen van de
+huizenprijzen en transactie volumes op een termijn van 2 tot 5 jaar?
+
+Voor beantwoording van deze vraag wordt eerst gekeken in hoeverre de
+huizenprijzen worden bepaald door wijzigingen in vraag en aanbod. Daarna
+wordt verder ingegaan op de factoren die op langere termijn de
+huizenprijzen beïnvloeden en wordt gekeken of hier voorspellende waarde
+in zit.
+
+Vervolgens wordt gekeken naar de transactievolumes. Welke factoren
+spelen een belangrijke rol in het bepalen van de transactievolumes op
+een termijn van 2 tot 5 jaar? Voor het aantal transacties op de lange
+termijn wordt een verband verondersteld met het aantal huishoudens. Op
+kortere termijn spelen economische groei, rentestanden en ook
+verandering van regelgeving een rol. In welke mate spelen
+seizoensinvloeden hierbij een rol?
+
+Aanvullend zijn er nog een aantal vragen geformuleerd waar mogelijk door
+middel van exploratie iets meer over kan worden gezegd:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Nederland heeft een van de hoogste persoonlijke schulden
+  (hypotheeklast) in de wereld. Wat zijn de gevolgen voor de
+  hypotheekmarkt van het gewijzigde beleid? Heeft dit effect op de
+  huizenprijzen?
+\item
+  Hoe ontwikkeld de krapte op de huizenmarkt zich, op termijn? Momenteel
+  zijn er ambitieuze plannen om ergens tussen de 75.000 en 100.000
+  woningen per jaar te gaan bouwen. Het aanbod aan huizen wordt dus
+  groter - terwijl op termijn verwacht wordt dat de bevolking weer gaat
+  krimpen. Kunnen we hier een voorspelling van maken?
+\item
+  Hoe zit het met de bevolkingsgroei? Welk deel van de aanwas in
+  Nederland komt door migratie? Hoe zit dat regionaal? Is er nog sprake
+  van verstedelijking na corona? Stroomt het platteland leeg - en de
+  randstad vol? Welk effect heeft dit op de huizenprijzen?
+\item
+  Zien we demografisch verdeeld verschillen waar mensen willen wonen?
+  Verhuizen gezinnen met kinderen naar het platteland, en ouderen weer
+  naar de stad? Het aantal huishoudens dat uit 1 persoon bestaat is erg
+  gegroeid in de loop der tijd - en zal (denk ik) nog wel doorstijgen
+  met de vergrijzing. Betekent dit dat er meer mensen naar de stad
+  willen verhuizen?
+\item
+  Hoe afhankelijk is de huizenmarkt van de stand van de economie? Gaan
+  huizenprijzen alleen omhoog tijdens de groeifase van de economie?
+\end{enumerate}
+
+\hypertarget{plan}{%
+\section{Plan}\label{plan}}
+
+Om een begin te maken met het beantwoorden van deze vragen zijn een
+aantal gesprekken gevoerd met specialisten bij de Volksbank. Aanvullend
+is een korte literatuurstudie uitgevoerd naar de factoren die op lange
+termijn de prijsstelling beïnvloeden. Het CBS publiceert vrij veel over
+de prijsontwikkeling van bestaande woningen, nieuwe woningen en de stand
+van de economie (CBS, 2016), (CBS, 2020), (``Monitor koopwoningmarkt,''
+2020), (Groot, Vogt, Van der Wiel, \& Van Dijk, 2018). De Socrates
+modellen sluiten goed aan bij deze vraagstelling (Kenneth Gopal, Gerard
+van Leeuwen, David Omtzigt, 2020).
+
+Vraag en aanbod worden bepaald door:
+
+\begin{column}{0.48\textwidth}
+
+Vraag woningen:
+
+\begin{itemize}
+\tightlist
+\item
+  Aantal huishoudens
+\item
+  Demografie (omvang en samenstelling huishoudens)
+\item
+  (Arbeids-)migratie
+\end{itemize}
+
+
+\end{column}
+
+\begin{column}{0.04\textwidth}
+~
+
+\end{column}
+
+\begin{column}{0.48\textwidth}
+
+Aanbod woningen:
+
+\begin{itemize}
+\tightlist
+\item
+  Woningvoorraad
+\item
+  Nieuwbouw/ Sloop
+\item
+  Bouwkosten
+\item
+  Beschikbaarheid bouwlocaties
+\item
+  Ruimtelijkeordeningsbeleid
+\end{itemize}
+
+
+\end{column}
+
+\newline
+
+Daarna is verder ingegaan op de factoren die van invloed zijn bij de
+prijsontwikkeling op de woningmarkt. Hierbij kan een onderscheidt
+gemaakt worden in factoren die direct de prijsontwikkeling beïnvloeden -
+en factoren die meer aanduiden of er sprake is van oververhitting op de
+woningmarkt (Groot et al., 2018).
+
+\begin{column}{0.48\textwidth}
+
+Indicatoren prijsontwikkeling woningmarkt
+
+\begin{itemize}
+\tightlist
+\item
+  Gem. huizenprijzen afgelopen perioden (prijsindex)
+\item
+  Besteedbaar Inkomen
+\item
+  Particulier vermogen
+\item
+  Werkloosheid
+\item
+  Rentestanden
+\item
+  Consumentenvertrouwen
+\item
+  Fiscale behandeling, subsidies
+\item
+  Toegang tot krediet
+\item
+  Financiering hypotheek of eigen geld
+\item
+  Voorkeuren van kopers
+\item
+  Percentage huur/ koop woningen
+\end{itemize}
+
+
+\end{column}
+
+\begin{column}{0.48\textwidth}
+
+Indicatoren oververhitting woningmarkt
+
+\begin{itemize}
+\tightlist
+\item
+  Gem. huurprijzen (berekenen verhouding koop/huur)
+\item
+  Aantal woningen dat te koop staat
+\item
+  Gem. duur dat een woning te koop staat
+\item
+  Verschil tussen aanbodprijs en transactieprijs
+\item
+  Aanbod huizen
+\end{itemize}
+
+
+\end{column}
+
+\newline
+
+Het aantal transacties wordt verondersteld met name bepaald te worden
+door het aantal huishoudens. Daarnaast kan door krapte op de woningmarkt
+een schaarste ontstaan waardoor de woningmarkt `op slot' geraakt.
+Tijdelijk kunnen woningen ook te duur worden wanneer huiseigenaren hun
+prijzen niet verlagen in tijden van laagconjunctuur. Het
+consumentenvertrouwen speelt hierbij een belangrijke rol.
+
+Indicatoren aantal transacties
+
+\begin{itemize}
+\tightlist
+\item
+  Aanbod huizen
+\item
+  Toegang tot krediet
+\item
+  Werkloosheid
+\item
+  Consumentenvertrouwen
+\item
+  Verschil aanbodprijs en transactieprijs
+\item
+  Aantal dagen aangeboden
+\end{itemize}
+
+\hypertarget{data}{%
+\section{Data}\label{data}}
+
+De gewenste informatie is opgevraagd bij de statistici (via Reuters
+Datastream) en later aangevuld met open data van het CBS (Statline).
+Voor het inlezen van de (spreadsheet) Reutersdata zijn een aantal
+functies ontwikkeld. Om de data van het CBS gemakkelijker in te kunnen
+lezen is een routine ontwikkeld die aan de hand van metadata de
+gevraagde data inleest. Routines voor het lezen en opschonen van de
+data, zijn opgeslagen in separate R files.
+
+De data die via die routines is opgehaald en opgeschoond is tussentijds
+opgeslagen in Rdata formaat - en kan voor de analyse hierdoor direct
+worden ingelezen. Op deze wijze is een scheiding aangebracht tussen de
+data-acquisitie en de analyse van de resultaten.
+
+Ter beperking van de omvang van dit onderzoek is een selecties gemaakt
+op basis van de beschikbare data.
+
+Gegevens over de verhouding tussen huur en koopprijzen, het aantal te
+koop staande huizen, de gem. tijd dat een woning te koop staat en de
+prijsverschillen tussen aanbodprijs en transactieprijs zeggen iets over
+de mate van oververhitting van de markt (zie Groot et al. (2018)). Ik
+beschik echter niet over voldoende data om hier een tijdsanalyse over
+uit te voeren. Deze data is verder buiten deze analyse gelaten.
+
+Voor de indicatoren over het aantal transacties is in eerste instantie
+gekeken naar tijdreeksanalyse van de transacties zelf (autocorrelatie).
+Daarna is tevens gekeken naar de mate waarin we de transactievolumes
+kunnen voorstellen aan de hand van economische indicatoren.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{ (tidyverse)          }\CommentTok{# Tidyverse utilities (Wickham et al. 2019)}
+\KeywordTok{library}\NormalTok{ (here)               }\CommentTok{# here: A Simpler Way to Find Your Files (Müller 2020))}
+\KeywordTok{library}\NormalTok{ (lubridate)          }\CommentTok{# Dates and Times Made Easy (Grolemund, Wickham 2011))}
+\KeywordTok{library}\NormalTok{ (reshape2)           }\CommentTok{# Reshaping Data (Hadley Wickham 2007)}
+\KeywordTok{library}\NormalTok{ (knitr)              }\CommentTok{# A General-Purpose Package for Dynamic Report Generation (Xie 2021)}
+\KeywordTok{library}\NormalTok{ (kableExtra)         }\CommentTok{# Construct Complex Table with 'kable' and Pipe Syntax(Zhu 2021)}
+\KeywordTok{library}\NormalTok{ (viridis)            }\CommentTok{# Default Color Maps from 'matplotlib' (Garnier 2018)}
+\KeywordTok{library}\NormalTok{ (forcats)            }\CommentTok{# Tools for Working with Categorical Variables (Factors) (Wickham 2021)}
+\KeywordTok{library}\NormalTok{ (forecast)           }\CommentTok{# Forecasting functions for time series and linear models (Hyndman et al. 2021)}
+\KeywordTok{library}\NormalTok{ (fpp2)               }\CommentTok{# Data for "Forecasting: Principles and Practice" (Hyndman 2020)}
+\KeywordTok{library}\NormalTok{ (zoo)                }\CommentTok{# S3 Infrastructure for Regular and Irregular Time}
+                             \CommentTok{# Series (Zeileis and Grothendieck 2005)}
+\KeywordTok{library}\NormalTok{ (urca)               }\CommentTok{# Analysis of Integrated and Cointegrated }
+                             \CommentTok{# Time Series with R (Pfaff 2008)}
+\KeywordTok{library}\NormalTok{ (cowplot)            }\CommentTok{# Streamlined Plot Theme and Plot Annotations }
+                             \CommentTok{# for 'ggplot2' (Claus O. Wilke 2020)}
+\KeywordTok{library}\NormalTok{ (sjPlot)             }\CommentTok{# Data Visualization for Statistics in Social Science (Lüdecke 2021)}
+\KeywordTok{library}\NormalTok{ (sf)                 }\CommentTok{# Standardized Support for Spatial Vector Data (Pebesma 2018)}
+\KeywordTok{library}\NormalTok{ (rsample)            }\CommentTok{# General Resampling Infrastructure (Silge, Chow, Kuhn and Wickham 2021)}
+\KeywordTok{library}\NormalTok{ (earth)              }\CommentTok{# Multivariate Adaptive Regression Splines (Milborrow, 2020)}
+\KeywordTok{library}\NormalTok{ (caret)              }\CommentTok{# Classification and Regression Training (Kuhn 2020)}
+\KeywordTok{library}\NormalTok{ (vip)                }\CommentTok{# Variable Importance Plots (Greenwell and Boehmke 2020)}
+\KeywordTok{library}\NormalTok{ (pdp)                }\CommentTok{# Constructing Partial Dependence Plots (Greenwell 2017)}
+\KeywordTok{library}\NormalTok{ (timetk)             }\CommentTok{# A Tool Kit for Working with Time Series}
+                             \CommentTok{# in R (Dancho and Vaughan 2021)}
+\KeywordTok{library}\NormalTok{ (corrplot)           }\CommentTok{# Visualization of a Correlation Matrix (Wei and Simko 2017)}
+\KeywordTok{library}\NormalTok{ (stargazer)          }\CommentTok{# Well-formatted regression summary statistics (Hlavac 2018) }
+\KeywordTok{library}\NormalTok{ (dynlm)              }\CommentTok{# Dynamic linair models and time series regression (Zeileis 2019)}
+\KeywordTok{library}\NormalTok{ (broom)              }\CommentTok{# Convert Statistical Objects into Tidy Tibbles (Robinson, Hayes and Couch 2021)}
+\KeywordTok{library}\NormalTok{ (pacman)             }\CommentTok{# Package Management for R (Rinker, Kurkiewicz 2017)}
+
+
+\CommentTok{# Export Citations as Bibtex (.bib)}
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{write_bib}\NormalTok{(}\DataTypeTok{file=}\StringTok{"Bibliography of packages.bib"}\NormalTok{)}
+\CommentTok{# Table (.csv) with all information on the packages}
+\NormalTok{appendix_packages <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{Packagename =} \KeywordTok{character}\NormalTok{(),}
+                                \DataTypeTok{Version =} \KeywordTok{character}\NormalTok{(),}
+                                \DataTypeTok{Maintainer =} \KeywordTok{character}\NormalTok{())}
+
+
+\ControlFlowTok{for}\NormalTok{ (pkg }\ControlFlowTok{in} \KeywordTok{p_loaded}\NormalTok{())\{}
+\NormalTok{  appendix_packages <-}\StringTok{ }\NormalTok{appendix_packages }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{add_row}\NormalTok{(}
+    \DataTypeTok{Packagename =}\NormalTok{ pkg,}
+    \DataTypeTok{Version =} \KeywordTok{as.character}\NormalTok{(}\KeywordTok{packageVersion}\NormalTok{(pkg)),}
+    \DataTypeTok{Maintainer =} \KeywordTok{maintainer}\NormalTok{(pkg)}
+\NormalTok{  )}
+\NormalTok{\}}
+
+\CommentTok{# Write citations for R packages }
+\KeywordTok{write.csv}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ appendix_packages, }\DataTypeTok{file =} \StringTok{"List_of_packages.csv"}\NormalTok{, }\DataTypeTok{row.names =}\NormalTok{ F)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Loading the datasets}
+\CommentTok{# Data is read in module readdata.R}
+\CommentTok{# Data is then stored in Rdata format - and is loaded here for further analyses.}
+
+\NormalTok{dfs<-}\KeywordTok{list.files}\NormalTok{(}\KeywordTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{,}\StringTok{"tidy"}\NormalTok{), }\DataTypeTok{pattern =} \StringTok{"*.Rdata"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(d }\ControlFlowTok{in}\NormalTok{ dfs) \{}
+  \KeywordTok{load}\NormalTok{(}\DataTypeTok{file=} \KeywordTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{,}\StringTok{"tidy"}\NormalTok{,d ))}
+\NormalTok{\}}
+
+\CommentTok{# Set default theme for all plots}
+\KeywordTok{theme_set}\NormalTok{(}\KeywordTok{theme_minimal}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{analyse}{%
+\section{Analyse}\label{analyse}}
+
+\hypertarget{prijsontwikkeling-woningmarkt}{%
+\subsection{Prijsontwikkeling
+woningmarkt}\label{prijsontwikkeling-woningmarkt}}
+
+Prijzen van koopwoningen zijn de laatste jaren erg sterk toegenomen. We
+zien kleine verschillen per type woning. Waarbij met name appartementen
+de laatste tijd relatief duurder zijn geworden.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{prijsindex_type_woning }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(type_woning }\OperatorTok{!=}\StringTok{ "Totaal woningen"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(type_woning }\OperatorTok{!=}\StringTok{ "EGW"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{date, }\DataTypeTok{y=}\NormalTok{prijsindex_type_woning)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color =}\NormalTok{ type_woning)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\StringTok{ }\NormalTok{type_woning) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Prijsindex Bestaande Koopwoningen (PBK)"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{""}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}\NormalTok{,}
+    \DataTypeTok{color =} \StringTok{'Type woning'}
+\NormalTok{    ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/prijsindex-1.pdf}
+
+\hypertarget{vraag-naar-woningen}{%
+\subsubsection{Vraag naar woningen}\label{vraag-naar-woningen}}
+
+Bij de factoren die de vraag naar woningen bepalen kijken we naar de
+ontwikkeling van het aantal huishoudens en de samenstelling van de
+huishoudens. Nederlanders worden steeds ouder, en gezinnen worden
+kleiner. Deze ontwikkeling leidt mogelijk tot een verschuiving in de
+vraag - van eengezinswoningen naar kleinere woningen.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bevolking }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{ (date, kl_}\DecValTok{20}\NormalTok{_jaar, v20_}\DecValTok{40}\NormalTok{_jaar, v40_}\DecValTok{65}\NormalTok{_jaar, v65_}\DecValTok{80}\NormalTok{_jaar, gd_}\DecValTok{80}\NormalTok{_jaar) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{ (date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"1995-01-01"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{melt}\NormalTok{ (}\DataTypeTok{id =} \KeywordTok{c}\NormalTok{(}\StringTok{'date'}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{ ( }\DataTypeTok{variable =} \KeywordTok{factor}\NormalTok{(variable), }
+           \DataTypeTok{variable =} \KeywordTok{factor}\NormalTok{(variable, }\DataTypeTok{levels =} \KeywordTok{rev}\NormalTok{(}\KeywordTok{levels}\NormalTok{(variable)))) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{ (}\DataTypeTok{value =}\NormalTok{ value }\OperatorTok{/}\StringTok{ }\DecValTok{1000}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{ ( }\KeywordTok{aes}\NormalTok{( }\DataTypeTok{x =}\NormalTok{ date, }\DataTypeTok{y =}\NormalTok{ value, }\DataTypeTok{fill =}\NormalTok{ variable) ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_area}\NormalTok{(}\DataTypeTok{color =} \StringTok{"darkgrey"}\NormalTok{, }\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.8}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Bevolkingsgroei"}\NormalTok{,}
+    \DataTypeTok{subtitle =} \StringTok{"1995 tot 2020"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"Aantal (x 1000)"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}\NormalTok{,}
+    \DataTypeTok{caption =} \StringTok{"Bron: CBS, Bevolking; kerncijfers"}
+\NormalTok{    )  }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/population_growth-1.pdf}
+
+De groei van de Nederlandse bevolking wordt in de laatste jaren steeds
+meer bepaald door migratie. Het geboorteoverschot (aantal nieuw
+geborenen -/- aantal sterfgevallen is nog nooit zo laag geweest).
+Mogelijk leidt dit tot een verschuiving in de vraag naar meer woningen
+in de steden. Dit zou verder onderzocht moeten worden.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bevolking }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{ (date, geboorteoverschot, migratiesaldo) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{ (date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"1970-01-01"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{melt}\NormalTok{ (}\DataTypeTok{id =} \KeywordTok{c}\NormalTok{(}\StringTok{'date'}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{ (}\DataTypeTok{value =}\NormalTok{ value }\OperatorTok{/}\StringTok{ }\DecValTok{1000}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\NormalTok{drop_na }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{ (}\DataTypeTok{x =}\NormalTok{ date, }\DataTypeTok{y=}\NormalTok{value, }\DataTypeTok{fill =}\NormalTok{ variable)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Bevolkingsgroei"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"Aantal (x 1000)"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}\NormalTok{,}
+    \DataTypeTok{fill =} \StringTok{''}\NormalTok{,}
+    \DataTypeTok{caption =} \StringTok{"Bron: CBS, Bevolking; kerncijfers"}
+\NormalTok{    ) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/population_details-1.pdf}
+
+Het CBS maakt regelmatig een prognose van de verwachte groei. Hier zien
+we dat deze trend zich de aankomende jaren voortzet. De groei komt
+voornamelijk door de groei van het aantal eenpersoonshuishoudens. De
+laatste prognoses zijn overigens van 2019. In de prognose zien we een
+afvlakking van de groei van het aantal huishoudens rond 2040.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{aantal_hh <-}\StringTok{ }
+\StringTok{  }\NormalTok{bevolking }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{( date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"1970-01-01"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{ (date,}
+\NormalTok{            eenpersoonshuishoudens,}
+\NormalTok{            meerpersoonshuishoudens) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{melt}\NormalTok{(}\DataTypeTok{id =} \KeywordTok{c}\NormalTok{(}\StringTok{'date'}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{set_names}\NormalTok{ (}\StringTok{'date'}\NormalTok{,}\StringTok{'type_huishouden'}\NormalTok{, }\StringTok{'aantal'}\NormalTok{)}
+  
+  
+\NormalTok{prognose_hh <-}
+\StringTok{  }\NormalTok{prognose_huishoudens_}\DecValTok{2019} \OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{ (date,}
+\NormalTok{            eenpersoonshuishoudens,}
+\NormalTok{            meerpersoonshuishoudens) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{melt}\NormalTok{(}\DataTypeTok{id =} \KeywordTok{c}\NormalTok{(}\StringTok{'date'}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{set_names}\NormalTok{ (}\StringTok{'date'}\NormalTok{,}\StringTok{'type_huishouden'}\NormalTok{, }\StringTok{'prognose'}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{prognose =}\NormalTok{ prognose }\OperatorTok{/}\StringTok{ }\DecValTok{1000}\NormalTok{)}
+
+\NormalTok{aantal_hh }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{ (}\DataTypeTok{x =}\NormalTok{ date, }\DataTypeTok{y=}\NormalTok{value, }\DataTypeTok{fill =}\NormalTok{ variable)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_area}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=}\NormalTok{aantal,  }
+                 \DataTypeTok{fill=}\NormalTok{ type_huishouden}
+\NormalTok{                 )) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_area}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ prognose_hh,}
+            \KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=}\NormalTok{prognose,  }
+                \DataTypeTok{fill=}\NormalTok{ type_huishouden,}
+                \DataTypeTok{alpha =} \FloatTok{0.1}
+\NormalTok{                 )) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_vline}\NormalTok{(}\DataTypeTok{xintercept=}\KeywordTok{max}\NormalTok{(aantal_hh}\OperatorTok{$}\NormalTok{date), }\DataTypeTok{color=}\StringTok{"darkgray"}\NormalTok{, }\DataTypeTok{size=}\DecValTok{1}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Prognose aantal huishoudens"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"Aantal (x 1000)"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}\NormalTok{,}
+    \DataTypeTok{caption =} \StringTok{"Bron: CBS, Bevolking; kerncijfers"}
+\NormalTok{  ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title =} \KeywordTok{element_blank}\NormalTok{()) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{alpha =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \KeywordTok{max}\NormalTok{(aantal_hh}\OperatorTok{$}\NormalTok{date), }\DataTypeTok{y =} \DecValTok{0}\NormalTok{,}
+           \DataTypeTok{label =} \KeywordTok{c}\NormalTok{(}\StringTok{" Prognose"}\NormalTok{) , }\DataTypeTok{color=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{0}\NormalTok{, }\DataTypeTok{vjust =} \DecValTok{1}\NormalTok{,}
+           \DataTypeTok{size=}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/population_prognose-1.pdf}
+
+\hypertarget{aanbod-van-woningen}{%
+\subsubsection{Aanbod van woningen}\label{aanbod-van-woningen}}
+
+Wanneer we een wat langere termijn trend kijken naar het aantal
+gerealiseerde nieuwbouwhuizen zien we dat het aantal nieuwbouwhuizen
+eigenlijk nu niet bijzonder hoog is. Ondanks dat er meer dan 70.000
+huizen bijgebouwd wordt per jaar is dat vergeleken met de totale
+woningvoorraad eigenlijk niet bijzonder veel. Wel opvallend is dat de
+laatste jaren er meer overige toevoegingen en overige onttrekkingen
+geregistreerd worden. Mogelijk geeft dit aan dat de ruimte voor
+nieuwbouw schaarser wordt waardoor creatiever wordt omgegaan met de
+beschikbare ruimte.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{voorraad_woningen }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(date,}
+\NormalTok{         nieuwbouw,}
+\NormalTok{         overige_toevoegingen,}
+\NormalTok{         sloop,}
+\NormalTok{         Overige_onttrekking,}
+\NormalTok{         correctie}
+\NormalTok{         ) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{ (}\DataTypeTok{sloop =} \OperatorTok{-}\StringTok{ }\NormalTok{sloop ) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{ (}\DataTypeTok{Overige_onttrekking =} \OperatorTok{-}\StringTok{ }\NormalTok{Overige_onttrekking) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{ (}\DataTypeTok{correctie =} \OperatorTok{-}\StringTok{ }\NormalTok{correctie) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{( date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"1970-01-01"}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{melt}\NormalTok{ (}\DataTypeTok{id =} \KeywordTok{c}\NormalTok{(}\StringTok{'date'}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{ (}\DataTypeTok{value =}\NormalTok{ value }\OperatorTok{/}\StringTok{ }\DecValTok{1000}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{date, }\DataTypeTok{y =}\NormalTok{ value, }\DataTypeTok{fill =}\NormalTok{ variable )) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept  =} \DecValTok{0}\NormalTok{, }\DataTypeTok{color =} \StringTok{"steelblue"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{ ( }\DataTypeTok{title =} \StringTok{"Ontwikkelingen woningvoorraad"}\NormalTok{,}
+         \DataTypeTok{y =} \StringTok{"Aantal (x 1000)"}\NormalTok{,}
+         \DataTypeTok{x =} \StringTok{"Jaar"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{title =} \StringTok{''}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/houses-1.pdf}
+
+\hypertarget{samenhang-vraag-en-aanbod}{%
+\subsubsection{Samenhang Vraag en
+aanbod}\label{samenhang-vraag-en-aanbod}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#Aantal huishoudens: NLHSTOTP Thomson Reuters}
+\NormalTok{df <-}\StringTok{ }
+\StringTok{  }\NormalTok{aantal_huishoudens_per_jaar }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{full_join}\NormalTok{(voorraad_woningen, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"date"}\NormalTok{ =}\StringTok{ "date"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{ (date, }
+\NormalTok{          aantal_huishoudens, }
+\NormalTok{          voorraad) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{set_names}\NormalTok{(}\StringTok{'date'}\NormalTok{,}
+            \StringTok{'huishoudens'}\NormalTok{,}
+            \StringTok{'woningvoorraad'}\NormalTok{ ) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{te_kort =}\NormalTok{ (woningvoorraad }\OperatorTok{-}\StringTok{ }\NormalTok{huishoudens)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(date }\OperatorTok{>}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{"2000-01-01"}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{melt}\NormalTok{(}\DataTypeTok{id =} \KeywordTok{c}\NormalTok{(}\StringTok{'date'}\NormalTok{)) }
+
+\CommentTok{# Line plot}
+\NormalTok{lp<-}\StringTok{ }
+\StringTok{  }\NormalTok{df }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{ (variable }\OperatorTok{!=}\StringTok{ 'te_kort'}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{ (}\DataTypeTok{x =}\NormalTok{ date)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=}\NormalTok{value, }\DataTypeTok{color =}\NormalTok{ variable)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Aantal huishoudens vs voorraad woningen"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"Aantal (x 1000)"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}\NormalTok{,}
+    \DataTypeTok{color =} \StringTok{''}
+\NormalTok{    ) }
+
+\CommentTok{# Bar plot}
+\NormalTok{bp <-}\StringTok{ }
+\StringTok{  }\NormalTok{df }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{ (variable }\OperatorTok{==}\StringTok{ 'te_kort'}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{ (}\DataTypeTok{x =}\NormalTok{ date)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{ , }
+           \KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value, }\DataTypeTok{fill =} \KeywordTok{factor}\NormalTok{(variable, }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"Te Kort woningen"}\NormalTok{)))) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{ ( }\DataTypeTok{y =} \StringTok{"Te kort (x 1000)"}\NormalTok{,}
+         \DataTypeTok{x =} \StringTok{""}\NormalTok{,}
+         \DataTypeTok{fill =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{( }\DataTypeTok{axis.text.x =} \KeywordTok{element_blank}\NormalTok{(),}
+         \DataTypeTok{axis.ticks =} \KeywordTok{element_blank}\NormalTok{()) }
+  
+\CommentTok{# Plot line and bar plot together}
+\NormalTok{cowplot}\OperatorTok{::}\KeywordTok{plot_grid}\NormalTok{(lp, bp, }\DataTypeTok{ncol=}\DecValTok{1}\NormalTok{, }\DataTypeTok{rel_heights =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{align =} \StringTok{'v'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/shortage_houses-1.pdf}
+
+In bovenstaande grafiek zien we dat het aantal woningen al decennialang
+gelijke tred houdt met het aantal woningen. Er is daarbij telkens wel
+een tekort zichtbaar. Dit is veel kleiner dan het door het CBS
+gerapporteerde tekort van 331.000 woningen {[}CBS2020b{]}. In deze
+studie is er geen verklaring gevonden voor dit verschil. In de verdere
+analyse wordt uitgegaan van de tekorten zoals hier berekend. Dit is het
+verschil tussen het aantal huishoudens en de voorraad woningen.
+
+\hypertarget{indicatoren-huizenprijzen}{%
+\subsubsection{Indicatoren
+Huizenprijzen}\label{indicatoren-huizenprijzen}}
+
+\begin{itemize}
+\tightlist
+\item
+  Gem. huizenprijzen (prijsindex)
+\item
+  Besteedbaar Inkomen
+\item
+  Particulier vermogen
+\item
+  Werkloosheid
+\item
+  Rentestanden
+\item
+  Consumentenvertrouwen
+\item
+  Financiering hypotheek of eigen geld
+\item
+  Fiscale behandeling, subsidies
+\item
+  Toegang tot krediet
+\item
+  Voorkeuren van kopers
+\item
+  Percentage huur / koop woningen
+\end{itemize}
+
+Vanwege de (structurele) te korten op de woningmarkt lijken
+huizenprijzen in belangrijke mate beïnvloed te worden door de
+financieringsmogelijkheden van de kopers. De rente is historisch laag,
+de inkomens zijn gestegen en het eigen vermogen is gegroeid. Dit geeft
+ruimte voor hogere marktprijzen. De fiscale behandeling en regelgeving
+speelt hier een belangrijke rol, zowel ruimte scheppend - verruimen van
+de leenmogelijkheden van tweeverdieners, als beperkend - beperking
+aftrekbaarheid tot 100\% financiering.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# House price index existing homes}
+\NormalTok{prijsindex_woningen_lt }\OperatorTok{%>%}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ date)) }\OperatorTok{+}
+\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{( }\DataTypeTok{y =}\NormalTok{ huisprijsindex), }\DataTypeTok{color =} \StringTok{'steelblue'}\NormalTok{) }\OperatorTok{+}
+\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Huizenprijzen"}\NormalTok{,}
+    \DataTypeTok{subtitle =} \StringTok{"Index (2015 = 100)"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{""}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{""}
+\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/leading_indicators-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# GDP}
+\NormalTok{gdp_lt }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{( }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{date, }\DataTypeTok{y=}\NormalTok{gdp)) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{color =} \StringTok{'steelblue'}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}
+      \DataTypeTok{title =} \StringTok{"Ontwikkeling BBP (Bruto Binnenlands Product) (j-op-j wijzigingen)"}\NormalTok{,}
+      \DataTypeTok{y =} \StringTok{""}\NormalTok{,}
+      \DataTypeTok{x =} \StringTok{''}\NormalTok{,}
+      \DataTypeTok{caption =} \StringTok{"Bron: OECD Economic Outlook"}
+\NormalTok{      ) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/leading_indicators-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Interest rates}
+\NormalTok{hypotheek_rente }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{( }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{period, }\DataTypeTok{y=}\NormalTok{hypotheek_rente)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{color =} \StringTok{'steelblue'}\NormalTok{)  }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Hypotheekrente"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"gemiddelde rente"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}
+\NormalTok{    ) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/leading_indicators-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Employment}
+\NormalTok{werkgelegenheid_lt }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ period, }\DataTypeTok{y =}\NormalTok{ werkgelegenheid)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{color =} \StringTok{'steelblue'}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Werkgelegenheid"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"(x 1000)"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}\NormalTok{,}
+    \DataTypeTok{caption =} \StringTok{"Bron: OECD Economic Outlook"}
+\NormalTok{  ) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/leading_indicators-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Income}
+\NormalTok{inkomen_lt }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ period, }\DataTypeTok{y =}\NormalTok{ inkomen)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{color =} \StringTok{'steelblue'}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Inkomen per medewerker per kwartaal"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"EUR"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}\NormalTok{,}
+    \DataTypeTok{caption =} \StringTok{"Bron: Oxford Economics"}
+\NormalTok{  ) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/leading_indicators-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Consumer Confidence}
+\NormalTok{consumenten_vertrouwen_lt_q }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{pos =} \KeywordTok{ifelse}\NormalTok{(consumer_conf }\OperatorTok{>=}\StringTok{ }\DecValTok{0}\NormalTok{,consumer_conf, }\DecValTok{0}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{neg =} \KeywordTok{ifelse}\NormalTok{(consumer_conf }\OperatorTok{<}\StringTok{ }\DecValTok{0}\NormalTok{,consumer_conf, }\DecValTok{0}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ date)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_area}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ pos), }\DataTypeTok{fill =} \StringTok{'steelblue'}\NormalTok{)  }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_area}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ neg), }\DataTypeTok{fill =} \StringTok{'indianred2'}\NormalTok{)  }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_hline}\NormalTok{ (}\DataTypeTok{yintercept =} \DecValTok{0}\NormalTok{, }\DataTypeTok{color =} \StringTok{'steelblue'}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Indicator Consumenten vertrouwen"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{""}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{""}\NormalTok{,}
+    \DataTypeTok{caption =} \StringTok{"Bron: OECD Economic Outlook"}
+\NormalTok{  ) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/leading_indicators-6.pdf}
+
+Over de vermogens van huishoudens en de wijzigingen in regelgeving zijn
+er helaas geen langere termijn gegevens gevonden. Een veronderstelling
+van dit onderzoek was dat door het gewijzigde beleid en de stijgende
+huizenprijzen het vermogen van huishoudens zou stijgen. Daardoor heeft
+men ook weer meer vermogen beschikbaar voor de aanschaf van woningen wat
+een prijsopdrijvend effect kan hebben. Dit is door gebrek en data helaas
+niet verder te verifiëren.
+
+\hypertarget{huizenprijzen-voorspellen}{%
+\subsubsection{Huizenprijzen
+voorspellen}\label{huizenprijzen-voorspellen}}
+
+In deze studie is gekeken naar een aantal modellen om een voorspelling
+te kunnen doen over de ontwikkeling van de huizenprijzen. Voor alle
+modellen is de data tot en met 2015 genomen als training data. Het model
+geeft daarmee een voorspelling over de jaren 2016 tot 2020. Op deze
+wijze kunnen we een vergelijking maken tussen de modellen. Om de
+voorspellende factoren vergelijkbaar te maken is gekeken naar de
+jaar-op-jaar wijzigingen in de factoren. Voor Bruto Binnenlands Product
+is dit zo aangeleverd. De overige indicatoren zijn omgerekend naar
+percentuele wijziging jaar-op-jaar.
+
+\hypertarget{correlatie-van-huisprijzen}{%
+\paragraph{Correlatie van
+huisprijzen}\label{correlatie-van-huisprijzen}}
+
+We vinden de volgende correlaties tussen inkomen, werkgelegenheid, BBP
+en huizenprijzen.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# plot correlations}
+\NormalTok{corMatrix <-}\StringTok{ }\KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(df_rm_huizenprijzen }\OperatorTok{%>%}\StringTok{ }
+\StringTok{                         }\KeywordTok{select}\NormalTok{(huisprijsindex_yoy,}
+\NormalTok{                                werkgelegenheid_yoy,}
+\NormalTok{                                hypotheek_rente_yoy,}
+\NormalTok{                                gdp,}
+\NormalTok{                                consumer_conf_yoy,}
+\NormalTok{                                inkomen_yoy)),}\DecValTok{5}\NormalTok{)}
+
+\NormalTok{corCols <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"huisprijsindex"}\NormalTok{, }
+             \StringTok{"werkgelegenheid"}\NormalTok{,}
+             \StringTok{"hypotheekrente"}\NormalTok{,}
+             \StringTok{"BBP"}\NormalTok{,}
+             \StringTok{"Cons.Vertrouwen"}\NormalTok{, }
+             \StringTok{"Inkomen"}\NormalTok{)}
+
+\KeywordTok{colnames}\NormalTok{(corMatrix) <-}\StringTok{ }\NormalTok{corCols}
+\KeywordTok{rownames}\NormalTok{(corMatrix) <-}\StringTok{ }\NormalTok{corCols}
+
+\KeywordTok{corrplot}\NormalTok{(corMatrix,}
+            \DataTypeTok{title =} \StringTok{"Correlatie huizenprijzen"}\NormalTok{,}
+            \DataTypeTok{type =} \StringTok{"lower"}\NormalTok{, }
+            \DataTypeTok{tl.cex =} \FloatTok{0.8}\NormalTok{,}
+            \DataTypeTok{tl.col =} \StringTok{"black"}\NormalTok{, }
+            \DataTypeTok{tl.srt =} \DecValTok{45}\NormalTok{,}
+         \DataTypeTok{mar=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{0}\NormalTok{) }\CommentTok{# http://stackoverflow.com/a/14754408/54964}
+\NormalTok{         ) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/correlation_houseprices-1.pdf}
+
+\hypertarget{regressie-huizenprijzen}{%
+\paragraph{Regressie Huizenprijzen}\label{regressie-huizenprijzen}}
+
+Regressie model zou rekening moeten houden met het tijdskarakter van dit
+soort reeksen. We vinden hiervan voorbeelden in de econometrie (Hanck,
+Martin, Alexander, \& Schmelzer, 2020).
+
+In deze studie is uitgegaan van een eenvoudig model om deze
+tijdseffecten mee te nemen in de regressieanalyse. Voor het lineair
+model met tijdsreekscorrectie worden van alle voorspellende factoren
+vier kwartalen historische waarde meegenomen als mogelijke voorspelling
+van de huizenprijzen.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#' lagdata}
+\CommentTok{#' }
+\CommentTok{#' Add lags to timeseries data. We assume the time serie is represented as a dataframe with column 'date'}
+\CommentTok{#' This routine will then go on and add 4 lags to all variables}
+\CommentTok{#' }
+\CommentTok{#' @param df }
+\CommentTok{#'}
+\CommentTok{#' @return df}
+\CommentTok{#' @export}
+\CommentTok{#'}
+\CommentTok{#' @examples}
+\NormalTok{lagdata <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(df)\{}
+  
+  
+  \ControlFlowTok{for}\NormalTok{ (name }\ControlFlowTok{in} \KeywordTok{colnames}\NormalTok{(df)) \{}
+    \ControlFlowTok{if}\NormalTok{ (name }\OperatorTok{!=}\StringTok{ 'date'}\NormalTok{) \{}
+        \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{) \{}
+\NormalTok{          variable_name =}\StringTok{ }\KeywordTok{paste0}\NormalTok{(name,i)}
+          \CommentTok{# add lagged data to the dataframe}
+\NormalTok{          df[[variable_name]]=}\StringTok{ }\KeywordTok{lag}\NormalTok{(df[[name]],i)}
+\NormalTok{        \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\KeywordTok{return}\NormalTok{ (df)}
+\NormalTok{\}}
+  
+
+\CommentTok{# add lagging data to the dataframe...}
+\CommentTok{# the price we need to pay is loose one year of data for the predictions...}
+\NormalTok{df_rm_huizenprijzen <-}\StringTok{ }
+\StringTok{  }\NormalTok{df_rm_huizenprijzen }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(date, }
+\NormalTok{         huisprijsindex_yoy,}
+\NormalTok{         werkgelegenheid_yoy,}
+\NormalTok{         hypotheek_rente_yoy,}
+\NormalTok{         gdp,}
+\NormalTok{         consumer_conf_yoy,}
+\NormalTok{         inkomen_yoy) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{lagdata}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{drop_na}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Split data set in Training and Testing set.}
+\CommentTok{# Ideally we should use time slices and repeat the training for each period}
+\CommentTok{# This type of analyses is beyond the scope of this research}
+\NormalTok{df_train <-}\StringTok{ }\NormalTok{df_rm_huizenprijzen }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(date }\OperatorTok{<=}\StringTok{ }\NormalTok{(}\KeywordTok{max}\NormalTok{(df_rm_huizenprijzen}\OperatorTok{$}\NormalTok{date) }\OperatorTok{-}\StringTok{ }\KeywordTok{years}\NormalTok{(}\DecValTok{5}\NormalTok{)))}
+\NormalTok{df_test <-}\StringTok{ }\NormalTok{df_rm_huizenprijzen }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(date }\OperatorTok{>}\StringTok{ }\NormalTok{(}\KeywordTok{max}\NormalTok{(df_rm_huizenprijzen}\OperatorTok{$}\NormalTok{date) }\OperatorTok{-}\StringTok{ }\KeywordTok{years}\NormalTok{(}\DecValTok{5}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+Lineair regressie modellen voor de verschillende indicatoren laten zien
+dat BBP de beste fit geeft voor de huizenprijzen. Maar de onderlinge
+verschillen zijn klein. De residuen na deze correlatie geven geen
+duidelijk patroon aan. Het lijkt daarmee alsof dit de beste enkelvoudige
+voorspeller is van de huisprijzen.
+
+Met behulp van de caret library (Kuhn, 2020) kan een optimalisatie
+worden uitgevoerd om het best passende model te selecteren. We zien hier
+dat het model gebruik maakt van alle beschikbare data, en dan komt tot
+een veel betere fit op de aangeboden training data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# lineair regression models}
+
+\NormalTok{lm_inkomen         =}\StringTok{ }\KeywordTok{lm}\NormalTok{(huisprijsindex_yoy}\OperatorTok{~}\NormalTok{inkomen_yoy, }\DataTypeTok{data =}\NormalTok{ df_train) }
+\NormalTok{lm_time            =}\StringTok{ }\KeywordTok{lm}\NormalTok{(huisprijsindex_yoy }\OperatorTok{~}\StringTok{ }\NormalTok{date, }\DataTypeTok{data =}\NormalTok{ df_train)}
+\NormalTok{lm_werkgelegenheid =}\StringTok{ }\KeywordTok{lm}\NormalTok{(huisprijsindex_yoy}\OperatorTok{~}\NormalTok{werkgelegenheid_yoy, }\DataTypeTok{data =}\NormalTok{ df_train) }
+\NormalTok{lm_gdp             =}\StringTok{ }\KeywordTok{lm}\NormalTok{(huisprijsindex_yoy}\OperatorTok{~}\NormalTok{gdp, }\DataTypeTok{data =}\NormalTok{ df_train) }
+\NormalTok{lm_rente           =}\StringTok{ }\KeywordTok{lm}\NormalTok{(huisprijsindex_yoy}\OperatorTok{~}\NormalTok{hypotheek_rente_yoy, }\DataTypeTok{data =}\NormalTok{ df_train) }
+\NormalTok{lm_confidence      =}\StringTok{ }\KeywordTok{lm}\NormalTok{(huisprijsindex_yoy}\OperatorTok{~}\NormalTok{consumer_conf_yoy, }\DataTypeTok{data =}\NormalTok{ df_train) }
+
+\KeywordTok{tab_model}\NormalTok{(lm_inkomen,lm_werkgelegenheid,lm_rente,}
+          \DataTypeTok{use.viewer =} \OtherTok{TRUE}\NormalTok{,}
+          \DataTypeTok{title =} \StringTok{'Vergelijking linaire regressie modellen'}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+Vergelijking linaire regressie modellen
+
+~
+
+huisprijsindex yoy
+
+huisprijsindex yoy
+
+huisprijsindex yoy
+
+Predictors
+
+Estimates
+
+CI
+
+p
+
+Estimates
+
+CI
+
+p
+
+Estimates
+
+CI
+
+p
+
+(Intercept)
+
+0.64
+
+-1.26~--~2.55
+
+0.505
+
+1.98
+
+0.56~--~3.40
+
+0.007
+
+5.08
+
+3.88~--~6.29
+
+\textless0.001
+
+inkomen\_yoy
+
+1.69
+
+1.07~--~2.32
+
+\textless0.001
+
+werkgelegenheid\_yoy
+
+2.40
+
+1.61~--~3.19
+
+\textless0.001
+
+hypotheek\_rente\_yoy
+
+0.06
+
+-0.03~--~0.16
+
+0.211
+
+Observations
+
+111
+
+111
+
+111
+
+R2 / R2 adjusted
+
+0.209 / 0.202
+
+0.250 / 0.244
+
+0.014 / 0.005
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tab_model}\NormalTok{(lm_gdp,lm_time, lm_confidence,}
+          \DataTypeTok{use.viewer =} \OtherTok{TRUE}\NormalTok{,}
+          \DataTypeTok{title =} \StringTok{'Vergelijking linaire regressie modellen'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Vergelijking linaire regressie modellen
+
+~
+
+huisprijsindex yoy
+
+huisprijsindex yoy
+
+huisprijsindex yoy
+
+Predictors
+
+Estimates
+
+CI
+
+p
+
+Estimates
+
+CI
+
+p
+
+Estimates
+
+CI
+
+p
+
+(Intercept)
+
+0.69
+
+-0.72~--~2.10
+
+0.336
+
+18.20
+
+14.03~--~22.36
+
+\textless0.001
+
+4.95
+
+3.75~--~6.14
+
+\textless0.001
+
+gdp
+
+1.92
+
+1.45~--~2.39
+
+\textless0.001
+
+date
+
+-0.00
+
+-0.00~--~-0.00
+
+\textless0.001
+
+consumer\_conf\_yoy
+
+-2.73
+
+-25.71~--~20.25
+
+0.814
+
+Observations
+
+111
+
+111
+
+111
+
+R2 / R2 adjusted
+
+0.372 / 0.367
+
+0.279 / 0.273
+
+0.001 / -0.009
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# GDP is best fit for lineair regression}
+\NormalTok{df_rm_lm <-}\StringTok{ }\KeywordTok{augment}\NormalTok{(lm_gdp)}
+\KeywordTok{ggplot}\NormalTok{(df_rm_lm, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ .fitted, }\DataTypeTok{y =}\NormalTok{ .resid)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{color =} \StringTok{'steelblue'}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{ (}
+      \DataTypeTok{title =} \StringTok{'Residuals verband huizenprijzen en BBP'}\NormalTok{,}
+      \DataTypeTok{x =} \StringTok{'lm(Huizenprijzen~BBP)'}\NormalTok{,}
+      \DataTypeTok{y =} \StringTok{'Residuals'}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/regression_houseprices_lm-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# simple multiple regression model including all variables at T0}
+\NormalTok{lm_multi =}\StringTok{ }\KeywordTok{lm}\NormalTok{(huisprijsindex_yoy}\OperatorTok{~}\NormalTok{date}\OperatorTok{+}
+\StringTok{                }\NormalTok{werkgelegenheid_yoy}\OperatorTok{+}
+\StringTok{                }\NormalTok{hypotheek_rente_yoy}\OperatorTok{+}
+\StringTok{                }\NormalTok{gdp}\OperatorTok{+}
+\StringTok{                }\NormalTok{consumer_conf_yoy}\OperatorTok{+}
+\StringTok{                }\NormalTok{inkomen_yoy, }\DataTypeTok{data =}\NormalTok{ df_rm_huizenprijzen )}
+
+\KeywordTok{tab_model}\NormalTok{(lm_multi,}
+          \DataTypeTok{title =} \StringTok{'Multple regressie model'}\NormalTok{,}
+          \DataTypeTok{use.viewer =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Multple regressie model
+
+~
+
+huisprijsindex yoy
+
+Predictors
+
+Estimates
+
+CI
+
+p
+
+(Intercept)
+
+-1.53
+
+-5.62~--~2.57
+
+0.462
+
+date
+
+-0.00
+
+-0.00~--~0.00
+
+0.549
+
+werkgelegenheid\_yoy
+
+1.29
+
+0.48~--~2.11
+
+0.002
+
+hypotheek\_rente\_yoy
+
+-0.12
+
+-0.20~--~-0.05
+
+0.001
+
+gdp
+
+1.04
+
+0.52~--~1.55
+
+\textless0.001
+
+consumer\_conf\_yoy
+
+12.45
+
+-1.93~--~26.82
+
+0.089
+
+inkomen\_yoy
+
+1.42
+
+0.94~--~1.90
+
+\textless0.001
+
+Observations
+
+131
+
+R2 / R2 adjusted
+
+0.476 / 0.451
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# The carot model can train the best multiple regression model optimizing RMSE (Root Mean Squared Error).}
+\NormalTok{lm_compute <-}\StringTok{ }\KeywordTok{train}\NormalTok{(}
+\NormalTok{  huisprijsindex_yoy }\OperatorTok{~}\StringTok{ }\NormalTok{., }
+  \DataTypeTok{data =}\NormalTok{ df_train, }
+  \DataTypeTok{method =} \StringTok{"lm"}\NormalTok{,}
+  \DataTypeTok{metric =} \StringTok{"RMSE"}\NormalTok{,}
+  \DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\DataTypeTok{method =} \StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{10}\NormalTok{),}
+  \DataTypeTok{preProcess =} \KeywordTok{c}\NormalTok{(}\StringTok{"zv"}\NormalTok{, }\StringTok{"center"}\NormalTok{, }\StringTok{"scale"}\NormalTok{)}
+\NormalTok{  )}
+
+\KeywordTok{tab_model}\NormalTok{(lm_compute}\OperatorTok{$}\NormalTok{finalModel,}
+          \DataTypeTok{title =} \StringTok{"Time Series Lineair Model"}\NormalTok{,}
+          \DataTypeTok{use.viewer =} \OtherTok{TRUE}
+\NormalTok{          )}
+\end{Highlighting}
+\end{Shaded}
+
+Time Series Lineair Model
+
+~
+
+outcome
+
+Predictors
+
+Estimates
+
+CI
+
+p
+
+(Intercept)
+
+4.94
+
+4.66~--~5.21
+
+\textless0.001
+
+date
+
+0.00
+
+-0.40~--~0.40
+
+0.986
+
+werkgelegenheid\_yoy
+
+-0.53
+
+-2.13~--~1.08
+
+0.516
+
+hypotheek\_rente\_yoy
+
+-0.14
+
+-0.92~--~0.64
+
+0.721
+
+gdp
+
+0.57
+
+-0.34~--~1.47
+
+0.217
+
+consumer\_conf\_yoy
+
+0.19
+
+-0.11~--~0.49
+
+0.202
+
+inkomen\_yoy
+
+0.30
+
+-0.36~--~0.96
+
+0.371
+
+huisprijsindex\_yoy1
+
+5.14
+
+3.81~--~6.47
+
+\textless0.001
+
+huisprijsindex\_yoy2
+
+0.02
+
+-1.68~--~1.71
+
+0.986
+
+huisprijsindex\_yoy3
+
+0.84
+
+-0.88~--~2.57
+
+0.333
+
+huisprijsindex\_yoy4
+
+-1.35
+
+-2.50~--~-0.20
+
+0.022
+
+werkgelegenheid\_yoy1
+
+0.10
+
+-2.35~--~2.55
+
+0.935
+
+werkgelegenheid\_yoy2
+
+-0.82
+
+-3.38~--~1.73
+
+0.522
+
+werkgelegenheid\_yoy3
+
+0.13
+
+-2.31~--~2.57
+
+0.917
+
+werkgelegenheid\_yoy4
+
+1.22
+
+-0.22~--~2.65
+
+0.095
+
+hypotheek\_rente\_yoy1
+
+-1.04
+
+-2.29~--~0.20
+
+0.100
+
+hypotheek\_rente\_yoy2
+
+0.09
+
+-1.23~--~1.41
+
+0.888
+
+hypotheek\_rente\_yoy3
+
+-0.09
+
+-1.31~--~1.13
+
+0.885
+
+hypotheek\_rente\_yoy4
+
+0.14
+
+-0.66~--~0.94
+
+0.730
+
+gdp1
+
+1.44
+
+0.20~--~2.69
+
+0.024
+
+gdp2
+
+0.01
+
+-1.22~--~1.23
+
+0.991
+
+gdp3
+
+-0.53
+
+-1.73~--~0.66
+
+0.376
+
+gdp4
+
+0.65
+
+-0.31~--~1.60
+
+0.181
+
+consumer\_conf\_yoy1
+
+0.07
+
+-0.23~--~0.37
+
+0.626
+
+consumer\_conf\_yoy2
+
+-0.09
+
+-0.39~--~0.21
+
+0.552
+
+consumer\_conf\_yoy3
+
+-0.19
+
+-0.49~--~0.10
+
+0.196
+
+consumer\_conf\_yoy4
+
+-0.28
+
+-0.57~--~0.01
+
+0.061
+
+inkomen\_yoy1
+
+-0.61
+
+-1.41~--~0.18
+
+0.130
+
+inkomen\_yoy2
+
+-0.07
+
+-0.88~--~0.74
+
+0.860
+
+inkomen\_yoy3
+
+0.28
+
+-0.53~--~1.08
+
+0.496
+
+inkomen\_yoy4
+
+0.45
+
+-0.26~--~1.15
+
+0.210
+
+Observations
+
+111
+
+R2 / R2 adjusted
+
+0.962 / 0.948
+
+Tot slot is gekeken of nog een beter passend model verkregen kan worden
+met MARS (multivariate adaptive regression splines {[}Friedman (1991a,
+1991b){]}. Deze methode splits de regressie in meerdere `splines'.
+Waardoor in theorie een betere fit gevonden kan worden door rekening te
+houden met een non-lineaire relatie over de tijd.
+
+Het MARS model kiest zelf de meest relevante parameters. Wanneer met dit
+model geprobeerd wordt om de prijsontwikkeling van de afgelopen 5 jaar
+te voorspellen geeft dit model een goede fit.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Simple MARS model}
+
+\CommentTok{# Tuning the model}
+\CommentTok{# Optimal number of defrees and number of variables to prune is calculated}
+
+\CommentTok{# create a tuning grid }
+\NormalTok{hyper_grid <-}\StringTok{ }\KeywordTok{expand.grid}\NormalTok{(}
+  \DataTypeTok{degree =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }
+  \DataTypeTok{nprune =} \KeywordTok{seq}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DataTypeTok{length.out =} \DecValTok{20}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{floor}\NormalTok{()}
+\NormalTok{  )}
+
+\CommentTok{# for reproducibiity}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{# cross validated model}
+\NormalTok{tuned_mars <-}\StringTok{ }\KeywordTok{train}\NormalTok{(}
+  \DataTypeTok{x =} \KeywordTok{subset}\NormalTok{(df_train, }\DataTypeTok{select =} \OperatorTok{-}\NormalTok{huisprijsindex_yoy),}
+  \DataTypeTok{y =}\NormalTok{ df_train}\OperatorTok{$}\NormalTok{huisprijsindex_yoy,}
+  \DataTypeTok{method =} \StringTok{"earth"}\NormalTok{,}
+  \DataTypeTok{metric =} \StringTok{"RMSE"}\NormalTok{,}
+  \DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\DataTypeTok{method =} \StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{10}\NormalTok{),}
+  \DataTypeTok{tuneGrid =}\NormalTok{ hyper_grid}
+\NormalTok{)}
+
+\CommentTok{# plot results}
+\CommentTok{# I was not able to change the legend title}
+\KeywordTok{ggplot}\NormalTok{(tuned_mars) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{ (}
+      \DataTypeTok{title =} \StringTok{'Analyse voorspelling factoren MARS model'}\NormalTok{,}
+      \DataTypeTok{x =} \StringTok{'Aantal factoren'}\NormalTok{,}
+      \DataTypeTok{y =} \StringTok{'Gemiddelde kwadratischfout (RMSE)'}
+\NormalTok{    ) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+Door middel van de optimalisatie wordt hier het aantal factoren en de
+mate van interactie tussen de factoren (product degree) geselecteerd. De
+belangrijkste factoren staan hieronder genoemd.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# fit model}
+\NormalTok{fit <-}\StringTok{ }\KeywordTok{earth}\NormalTok{(huisprijsindex_yoy}\OperatorTok{~}\NormalTok{., df_train, }
+             \DataTypeTok{degree =}\NormalTok{ tuned_mars}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{degree, }\DataTypeTok{nprune =}\NormalTok{ tuned_mars}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{nprune)}
+
+\CommentTok{# summarize the importance of input variables}
+\KeywordTok{kable}\NormalTok{(}\KeywordTok{print}\NormalTok{(}\KeywordTok{evimp}\NormalTok{(fit))}
+\NormalTok{      )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      nsubsets   gcv    rss
+## huisprijsindex_yoy1         6 100.0  100.0
+## hypotheek_rente_yoy3        4  14.4   17.6
+## gdp4                        4  14.4   17.6
+## huisprijsindex_yoy4         3   9.8   13.2
+## werkgelegenheid_yoy4        2   9.2   11.3
+## hypotheek_rente_yoy1        1   8.3    9.1
+\end{verbatim}
+
+\begin{tabular}{}
+\hline
+
+\hline
+\end{tabular}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# make predictions for MARS model}
+\NormalTok{train_predictions <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(fit, df_train)}
+\NormalTok{test_predictions <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(fit, df_test)}
+
+\CommentTok{# make predictions for our regression model}
+\NormalTok{train_lm_predictions <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lm_multi, df_train)}
+\NormalTok{test_lm_predictions <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lm_multi, df_test)}
+
+\CommentTok{# make predictions for our ts regression model}
+\NormalTok{train_lmts_predictions <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lm_compute, df_train)}
+\NormalTok{test_lmts_predictions <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lm_compute, df_test)}
+
+\NormalTok{df_result <-}
+\StringTok{  }\KeywordTok{tibble}\NormalTok{ (}
+    \DataTypeTok{date =}\NormalTok{ df_train}\OperatorTok{$}\NormalTok{date, }
+    \DataTypeTok{huisprijsindex_yoy =}\NormalTok{ df_train}\OperatorTok{$}\NormalTok{huisprijsindex_yoy,  }
+    \DataTypeTok{predicted =}\NormalTok{ train_predictions,}
+    \DataTypeTok{variable =} \StringTok{'train'}\NormalTok{,}
+    \DataTypeTok{model =} \StringTok{'MARS'}
+\NormalTok{  ) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{union_all}\NormalTok{( }
+    \KeywordTok{tibble}\NormalTok{(}
+      \DataTypeTok{date =}\NormalTok{ df_test}\OperatorTok{$}\NormalTok{date, }
+      \DataTypeTok{huisprijsindex_yoy =}\NormalTok{ df_test}\OperatorTok{$}\NormalTok{huisprijsindex_yoy,  }
+      \DataTypeTok{predicted =}\NormalTok{ test_predictions,}
+      \DataTypeTok{variable =} \StringTok{'test'}\NormalTok{,}
+      \DataTypeTok{model =} \StringTok{'MARS'}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{union_all}\NormalTok{( }
+    \KeywordTok{tibble}\NormalTok{(}
+      \DataTypeTok{date =}\NormalTok{ df_train}\OperatorTok{$}\NormalTok{date, }
+      \DataTypeTok{huisprijsindex_yoy =}\NormalTok{ df_train}\OperatorTok{$}\NormalTok{huisprijsindex_yoy,  }
+      \DataTypeTok{predicted =}\NormalTok{ train_lm_predictions,}
+      \DataTypeTok{variable =} \StringTok{'train'}\NormalTok{,}
+      \DataTypeTok{model =} \StringTok{'LM'}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{union_all}\NormalTok{( }
+    \KeywordTok{tibble}\NormalTok{(}
+      \DataTypeTok{date =}\NormalTok{ df_test}\OperatorTok{$}\NormalTok{date, }
+      \DataTypeTok{huisprijsindex_yoy =}\NormalTok{ df_test}\OperatorTok{$}\NormalTok{huisprijsindex_yoy,  }
+      \DataTypeTok{predicted =}\NormalTok{ test_lm_predictions,}
+      \DataTypeTok{variable =} \StringTok{'test'}\NormalTok{,}
+      \DataTypeTok{model =} \StringTok{'LM'}\NormalTok{)) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{union_all}\NormalTok{( }
+    \KeywordTok{tibble}\NormalTok{(}
+      \DataTypeTok{date =}\NormalTok{ df_train}\OperatorTok{$}\NormalTok{date, }
+      \DataTypeTok{huisprijsindex_yoy =}\NormalTok{ df_train}\OperatorTok{$}\NormalTok{huisprijsindex_yoy,  }
+      \DataTypeTok{predicted =}\NormalTok{ train_lmts_predictions,}
+      \DataTypeTok{variable =} \StringTok{'train'}\NormalTok{,}
+      \DataTypeTok{model =} \StringTok{'LMTS'}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{union_all}\NormalTok{( }
+    \KeywordTok{tibble}\NormalTok{(}
+      \DataTypeTok{date =}\NormalTok{ df_test}\OperatorTok{$}\NormalTok{date, }
+      \DataTypeTok{huisprijsindex_yoy =}\NormalTok{ df_test}\OperatorTok{$}\NormalTok{huisprijsindex_yoy,  }
+      \DataTypeTok{predicted =}\NormalTok{ test_lmts_predictions,}
+      \DataTypeTok{variable =} \StringTok{'test'}\NormalTok{,}
+      \DataTypeTok{model =} \StringTok{'LMTS'}\NormalTok{))}
+\NormalTok{  )}
+  
+\NormalTok{df_result }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(date, huisprijsindex_yoy)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{size =} \FloatTok{.5}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ predicted, }\DataTypeTok{color =}\NormalTok{ model, }\DataTypeTok{linetype =}\NormalTok{ variable), }
+            \DataTypeTok{size =} \DecValTok{1}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.8}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_linetype_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\StringTok{"dotted"}\NormalTok{,}\StringTok{"solid"}\NormalTok{))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Voorspelling huizenprijzen MARS Model"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"huisprijsindex"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}\NormalTok{,}
+    \DataTypeTok{color =} \StringTok{'dataset'}
+\NormalTok{  ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"bottom"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/regression_houseprices_mars-1.pdf}
+
+In dit geval geeft het lineair regressie model duidelijk een minder
+goede fit dan het time series model en het MARS model. Het MARS model
+sluit heel goed aan bij de ontwikkeling van de huizenprijzen over de
+afgelopen vijf jaar.
+
+\hypertarget{regionale-verschillen}{%
+\subsubsection{Regionale verschillen}\label{regionale-verschillen}}
+
+Er bestaan grote regionale verschillen in huisprijzen, en in de
+prijsontwikkeling over de tijd.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# boxplot}
+\NormalTok{verkoopprijs_regio }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{'1995-01-01'}\NormalTok{)}
+\NormalTok{             ) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{drop_na}\NormalTok{(verkoopprijs) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{verkoopprijs =}\NormalTok{ verkoopprijs }\OperatorTok{/}\StringTok{ }\DecValTok{1000}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ verkoopprijs, }\DataTypeTok{x =}\NormalTok{ jaar, }\DataTypeTok{fill =}\NormalTok{ jaar) ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Distributie verkoopprijzen"}\NormalTok{,}
+       \DataTypeTok{subtitle =} \StringTok{"gemiddelde verkoopprijs per gemeente"}\NormalTok{,}
+        \DataTypeTok{x =} \StringTok{"Verkoopprijs (x 1000 eur)"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{60}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/regional_sales-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Create a thematic map}
+\NormalTok{verkoopprijs_regio }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(date }\OperatorTok{>=}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(}\StringTok{'2015-01-01'}\NormalTok{)}
+\NormalTok{           ) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{verkoopprijs =}\NormalTok{ verkoopprijs }\OperatorTok{/}\StringTok{ }\DecValTok{1000}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_sf}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ verkoopprijs)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{jaar) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_fill_viridis_c}\NormalTok{(}\DataTypeTok{option =} \StringTok{"inferno"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Gemiddelde verkoopprijzen woningen"}\NormalTok{, }
+       \DataTypeTok{subtitle =} \StringTok{""}\NormalTok{,}
+       \DataTypeTok{fill =} \StringTok{"(x 1000 eur)"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme_void}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/regional_sales-2.pdf}
+
+\hypertarget{aantal-transacties}{%
+\subsection{Aantal transacties}\label{aantal-transacties}}
+
+Het aantal transacties heeft in de crisis jaren 2009 - 2012 een
+duidelijke terugval laten zien. Sindsdien zien we een snelle
+inhaalbeweging, en nog steeds zien we aanzienlijk hogere transactie
+volumes dan voorheen.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{verkochte_woningen_per_type_per_kwartaal }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{subtype =} \KeywordTok{factor}\NormalTok{(subtype, }\DataTypeTok{levels=}\KeywordTok{c}\NormalTok{(}\StringTok{'Vrijstaande woning'}\NormalTok{,}
+                                  \StringTok{'2-onder-1-kapwoning'}\NormalTok{,}
+                                  \StringTok{'Hoekwoning'}\NormalTok{,}
+                                  \StringTok{'Tussenwoning'}\NormalTok{,}
+                                  \StringTok{'Appartement'}\NormalTok{,}
+                                  \StringTok{'Onbekend'}\NormalTok{))) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{date, }\DataTypeTok{y=}\NormalTok{verkochte_bestaande_woningen )) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color =}\NormalTok{ subtype)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\StringTok{ }\NormalTok{subtype, }\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{, }\DataTypeTok{scales =} \StringTok{"free"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Verkopen Bestaande Koopwoningen per kwartaal"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{""}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}\NormalTok{,}
+    \DataTypeTok{color =} \StringTok{'subtype'}
+\NormalTok{    ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/sales_per_q-1.pdf}
+
+Wanneer gekeken wordt naar de transactie volumes valt de piek op in
+appartementen in het laatste kwartaal van 2020. Dit is te verklaren door
+de wijziging in de regelgeving voor beleggers. Particuliere beleggers op
+de woningmarkt moeten vanaf 2021 8\% overdrachtsbelasting betalen. Dit
+heeft gezorgd voor een eenmalige piek in aankopen door deze groep.
+Tegelijkertijd is er begin 2021 een vrijstelling van
+overdrachtsbelasting voor jongeren tot 35 jaar. Jongeren hebben daarom
+veelal de aankoop uitgesteld naar het eerste kwartaal van 2021. Deze
+effecten van regelgeving zien we terug in de data.
+
+Voorspellen van aantal transacties
+
+Ook hier wordt eerst gekeken naar de correlaties tussen de variabelen.
+Wederom is de data omgerekend naar jaar-op-jaar percentuele wijzigingen
+om de factoren vergelijkbaar te maken. Het aantal transacties is slechts
+heel beperkt gecorreleerd aan de geselecteerde variabelen. Opmerkelijk
+is dat we bijna geen correlatie zien tussen het aantal transacties en
+het aantal huishoudens.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{corMatrix <-}\StringTok{ }\KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(df_rm_transactions }\OperatorTok{%>%}\StringTok{ }
+\StringTok{                         }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{date)),}\DecValTok{5}\NormalTok{)}
+
+\NormalTok{corCols <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"huisprijsindex"}\NormalTok{, }
+             \StringTok{"Inkomen"}\NormalTok{,}
+             \StringTok{"werkgelegenheid"}\NormalTok{,}
+             \StringTok{"BBP"}\NormalTok{,}
+             \StringTok{"Cons.Vertrouwen"}\NormalTok{, }
+             \StringTok{"Aantal huishoudens"}\NormalTok{,}
+             \StringTok{"Aantal transacties"}\NormalTok{,}
+             \StringTok{"Woning tekort"}\NormalTok{)}
+
+\KeywordTok{colnames}\NormalTok{(corMatrix) <-}\StringTok{ }\NormalTok{corCols}
+\KeywordTok{rownames}\NormalTok{(corMatrix) <-}\StringTok{ }\NormalTok{corCols}
+
+\KeywordTok{corrplot}\NormalTok{(corMatrix,}
+            \DataTypeTok{title =} \StringTok{"Correlatie transacties"}\NormalTok{,}
+            \DataTypeTok{type =} \StringTok{"lower"}\NormalTok{, }
+            \DataTypeTok{tl.cex =} \FloatTok{0.8}\NormalTok{,}
+            \DataTypeTok{tl.col =} \StringTok{"black"}\NormalTok{, }
+            \DataTypeTok{tl.srt =} \DecValTok{45}\NormalTok{,}
+            \DataTypeTok{mar=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{0}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/sales_correlation-1.pdf}
+
+Voorspellen aantal transacties
+
+Ook is het mogelijk om net als bij de huizenprijzen, een MARS model toe
+te passen op het aantal transacties. Het MARS model selecteert als de
+belangrijkste voorspellers: aantal huishoudens, BBP, tijdsfactor (het
+aantal transacties in de vorige periode) en het consumentenvertrouwen.
+
+Het MARS model geeft op basis van deze gegevens geen goede voorspelling.
+Ergens gaat het mis met de data in 2020. Mogelijk dat de effecten van de
+COVID-crisis hier onvoorziene invloeden hebben op de voorspelling.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Add Lineair regression model - for number of households and transactions...}
+
+\CommentTok{# Add 4 lags of data}
+\NormalTok{df_rm_transactions <-}
+\StringTok{  }\NormalTok{df_rm_transactions }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{lagdata}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{drop_na}\NormalTok{()}
+  
+\CommentTok{# Split in Train and Test data set}
+\NormalTok{df_train <-}\StringTok{ }\NormalTok{df_rm_transactions }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(date }\OperatorTok{<=}\StringTok{ }\NormalTok{(}\KeywordTok{max}\NormalTok{(df_rm_transactions}\OperatorTok{$}\NormalTok{date) }\OperatorTok{-}\StringTok{ }\KeywordTok{years}\NormalTok{(}\DecValTok{5}\NormalTok{)))}
+\NormalTok{df_test <-}\StringTok{ }\NormalTok{df_rm_transactions }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(date }\OperatorTok{>}\StringTok{ }\NormalTok{(}\KeywordTok{max}\NormalTok{(df_rm_transactions}\OperatorTok{$}\NormalTok{date) }\OperatorTok{-}\StringTok{ }\KeywordTok{years}\NormalTok{(}\DecValTok{5}\NormalTok{)))}
+
+
+\CommentTok{# Tuning the model}
+\CommentTok{# Optimal number of defrees and number of variables to prune is calculated}
+
+\CommentTok{# create a tuning grid }
+\NormalTok{hyper_grid <-}\StringTok{ }\KeywordTok{expand.grid}\NormalTok{(}
+  \DataTypeTok{degree =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }
+  \DataTypeTok{nprune =} \KeywordTok{seq}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DataTypeTok{length.out =} \DecValTok{20}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{floor}\NormalTok{()}
+\NormalTok{)}
+
+
+\CommentTok{# for reproducibiity}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{# cross validated model}
+\NormalTok{tuned_mars <-}\StringTok{ }\KeywordTok{train}\NormalTok{(}
+  \DataTypeTok{x =} \KeywordTok{subset}\NormalTok{(df_train, }\DataTypeTok{select =} \OperatorTok{-}\NormalTok{verkocht_yoy),}
+  \DataTypeTok{y =}\NormalTok{ df_train}\OperatorTok{$}\NormalTok{verkocht_yoy,}
+  \DataTypeTok{method =} \StringTok{"earth"}\NormalTok{,}
+  \DataTypeTok{metric =} \StringTok{"RMSE"}\NormalTok{,}
+  \DataTypeTok{trControl =} \KeywordTok{trainControl}\NormalTok{(}\DataTypeTok{method =} \StringTok{"cv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{10}\NormalTok{),}
+  \DataTypeTok{tuneGrid =}\NormalTok{ hyper_grid}
+\NormalTok{)}
+
+\CommentTok{# plot results}
+\KeywordTok{ggplot}\NormalTok{(tuned_mars) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{ (}
+      \DataTypeTok{title =} \StringTok{'Analyse voorspelling factoren MARS model transactievolumes'}\NormalTok{,}
+      \DataTypeTok{x =} \StringTok{'Aantal factoren'}\NormalTok{,}
+      \DataTypeTok{y =} \StringTok{'Gemiddelde kwadratischfout (RMSE)'}
+\NormalTok{    ) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/sales_mars-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# fit model}
+\NormalTok{fit <-}\StringTok{ }\KeywordTok{earth}\NormalTok{(verkocht_yoy}\OperatorTok{~}\NormalTok{., df_train, }
+             \DataTypeTok{degree =}\NormalTok{ tuned_mars}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{degree, }\DataTypeTok{nprune =}\NormalTok{ tuned_mars}\OperatorTok{$}\NormalTok{bestTune}\OperatorTok{$}\NormalTok{nprune)}
+\CommentTok{# summarize the fit}
+\CommentTok{# summary(fit)}
+
+\CommentTok{# summarize the importance of input variables}
+\KeywordTok{kable}\NormalTok{(}\KeywordTok{print}\NormalTok{(}\KeywordTok{evimp}\NormalTok{(fit)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      nsubsets   gcv    rss
+## aantal_hh_yoy               6 100.0  100.0
+## gdp                         5  76.0   76.4
+## verkocht_yoy1               4  50.1   53.1
+## verkocht_yoy3-unused        1  19.6   22.3
+\end{verbatim}
+
+\begin{tabular}{}
+\hline
+
+\hline
+\end{tabular}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# make predictions}
+\NormalTok{train_predictions <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(fit, df_train)}
+\NormalTok{test_predictions <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(fit, df_test)}
+
+\NormalTok{df_result <-}
+\StringTok{  }\KeywordTok{tibble}\NormalTok{ (}
+    \DataTypeTok{date =}\NormalTok{ df_train}\OperatorTok{$}\NormalTok{date, }
+    \DataTypeTok{verkocht_yoy =}\NormalTok{ df_train}\OperatorTok{$}\NormalTok{verkocht_yoy,  }
+    \DataTypeTok{predicted =}\NormalTok{ train_predictions,}
+    \DataTypeTok{variable =} \StringTok{'train'}
+\NormalTok{  ) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{union_all}\NormalTok{( }
+    \KeywordTok{tibble}\NormalTok{(}
+      \DataTypeTok{date =}\NormalTok{ df_test}\OperatorTok{$}\NormalTok{date, }
+      \DataTypeTok{verkocht_yoy =}\NormalTok{ df_test}\OperatorTok{$}\NormalTok{verkocht_yoy,  }
+      \DataTypeTok{predicted =}\NormalTok{ test_predictions,}
+      \DataTypeTok{variable =} \StringTok{'test'}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{df_result }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(date, verkocht_yoy)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{size =} \FloatTok{0.5}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ predicted, }\DataTypeTok{linetype =}\NormalTok{ variable, }\DataTypeTok{color =} \StringTok{'steelblue'}\NormalTok{), }\DataTypeTok{size =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_linetype_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\StringTok{"dotted"}\NormalTok{,}\StringTok{"solid"}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\StringTok{"steelblue"}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Voorspelling aantal transacties MARS Model"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"Aantal transacties"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}\NormalTok{,}
+    \DataTypeTok{linetype =} \StringTok{'dataset'}
+\NormalTok{  ) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/sales_mars-2.pdf}
+
+Seizoensinvloeden bij het aantal transacties
+
+Om de ontwikkeling van de transactievolumes verder te analyseren is een
+tijdreeksanalyse uitgevoerd op de data. De ACf (auto correlatie) plot
+toont dat meer recente data significant is, wat een trend aangeeft in de
+data. De PACF plot (partial auto-correlation function) toont dat recente
+data en seizoensinvloeden een goede indicatie geven voor het modeleren
+van de trend.
+
+De uiteindelijke voorspelling laat het seizoenspatroon zien. Verder
+wordt door dit model de recente trend doorgetrokken, terwijl eigenlijk
+verwacht zou mogen worden dat op termijn de volumes op de huizenmarkt
+terugkeren naar een stabiel niveau.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# }
+\CommentTok{# vw <- verkochte_woningen_per_type_per_kwartaal %>% }
+\CommentTok{#   group_by (yearqtr) %>% }
+\CommentTok{#   summarise(totaal = sum(verkochte_bestaande_woningen) / 1000 )}
+
+\CommentTok{# Time series object}
+\NormalTok{vwts <-}\StringTok{ }\KeywordTok{ts}\NormalTok{(verkochte_woningen_per_kwartaal[}\StringTok{"totaal"}\NormalTok{], }
+              \DataTypeTok{start =} \KeywordTok{c}\NormalTok{(}\DecValTok{1995}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{frequency =} \DecValTok{4}\NormalTok{)}
+
+\NormalTok{v1 <-}\StringTok{ }
+\StringTok{  }\NormalTok{vwts }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{autoplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Transacties bestaande koopwoningen per kwartaal"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"(x 1000)"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}
+\NormalTok{    ) }
+
+\NormalTok{v2 <-}\StringTok{ }
+\StringTok{  }\NormalTok{vwts }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggsubseriesplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Seizoensplot"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"(x 1000)"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{''}
+\NormalTok{    ) }
+
+\CommentTok{# Plot it}
+\NormalTok{cowplot}\OperatorTok{::}\KeywordTok{plot_grid}\NormalTok{(v1, v2, }\DataTypeTok{ncol=}\DecValTok{1}\NormalTok{, }\DataTypeTok{rel_heights =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/sales_arima-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# ACF plot}
+\CommentTok{# Visualizes how much the most recent value of the series is correlated with past values of the series}
+\NormalTok{o1 <-}\StringTok{ }\KeywordTok{ggAcf}\NormalTok{(vwts, }\DataTypeTok{lag.max =} \DecValTok{16}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"ACF Plot seizoensinvloeden Verkopen Bestaande Koopwoningen"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"Correlatie"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{"Aantal perioden lag"}
+\NormalTok{    ) }
+
+\CommentTok{# PACF Plot}
+\CommentTok{# Visualizes whether certain lags are good for modeling or not; useful for data with a seasonal pattern}
+\NormalTok{o2 <-}\StringTok{ }\KeywordTok{ggPacf}\NormalTok{(vwts, }\DataTypeTok{lag.max =} \DecValTok{16}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"PACF Plot seizoensinvloeden Verkopen Bestaande Koopwoningen"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"Correlatie"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{"Aantal perioden lag"}
+\NormalTok{    ) }
+
+\CommentTok{# Plot both}
+\NormalTok{cowplot}\OperatorTok{::}\KeywordTok{plot_grid}\NormalTok{(o1, o2, }\DataTypeTok{ncol =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/sales_arima-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Take first difference of the plot + seseonal effects}
+\CommentTok{# Lag 1 year - lag 1 quarter - remainder fits model for Arima}
+\NormalTok{vwts }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{diff}\NormalTok{(}\DataTypeTok{lag=}\DecValTok{4}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{diff}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggtsdisplay}\NormalTok{(}\DataTypeTok{main =} \StringTok{"Eerst orde verschil en seizoensinvloed"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/sales_arima-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Eventualy I got this model - which seems to fit beter then auto arima}
+\NormalTok{fit <-}
+\StringTok{  }\KeywordTok{Arima}\NormalTok{(vwts, }\DataTypeTok{order=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{), }\DataTypeTok{seasonal=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\KeywordTok{checkresiduals}\NormalTok{(fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/sales_arima-4.pdf}
+
+\begin{verbatim}
+## 
+##  Ljung-Box test
+## 
+## data:  Residuals from ARIMA(0,1,4)(0,1,1)[4]
+## Q* = 3.6063, df = 3, p-value = 0.3072
+## 
+## Model df: 5.   Total lags used: 8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{forecast}\NormalTok{(}\DataTypeTok{h=}\DecValTok{12}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{autoplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}
+    \DataTypeTok{title =} \StringTok{"Voorspelling transactievolume per kwartaal koopwoningen"}\NormalTok{,}
+    \DataTypeTok{y =} \StringTok{"(x 1000)"}\NormalTok{,}
+    \DataTypeTok{x =} \StringTok{""}
+\NormalTok{    ) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{data_exploration_files/figure-latex/sales_arima-5.pdf}
+
+\hypertarget{conclusies}{%
+\section{Conclusies}\label{conclusies}}
+
+Er is in de media veel aandacht voor of de bouwplannen wel realiseerbaar
+zijn. Het lijkt erop dat door regelgeving (PFAS, ruimtelijke ordening)
+en problemen in de uitvoering de groei van het aantal huizen de groei
+van de bevolking nog niet kan bijhouden waardoor het tekort op de
+woningmarkt tijdelijk nog verder oploopt. Op termijn lijkt er meer
+ruimte te ontstaan op de woningmarkt. De groei van de bevolking komt
+momenteel bijna geheel vanuit de migratie. Het geboorteoverschot is
+historisch laag - en zal gezien de vergrijzing ook niet snel stijgen.
+Regionaal kan hierdoor worden verwacht dat de druk op de grote steden
+verder zal toenemen. Dit is verder in deze studie niet onderzocht
+vanwege gebrek aan data.
+
+Statistisch gezien is in deze studie geen verband aangetoond tussen het
+woningtekort en de oplopende huizenprijzen. Daarmee is geen invloed
+aangetoond van een verschuiving in vraag en aanbod op de prijsvorming in
+de huizenmarkt in Nederland.
+
+De huizenprijzen reageren vertraagd op de ontwikkelingen in de economie.
+Dit wordt zichtbaar in de leading indicators van het MARS model. Het
+model lijkt een goede basis vormen om voorspellingen te kunnen maken
+over de prijsontwikkelingen op de huizenmarkt. Hierbij moeten we wel
+rekening houden met de huidige unieke omstandigheden van de economie
+midden in de corona epidemie. Helaas is het in tijd die beschikbaar was
+voor deze studie niet gelukt om ook daadwerkelijk voorspellingen te
+maken voor de aankomende jaren op basis van dit model.
+
+Het aantal transacties is in de financiële crisis van 2009 sterk
+gekrompen. Sindsdien zien we een groeiversnelling, waar nog steeds geen
+einde aan lijkt te komen. Het is in deze studie niet gelukt om een goed
+model te vinden voor het voorspellen van het aantal transacties.
+Opmerkelijk is dat ook het aantal huishoudens geen goede voorspelling
+geeft van de transactievolumes. Op basis van de beschikbare data geeft
+een autocorrelatie model (waarbij alleen gekeken worden naar het aantal
+transacties in de voorgaande perioden) de beste voorspelling.
+
+\hypertarget{referenties}{%
+\section*{Referenties}\label{referenties}}
+\addcontentsline{toc}{section}{Referenties}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-CBS2016}{}%
+CBS. (2016). \emph{Indicatoren woningmarkt op groen}. Retrieved from
+\url{https://www.cbs.nl/nl-nl/achtergrond/2016/16/indicatoren-woningmarkt-op-groen}
+
+\leavevmode\hypertarget{ref-CBS2020a}{}%
+CBS. (2020). \emph{Huizenmarkt in beeld}. Retrieved from
+\url{https://www.cbs.nl/nl-nl/visualisaties/huizenmarkt-in-beeld}
+
+\leavevmode\hypertarget{ref-R-timetk}{}%
+Dancho, M., \& Vaughan, D. (2021). \emph{Timetk: A tool kit for working
+with time series in r}. Retrieved from
+\url{https://github.com/business-science/timetk}
+
+\leavevmode\hypertarget{ref-Foreman2014}{}%
+Foreman, J. W. (2014). \emph{Data Smart, Using Data Science to Transform
+Information into Insight}. John Wiley \& sons, Inc.
+
+\leavevmode\hypertarget{ref-Friedman2007}{}%
+Friedman, J. H. (2007). Multivariate Adaptive Regression Splines.
+\emph{Annals of Statistics}.
+\url{https://doi.org/10.1214/aos/1176347963}
+
+\leavevmode\hypertarget{ref-R-viridis}{}%
+Garnier, S. (2018a). \emph{Viridis: Default color maps from matplotlib}.
+Retrieved from \url{https://github.com/sjmgarnier/viridis}
+
+\leavevmode\hypertarget{ref-R-viridisLite}{}%
+Garnier, S. (2018b). \emph{ViridisLite: Default color maps from
+matplotlib (lite version)}. Retrieved from
+\url{https://github.com/sjmgarnier/viridisLite}
+
+\leavevmode\hypertarget{ref-R-pdp}{}%
+Greenwell, B. (2018). \emph{Pdp: Partial dependence plots}. Retrieved
+from \url{https://CRAN.R-project.org/package=pdp}
+
+\leavevmode\hypertarget{ref-R-vip}{}%
+Greenwell, B., Boehmke, B., \& Gray, B. (2020). \emph{Vip: Variable
+importance plots}. Retrieved from
+\url{https://github.com/koalaverse/vip/}
+
+\leavevmode\hypertarget{ref-pdp2017}{}%
+Greenwell, B. M. (2017). Pdp: An r package for constructing partial
+dependence plots. \emph{The R Journal}, \emph{9}(1), 421--436. Retrieved
+from
+\url{https://journal.r-project.org/archive/2017/RJ-2017-016/index.html}
+
+\leavevmode\hypertarget{ref-vip2020}{}%
+Greenwell, B. M., \& Boehmke, B. C. (2020). Variable importance
+plots---an introduction to the vip package. \emph{The R Journal},
+\emph{12}(1), 343--366. Retrieved from
+\url{https://doi.org/10.32614/RJ-2020-013}
+
+\leavevmode\hypertarget{ref-lubridate2011}{}%
+Grolemund, G., \& Wickham, H. (2011). Dates and times made easy with
+lubridate. \emph{Journal of Statistical Software}, \emph{40}(3), 1--25.
+Retrieved from \url{https://www.jstatsoft.org/v40/i03/}
+
+\leavevmode\hypertarget{ref-Groot2018}{}%
+Groot, S., Vogt, B., Van der Wiel, K., \& Van Dijk, M. (2018).
+\emph{Oververhitting op de Nederlandse huizenmarkt?} Retrieved from
+\url{https://www.cpb.nl/publicatie/oververhitting-op-de-nederlandse-huizenmarkt/CPB-Achtergronddocument-1jun2018-Oververhitting-op-de-nederlandse-huizenmarkt.pdf}
+
+\leavevmode\hypertarget{ref-Hanck2020}{}%
+Hanck, C., Martin, A., Alexander, G., \& Schmelzer, M. (2020).
+\emph{Introduction to Econometrics with R}. Retrieved from
+\url{https://www.econometrics-with-r.org/index.html}
+
+\leavevmode\hypertarget{ref-R-purrr}{}%
+Henry, L., \& Wickham, H. (2020). \emph{Purrr: Functional programming
+tools}. Retrieved from \url{https://CRAN.R-project.org/package=purrr}
+
+\leavevmode\hypertarget{ref-R-stargazer}{}%
+Hlavac, M. (2018). \emph{Stargazer: Well-formatted regression and
+summary statistics tables}. Retrieved from
+\url{https://CRAN.R-project.org/package=stargazer}
+
+\leavevmode\hypertarget{ref-R-fma}{}%
+Hyndman, R. (2020a). \emph{Fma: Data sets from "forecasting: Methods and
+applications" by makridakis, wheelwright \& hyndman (1998)}. Retrieved
+from \url{https://CRAN.R-project.org/package=fma}
+
+\leavevmode\hypertarget{ref-R-fpp2}{}%
+Hyndman, R. (2020b). \emph{Fpp2: Data for "forecasting: Principles and
+practice" (2nd edition)}. Retrieved from
+\url{https://CRAN.R-project.org/package=fpp2}
+
+\leavevmode\hypertarget{ref-R-forecast}{}%
+Hyndman, R., Athanasopoulos, G., Bergmeir, C., Caceres, G., Chhay, L.,
+O'Hara-Wild, M., \ldots{} Yasmeen, F. (2021). \emph{Forecast:
+Forecasting functions for time series and linear models}. Retrieved from
+\url{https://CRAN.R-project.org/package=forecast}
+
+\leavevmode\hypertarget{ref-R-expsmooth}{}%
+Hyndman, R. J. (2015). \emph{Expsmooth: Data sets from "forecasting with
+exponential smoothing"}. Retrieved from
+\url{https://github.com/robjhyndman/expsmooth}
+
+\leavevmode\hypertarget{ref-Hyndman2018}{}%
+Hyndman, R. J., \& Athanasopoulos, G. (2018). \emph{Forecasting:
+Principles and Practice}. Retrieved from \url{https://otexts.com/fpp2/}
+
+\leavevmode\hypertarget{ref-forecast2008}{}%
+Hyndman, R. J., \& Khandakar, Y. (2008). Automatic time series
+forecasting: The forecast package for R. \emph{Journal of Statistical
+Software}, \emph{26}(3), 1--22. Retrieved from
+\url{https://www.jstatsoft.org/article/view/v027i03}
+
+\leavevmode\hypertarget{ref-plotrix2006}{}%
+J, L. (2006). Plotrix: A package in the red light district of r.
+\emph{R-News}, \emph{6}(4), 8--12.
+
+\leavevmode\hypertarget{ref-KennethGopalGerardvanLeeuwenDavidOmtzigt2020}{}%
+Kenneth Gopal, Gerard van Leeuwen, David Omtzigt, T. K. en M. S.-F.
+(2020). \emph{Prognose woningmarktmodel Socrates}. Retrieved from
+\url{https://www.abfresearch.nl/publicaties/rapportage-socrates-2019/}
+
+\leavevmode\hypertarget{ref-KennethGopalGerardvanLeeuwenDavidOmtzigt2019}{}%
+Kenneth Gopal, Gerard van Leeuwen, David Omtzigt, T. K. en M., \&
+Stuart-Fox. (2019). \emph{Socrates - Scenarioverkenningen van de
+woningmarkt in 2030}. Retrieved from
+\url{https://www.rijksoverheid.nl/documenten/rapporten/2019/05/29/socrates-2019---scenarioverkenningen-van-de-woningmarkt-in-2030}
+
+\leavevmode\hypertarget{ref-R-caret}{}%
+Kuhn, M. (2020). \emph{Caret: Classification and regression training}.
+Retrieved from \url{https://github.com/topepo/caret/}
+
+\leavevmode\hypertarget{ref-R-plotrix}{}%
+Lemon, J., Bolker, B., Oom, S., Klein, E., Rowlingson, B., Wickham, H.,
+\ldots{} Venables, B. (2021). \emph{Plotrix: Various plotting
+functions}. Retrieved from
+\url{https://CRAN.R-project.org/package=plotrix}
+
+\leavevmode\hypertarget{ref-LeonGroenemeijerKennethGopal2020}{}%
+Léon Groenemeijer, Kenneth Gopal, D. O. \&. G. van L. (2020).
+\emph{Vooruitzichten bevolking, huishoudens en woningmarkt, Prognose en
+Scenario's 2020-2035}. Retrieved from
+\url{https://www.rijksoverheid.nl/documenten/rapporten/2020/06/12/vooruitzichten-bevolking-huishoudens-en-woningmarkt-prognose-en-scenarios-2020-2035}
+
+\leavevmode\hypertarget{ref-R-sjPlot}{}%
+Lüdecke, D. (2021). \emph{SjPlot: Data visualization for statistics in
+social science}. Retrieved from
+\url{https://strengejacke.github.io/sjPlot/}
+
+\leavevmode\hypertarget{ref-OldfordR.J.MacKay2000}{}%
+MacKay, R. J., \& Oldford, R. W. (2000). Scientific method, statistical
+method and the speed of light. \emph{Statistical Science}, \emph{15}(3),
+254--278. \url{https://doi.org/10.1214/ss/1009212817}
+
+\leavevmode\hypertarget{ref-fma1998}{}%
+Makridakis, S., Wheelwright, S., \& Hyndman, R. J. (1998).
+\emph{Forecasting: Methods and applications}. John Wiley \& Sons.
+
+\leavevmode\hypertarget{ref-R-plotmo}{}%
+Milborrow, S. (2020). \emph{Plotmo: Plot a model's residuals, response,
+and partial dependence plots}. Retrieved from
+\url{http://www.milbo.users.sonic.net}
+
+\leavevmode\hypertarget{ref-MinisterievanBinnenlandseZakenenKoninkrijksrelaties2021}{}%
+Ministerie van Binnenlandse Zaken en Koninkrijksrelaties. (2021).
+\emph{Datawonen}. Retrieved from
+\url{https://datawonen.nl/dashboard/dashboard/koopprijs}
+
+\leavevmode\hypertarget{ref-CBS2020b}{}%
+Minister Wonen en Rijksdienst. (2016). \emph{Staat van de woningmarkt
+2016}. Retrieved from
+\url{https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/rapporten/2016/10/31/rapport-staat-van-de-woningmarkt-2016/rapport-staat-van-de-woningmarkt-2016.pdf}
+
+\leavevmode\hypertarget{ref-CBS2020}{}%
+Monitor koopwoningmarkt. (2020). \emph{CBS Achtergronddocument}.
+Retrieved from
+\url{https://www.cbs.nl/nl-nl/visualisaties/monitor-koopwoningmarkt}
+
+\leavevmode\hypertarget{ref-R-here}{}%
+Müller, K. (2020). \emph{Here: A simpler way to find your files}.
+Retrieved from \url{https://CRAN.R-project.org/package=here}
+
+\leavevmode\hypertarget{ref-R-tibble}{}%
+Müller, K., \& Wickham, H. (2021). \emph{Tibble: Simple data frames}.
+Retrieved from \url{https://CRAN.R-project.org/package=tibble}
+
+\leavevmode\hypertarget{ref-sf2018}{}%
+Pebesma, E. (2018). Simple Features for R: Standardized Support for
+Spatial Vector Data. \emph{The R Journal}, \emph{10}(1), 439--446.
+\url{https://doi.org/10.32614/RJ-2018-009}
+
+\leavevmode\hypertarget{ref-R-sf}{}%
+Pebesma, E. (2021). \emph{Sf: Simple features for r}. Retrieved from
+\url{https://CRAN.R-project.org/package=sf}
+
+\leavevmode\hypertarget{ref-urca2008}{}%
+Pfaff, B. (2008). \emph{Analysis of integrated and cointegrated time
+series with r} (Second). New York: Springer. Retrieved from
+\url{http://www.pfaffikus.de}
+
+\leavevmode\hypertarget{ref-R-urca}{}%
+Pfaff, B. (2016). \emph{Urca: Unit root and cointegration tests for time
+series data}. Retrieved from
+\url{https://CRAN.R-project.org/package=urca}
+
+\leavevmode\hypertarget{ref-R-base}{}%
+R Core Team. (2021). \emph{R: A language and environment for statistical
+computing}. Vienna, Austria: R Foundation for Statistical Computing.
+Retrieved from \url{https://www.R-project.org/}
+
+\leavevmode\hypertarget{ref-Research2020}{}%
+Research, A. (2020). \emph{Primos - Bevolkingsprognose, Rapportage
+Primos}. Retrieved from
+\url{https://www.abfresearch.nl/producten/prognoses/primos-bevolkingsprognose/}
+
+\leavevmode\hypertarget{ref-R-pacman}{}%
+Rinker, T., \& Kurkiewicz, D. (2019). \emph{Pacman: Package management
+tool}. Retrieved from \url{https://github.com/trinker/pacman}
+
+\leavevmode\hypertarget{ref-pacman2018}{}%
+Rinker, T. W., \& Kurkiewicz, D. (2018). \emph{pacman: Package
+management for R}. Buffalo, New York. Retrieved from
+\url{http://github.com/trinker/pacman}
+
+\leavevmode\hypertarget{ref-R-broom}{}%
+Robinson, D., Hayes, A., \& Couch, S. (2021). \emph{Broom: Convert
+statistical objects into tidy tibbles}. Retrieved from
+\url{https://CRAN.R-project.org/package=broom}
+
+\leavevmode\hypertarget{ref-lattice2008}{}%
+Sarkar, D. (2008). \emph{Lattice: Multivariate data visualization with
+r}. New York: Springer. Retrieved from
+\url{http://lmdvr.r-forge.r-project.org}
+
+\leavevmode\hypertarget{ref-R-lattice}{}%
+Sarkar, D. (2020). \emph{Lattice: Trellis graphics for r}. Retrieved
+from \url{http://lattice.r-forge.r-project.org/}
+
+\leavevmode\hypertarget{ref-R-rsample}{}%
+Silge, J., Chow, F., Kuhn, M., \& Wickham, H. (2021). \emph{Rsample:
+General resampling infrastructure}. Retrieved from
+\url{https://CRAN.R-project.org/package=rsample}
+
+\leavevmode\hypertarget{ref-R-TeachingDemos}{}%
+Snow, G. (2020). \emph{TeachingDemos: Demonstrations for teaching and
+learning}. Retrieved from
+\url{https://CRAN.R-project.org/package=TeachingDemos}
+
+\leavevmode\hypertarget{ref-R-lubridate}{}%
+Spinu, V., Grolemund, G., \& Wickham, H. (2021). \emph{Lubridate: Make
+dealing with dates a little easier}. Retrieved from
+\url{https://CRAN.R-project.org/package=lubridate}
+
+\leavevmode\hypertarget{ref-R-earth}{}%
+Trevor Hastie, S. M. D. from mda:mars by, \& Thomas Lumley's leaps
+wrapper., R. T. U. A. M. F. utilities with. (2020). \emph{Earth:
+Multivariate adaptive regression splines}. Retrieved from
+\url{http://www.milbo.users.sonic.net/earth/}
+
+\leavevmode\hypertarget{ref-Vogt2018}{}%
+Vogt, B., Kalara, N., \& Voogt, B. (2018). \emph{How do the Dutch
+Finance their Own House?} Retrieved from
+\url{https://www.cpb.nl/sites/default/files/omnidownload/CPB-Background-Document-June2018-How-do-the-dutch-finance-their-own-house.pdf}
+
+\leavevmode\hypertarget{ref-R-corrplot}{}%
+Wei, T., \& Simko, V. (2017a). \emph{Corrplot: Visualization of a
+correlation matrix}. Retrieved from
+\url{https://github.com/taiyun/corrplot}
+
+\leavevmode\hypertarget{ref-corrplot2017}{}%
+Wei, T., \& Simko, V. (2017b). \emph{R package "corrplot": Visualization
+of a correlation matrix}. Retrieved from
+\url{https://github.com/taiyun/corrplot}
+
+\leavevmode\hypertarget{ref-reshape22007}{}%
+Wickham, H. (2007). Reshaping data with the reshape package.
+\emph{Journal of Statistical Software}, \emph{21}(12), 1--20. Retrieved
+from \url{http://www.jstatsoft.org/v21/i12/}
+
+\leavevmode\hypertarget{ref-ggplot22016}{}%
+Wickham, H. (2016). \emph{Ggplot2: Elegant graphics for data analysis}.
+Springer-Verlag New York. Retrieved from
+\url{https://ggplot2.tidyverse.org}
+
+\leavevmode\hypertarget{ref-R-stringr}{}%
+Wickham, H. (2019a). \emph{Stringr: Simple, consistent wrappers for
+common string operations}. Retrieved from
+\url{https://CRAN.R-project.org/package=stringr}
+
+\leavevmode\hypertarget{ref-R-tidyverse}{}%
+Wickham, H. (2019b). \emph{Tidyverse: Easily install and load the
+tidyverse}. Retrieved from
+\url{https://CRAN.R-project.org/package=tidyverse}
+
+\leavevmode\hypertarget{ref-R-reshape2}{}%
+Wickham, H. (2020). \emph{Reshape2: Flexibly reshape data: A reboot of
+the reshape package}. Retrieved from
+\url{https://github.com/hadley/reshape}
+
+\leavevmode\hypertarget{ref-R-forcats}{}%
+Wickham, H. (2021a). \emph{Forcats: Tools for working with categorical
+variables (factors)}. Retrieved from
+\url{https://CRAN.R-project.org/package=forcats}
+
+\leavevmode\hypertarget{ref-R-tidyr}{}%
+Wickham, H. (2021b). \emph{Tidyr: Tidy messy data}. Retrieved from
+\url{https://CRAN.R-project.org/package=tidyr}
+
+\leavevmode\hypertarget{ref-tidyverse2019}{}%
+Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D.,
+François, R., \ldots{} Yutani, H. (2019). Welcome to the tidyverse.
+\emph{Journal of Open Source Software}, \emph{4}(43), 1686.
+\url{https://doi.org/10.21105/joss.01686}
+
+\leavevmode\hypertarget{ref-R-ggplot2}{}%
+Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K.,
+Wilke, C., \ldots{} Dunnington, D. (2020). \emph{Ggplot2: Create elegant
+data visualisations using the grammar of graphics}. Retrieved from
+\url{https://CRAN.R-project.org/package=ggplot2}
+
+\leavevmode\hypertarget{ref-R-dplyr}{}%
+Wickham, H., François, R., Henry, L., \& Müller, K. (2021). \emph{Dplyr:
+A grammar of data manipulation}. Retrieved from
+\url{https://CRAN.R-project.org/package=dplyr}
+
+\leavevmode\hypertarget{ref-R-readr}{}%
+Wickham, H., \& Hester, J. (2020). \emph{Readr: Read rectangular text
+data}. Retrieved from \url{https://CRAN.R-project.org/package=readr}
+
+\leavevmode\hypertarget{ref-R-cowplot}{}%
+Wilke, C. O. (2020). \emph{Cowplot: Streamlined plot theme and plot
+annotations for ggplot2}. Retrieved from
+\url{https://wilkelab.org/cowplot/}
+
+\leavevmode\hypertarget{ref-knitr2014}{}%
+Xie, Y. (2014). Knitr: A comprehensive tool for reproducible research in
+R. In V. Stodden, F. Leisch, \& R. D. Peng (Eds.), \emph{Implementing
+reproducible computational research}. Chapman; Hall/CRC. Retrieved from
+\url{http://www.crcpress.com/product/isbn/9781466561595}
+
+\leavevmode\hypertarget{ref-knitr2015}{}%
+Xie, Y. (2015). \emph{Dynamic documents with R and knitr} (2nd ed.).
+Boca Raton, Florida: Chapman; Hall/CRC. Retrieved from
+\url{https://yihui.org/knitr/}
+
+\leavevmode\hypertarget{ref-R-knitr}{}%
+Xie, Y. (2021). \emph{Knitr: A general-purpose package for dynamic
+report generation in r}. Retrieved from \url{https://yihui.org/knitr/}
+
+\leavevmode\hypertarget{ref-R-dynlm}{}%
+Zeileis, A. (2019). \emph{Dynlm: Dynamic linear regression}. Retrieved
+from \url{https://CRAN.R-project.org/package=dynlm}
+
+\leavevmode\hypertarget{ref-Formula2010}{}%
+Zeileis, A., \& Croissant, Y. (2010). Extended model formulas in R:
+Multiple parts and multiple responses. \emph{Journal of Statistical
+Software}, \emph{34}(1), 1--13.
+\url{https://doi.org/10.18637/jss.v034.i01}
+
+\leavevmode\hypertarget{ref-R-Formula}{}%
+Zeileis, A., \& Croissant, Y. (2020). \emph{Formula: Extended model
+formulas}. Retrieved from
+\url{https://CRAN.R-project.org/package=Formula}
+
+\leavevmode\hypertarget{ref-zoo2005}{}%
+Zeileis, A., \& Grothendieck, G. (2005). Zoo: S3 infrastructure for
+regular and irregular time series. \emph{Journal of Statistical
+Software}, \emph{14}(6), 1--27.
+\url{https://doi.org/10.18637/jss.v014.i06}
+
+\leavevmode\hypertarget{ref-R-zoo}{}%
+Zeileis, A., Grothendieck, G., \& Ryan, J. A. (2021). \emph{Zoo: S3
+infrastructure for regular and irregular time series (z's ordered
+observations)}. Retrieved from \url{https://zoo.R-Forge.R-project.org/}
+
+\leavevmode\hypertarget{ref-R-kableExtra}{}%
+Zhu, H. (2021). \emph{KableExtra: Construct complex table with kable and
+pipe syntax}. Retrieved from
+\url{https://CRAN.R-project.org/package=kableExtra}
+
+\end{document}

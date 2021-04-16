@@ -1,0 +1,35 @@
+---
+title: "Test"
+author: "Merijn"
+date: "18/03/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+```{r}
+library(quantmod)
+library(ggplot2)
+symbols <- c("ASX", "AZN", "BP", "AAPL")
+start <- as.Date("2014-01-01")
+until <- as.Date("2014-12-31")
+# import data into an environment
+e <- new.env()
+getSymbols(symbols, src = "yahoo", from = start, to = until, env = e)
+# extract the adjusted close and merge into one xts object
+stocks <- do.call(merge, lapply(e, Ad))
+# Remove the ".Adjusted" suffix from each symbol column name
+colnames(stocks) <- gsub(".Adjusted", "", colnames(stocks), fixed = TRUE)
+# convert the xts object to a long data frame
+stocks_df <- fortify(stocks, melt = TRUE)
+```
+
+```{r}
+# plot the data
+qplot(Index, Value, data = stocks_df, geom = "line", group = Series) +
+  facet_grid(Series ~ ., scale = "free_y")
+```
+
