@@ -3,7 +3,7 @@ title: "Ontwikkelingen huizenmarkt"
 subtitle: "Huizenprijzen en transactievolumes in Nederland"
 author:
 - Merijn van Miltenburg
-date: "08/04/2021"
+date: "18/04/2021"
 output: 
     html_document:
       code_folding: hide
