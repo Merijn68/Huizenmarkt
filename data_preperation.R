@@ -162,7 +162,10 @@ tshuizen <-
 
 
 # CBS Statline data--------------------------------------------------------
-# Table data should be read from metadata (outside code)
+# Meta data for loading CBS Data
+# 
+# Table data should be stored outside code and loaded ar runtime
+#
 tables <-
   tribble(
     ~report, ~table_name,
@@ -283,7 +286,6 @@ consumenten_vertrouwen_lt_q <-
   mutate(date = first_of_quarter(as.Date(yearqtr)))
 
 # Add Year-on-year change to employment table
-
 # Order by data (just to be sure)
 werkgelegenheid_lt <-
   werkgelegenheid_lt %>% 
@@ -307,6 +309,7 @@ inkomen_lt <-
 
 # Price index of tshuizen is not in the same base as table prijsindex_type_woning
 # Recode price index to 2015 = 100
+# then combine both datasets to prijsindex_woningen_lt
 cf <- 
   tshuizen %>% 
   filter (year(date) == '2015') %>% 

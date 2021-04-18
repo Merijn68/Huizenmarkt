@@ -16,44 +16,29 @@ csl: apa-6th-edition.csl
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.width=11.5, fig.height=8)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.width=8, fig.height=6)
+# knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
 # Inleiding
 
 De volksbank is het moederbedrijf van ASN, SNS, BLG en Regiobank. Als de vierde bank van Nederland, financiert de volksbank hypotheken, beheert ze spaargeld en biedt de bank klanten een betaalrekening. Binnen de afdeling Financial Markets van de Volksbank, hebben de macro-economen van de Volksbank als taak de toestand in de economie te monitoren en toe te lichten aan directie en beleidsmakers. Een belangrijk onderdeel daarvan heeft betrekking met de ontwikkeling van de hypotheekmarkt in Nederland. De huizenmarkt is een belangrijke factor in de beleidsontwikkeling van de bank, met betrekking tot de hypotheekproductie.
 
-Voor deze analyse is de PPDAC cyclus ( Problem, Plan, Data, Analysis, and Conclusions) gevolgd. Een methode voor het uitvoeren van statistisch onderzoek [@OldfordR.J.MacKay2000]. De opbouw van dit verslag volgt deze cyclus. In de volgende paragraaf wordt eerst de probleemstelling nader toegelicht. Vervolgens is in de planningsfase gekeken wat de belangrijkste indicatoren zijn om de vraagstelling te beantwoorden. De data die nodig is voor dit onderzoek is verzameld en vervolgens geanalyseerd. Op basis daarvan worden tot slot een aantal conclusies getrokken. Deze cyclus is een aantal keer doorlopen - op basis van de uitkomsten. De fasering van deze cyclus komt terug in de probleemstelling en de hoofdstukindeling van deze studie.
+Voor deze analyse is de PPDAC cyclus (Problem, Plan, Data, Analysis, and Conclusions) gevolgd. Een methode voor het uitvoeren van statistisch onderzoek [@OldfordR.J.MacKay2000]. In deze studie is gebruik gemaakt van R [@R-base] voor analyse en presentatie van de data. 
 
 # Probleemstelling
 
-Uit het overleg met de macro-economen is de vraag naar voren gekomen of een beter voorspellend model kan worden ontwikkeld voor de huizenmarkt in Nederland.
+Uit het overleg met de macro-economen is de vraag naar voren gekomen of een beter voorspellend model kan worden ontwikkeld voor de huizenmarkt in Nederland. Is het mogelijk om modellen te ontwikkelen die de huizenprijs op middellange termijn voorspelt en het aantal transacties op de huizenmarkt op middellange termijn voorspelt?
 
-Is het mogelijk om modellen te ontwikkelen die de huizenprijs op middellange termijn voorspelt en het aantal transacties op de huizenmarkt op middellange termijn voorspelt?"
-
-Vanuit de Volksbank is in het verleden al eerder statistisch onderzoek gedaan naar deze verbanden. Voor de huizenprijzen is eerder gekeken naar een verband tussen huizenprijzen en de werkgelegenheid, lonen, BBP (Bruto Binnenlands Product) en rente. In deze exploratie wordt gekeken naar mogelijke factoren die effect hebben op de marktprijs. De hier genoemde factoren zullen hierbij worden meegenomen.
+Vanuit de Volksbank is in het verleden al eerder statistisch onderzoek gedaan naar deze verbanden. Voor de huizenprijzen is eerder gekeken naar een verband tussen huizenprijzen en de werkgelegenheid, lonen, BBP (Bruto Binnenlands Product) en rente. In deze exploratie wordt gekeken naar mogelijke factoren die effect hebben op de marktprijs. De hier genoemde factoren zullen hierbij worden meegenomen. Dit lijdt tot de volgende onderzoeksvraag:
 
 Welke factoren spelen een belangrijke rol in het bepalen van de huizenprijzen en transactie volumes op een termijn van 2 tot 5 jaar?
 
-Voor beantwoording van deze vraag wordt eerst gekeken in hoeverre de huizenprijzen worden bepaald door wijzigingen in vraag en aanbod. Daarna wordt verder ingegaan op de factoren die op langere termijn de huizenprijzen beïnvloeden en wordt gekeken of hier voorspellende waarde in zit.
-
-Vervolgens wordt gekeken naar de transactievolumes. Welke factoren spelen een belangrijke rol in het bepalen van de transactievolumes op een termijn van 2 tot 5 jaar? Voor het aantal transacties op de lange termijn wordt een verband verondersteld met het aantal huishoudens. Op kortere termijn spelen economische groei, rentestanden en ook verandering van regelgeving een rol. In welke mate spelen seizoensinvloeden hierbij een rol?
-
-Aanvullend zijn er nog een aantal vragen geformuleerd waar mogelijk door middel van exploratie iets meer over kan worden gezegd:
-
-1. Nederland heeft een van de hoogste persoonlijke schulden (hypotheeklast) in de wereld. Wat zijn de gevolgen voor de hypotheekmarkt van het gewijzigde beleid? Heeft dit effect op de huizenprijzen?
-
-1. Hoe ontwikkeld de krapte op de huizenmarkt zich, op termijn? Momenteel zijn er ambitieuze plannen om ergens tussen de 75.000 en 100.000 woningen per jaar te gaan bouwen. Het aanbod aan huizen wordt dus groter - terwijl op termijn verwacht wordt dat de bevolking weer gaat krimpen. Kunnen we hier een voorspelling van maken?
-
-1. Hoe zit het met de bevolkingsgroei? Welk deel van de aanwas in Nederland komt door migratie? Hoe zit dat regionaal? Is er nog sprake van verstedelijking na corona?  Stroomt het platteland leeg - en de randstad vol? Welk effect heeft dit op de huizenprijzen? 
-
-1. Zien we demografisch verdeeld verschillen waar mensen willen wonen? Verhuizen gezinnen met kinderen naar het platteland, en ouderen weer naar de stad? Het aantal huishoudens dat uit 1 persoon bestaat is erg gegroeid in de loop der tijd - en zal (denk ik) nog wel doorstijgen met de vergrijzing. Betekent dit dat er meer mensen naar de stad willen verhuizen?
-
-1. Hoe afhankelijk is de huizenmarkt van de stand van de economie? Gaan huizenprijzen alleen omhoog tijdens de groeifase van de economie? 
+Voor beantwoording van deze vraag wordt eerst gekeken in hoeverre de huizenprijzen worden bepaald door wijzigingen in vraag en aanbod. Daarna wordt verder ingegaan op de factoren die op langere termijn de huizenprijzen beïnvloeden en wordt gekeken of hier voorspellende waarde in zit. Vervolgens wordt gekeken naar de transactievolumes. Welke factoren spelen een belangrijke rol in het bepalen van de transactievolumes op een termijn van 2 tot 5 jaar? Voor het aantal transacties op de lange termijn wordt een verband verondersteld met het aantal huishoudens. 
 
 # Plan
 
-Om een begin te maken met het beantwoorden van deze vragen zijn een aantal gesprekken gevoerd met specialisten bij de Volksbank. Aanvullend is een korte literatuurstudie uitgevoerd naar de factoren die op lange termijn de prijsstelling beïnvloeden. Het CBS publiceert vrij veel over de prijsontwikkeling van bestaande woningen, nieuwe woningen en de stand van de economie [@CBS2016], [@CBS2020a], [@CBS2020], [@Groot2018]. De Socrates modellen sluiten goed aan bij deze vraagstelling [@KennethGopalGerardvanLeeuwenDavidOmtzigt2020]. 
+Om een begin te maken met het beantwoorden van deze vragen zijn een aantal gesprekken gevoerd met specialisten bij de Volksbank. Aanvullend is een korte literatuurstudie uitgevoerd naar de factoren die op lange termijn de prijsstelling beïnvloeden. Het CBS publiceert vrij veel over de prijsontwikkeling van bestaande woningen, nieuwe woningen en de stand van de economie [@CBS2016], [@CBS2020a],[@CBS2020],[@CBS2020b],[@Groot2018]. De Socrates modellen [@KennethGopalGerardvanLeeuwenDavidOmtzigt2020], en het primos onderzoek [@Research2020], [@LeonGroenemeijerKennethGopal2020] sluiten goed aan bij de vraagstelling van dit onderzoek.
 
 Vraag en aanbod worden bepaald door:
 
@@ -66,7 +51,7 @@ Vraag woningen:
 * (Arbeids-)migratie
 :::
 ::: {.column width="4%" data-latex="{0.04\textwidth}"}
-\ 
+
 :::
 :::::: {.column width="48%" data-latex="{0.48\textwidth}"}
 Aanbod woningen:
@@ -81,7 +66,7 @@ Aanbod woningen:
 
 \newline
 
-Daarna is verder ingegaan op de factoren die van invloed zijn bij de prijsontwikkeling  op de woningmarkt. Hierbij kan een onderscheidt gemaakt worden in factoren die direct de prijsontwikkeling beïnvloeden - en factoren die meer aanduiden of er sprake is van oververhitting op de woningmarkt [@Groot2018].
+Daarna is verder ingegaan op de factoren die van invloed zijn bij de prijsontwikkeling  op de woningmarkt. 
 
 :::::: {.columns}
 ::: {.column width="48%" data-latex="{0.48\textwidth}"}
@@ -97,24 +82,15 @@ Indicatoren prijsontwikkeling woningmarkt
 * Toegang tot krediet
 * Financiering hypotheek of eigen geld
 * Voorkeuren van kopers
-* Percentage huur/ koop woningen
-
-:::
-::: {.column width="48%" data-latex="{0.48\textwidth}"}
-Indicatoren oververhitting woningmarkt
-
-*	Gem. huurprijzen (berekenen verhouding koop/huur)
-*	Aantal woningen dat te koop staat 
-* Gem. duur dat een woning te koop staat
-* Verschil tussen aanbodprijs en transactieprijs
-* Aanbod huizen
 
 :::
 ::::::
 
 \newline
 
-Het aantal transacties wordt verondersteld met name bepaald te worden door het aantal huishoudens. Daarnaast kan door krapte op de woningmarkt een schaarste ontstaan waardoor de woningmarkt 'op slot' geraakt. Tijdelijk kunnen woningen ook te duur worden wanneer huiseigenaren hun prijzen niet verlagen in tijden van laagconjunctuur. Het consumentenvertrouwen speelt hierbij een belangrijke rol.
+Gegevens over de verhouding tussen huur en koopprijzen, het aantal te koop staande huizen, de gem. tijd dat een woning te koop staat en de prijsverschillen tussen aanbodprijs en transactieprijs zeggen iets over de mate van oververhitting van de markt [@Groot2018]. In deze studie is echter onvoldoende data beschikbaar om hier een tijdsanalyse over uit te voeren. Deze data is verder buiten deze analyse gelaten.
+
+Het aantal transacties wordt verondersteld met name bepaald te worden door het aantal huishoudens. Daarnaast kan door krapte op de woningmarkt een schaarste ontstaan waardoor de woningmarkt ‘op slot’ geraakt. Het consumentenvertrouwen speelt hierbij ook een belangrijke rol.
 
 Indicatoren aantal transacties
 
@@ -127,15 +103,9 @@ Indicatoren aantal transacties
 
 # Data
 
-De gewenste informatie is opgevraagd bij de statistici (via Reuters Datastream) en later aangevuld met open data van het CBS (Statline). Voor het inlezen van de (spreadsheet) Reutersdata zijn een aantal functies ontwikkeld. Om de data van het CBS gemakkelijker in te kunnen lezen is een routine ontwikkeld die aan de hand van metadata de gevraagde data inleest. Routines voor het lezen en opschonen van de data, zijn opgeslagen in separate R files. 
+De gewenste informatie is opgevraagd bij de statistici (via Reuters Datastream) en later aangevuld met open data van het CBS (Statline). Voor het inlezen van de (spreadsheet) Reutersdata zijn een aantal functies ontwikkeld. Om de data van het CBS gemakkelijker in te kunnen lezen is een routine ontwikkeld die aan de hand van metadata de gevraagde data inleest. Routines voor het lezen en opschonen van de data, zijn opgeslagen in separate R files.
 
 De data die via die routines is opgehaald en opgeschoond is tussentijds opgeslagen in Rdata formaat - en kan voor de analyse hierdoor direct worden ingelezen. Op deze wijze is een scheiding aangebracht tussen de data-acquisitie en de analyse van de resultaten.
-
-Ter beperking van de omvang van dit onderzoek is een selecties gemaakt op basis van de beschikbare data. 
-
-Gegevens over de verhouding tussen huur en koopprijzen, het aantal te koop staande huizen, de gem. tijd dat een woning te koop staat en de prijsverschillen tussen aanbodprijs en transactieprijs zeggen iets over de mate van oververhitting van de markt (zie @Groot2018). Ik beschik echter niet over voldoende data om hier een tijdsanalyse over uit te voeren. Deze data is verder buiten deze analyse gelaten.
-
-Voor de indicatoren over het aantal transacties is in eerste instantie gekeken naar tijdreeksanalyse van de transacties zelf (autocorrelatie). Daarna is tevens gekeken naar de mate waarin we de transactievolumes kunnen voorstellen aan de hand van economische indicatoren. 
 
 ```{r libraries}
 
@@ -149,7 +119,8 @@ library (kableExtra)         # Construct Complex Table with 'kable' and Pipe Syn
 library (viridis)            # Default Color Maps from 'matplotlib' (Garnier 2018)
 library (forcats)            # Tools for Working with Categorical Variables (Factors) (Wickham 2021)
 library (forecast)           # Forecasting functions for time series and linear models (Hyndman et al. 2021)
-library (fpp2)               # Data for "Forecasting: Principles and Practice" (Hyndman 2020)
+library (fpp)                # Data for "Forecasting: Principles and practice" (Hyndman 2013)
+library (fpp2)               # Data for "Forecasting: Principles and practice" (Hyndman 2020)
 library (zoo)                # S3 Infrastructure for Regular and Irregular Time
                              # Series (Zeileis and Grothendieck 2005)
 library (urca)               # Analysis of Integrated and Cointegrated 
@@ -172,7 +143,7 @@ library (broom)              # Convert Statistical Objects into Tidy Tibbles (Ro
 library (pacman)             # Package Management for R (Rinker, Kurkiewicz 2017)
 
 
-# Export Citations as Bibtex (.bib)
+# Export Citations all pachages as Bibtex (.bib)
 knitr::write_bib(file="Bibliography of packages.bib")
 # Table (.csv) with all information on the packages
 appendix_packages <- data.frame(Packagename = character(),
@@ -193,7 +164,6 @@ for (pkg in p_loaded()){
 write.csv(x = appendix_packages, file = "List_of_packages.csv", row.names = F)
 ```
 
-
 ```{r load_data}
 # Loading the datasets
 # Data is read in module readdata.R
@@ -208,7 +178,6 @@ for(d in dfs) {
 theme_set(theme_minimal())
 
 ```
-
 
 # Analyse 
 
@@ -229,46 +198,57 @@ prijsindex_type_woning %>%
     x = '',
     color = 'Type woning'
     ) +
-  theme(legend.position = "none")
+  theme(legend.position = "none") 
 ```
-
 
 ###  Vraag naar woningen
 
 Bij de factoren die de vraag naar woningen bepalen kijken we naar de ontwikkeling van het aantal huishoudens en de samenstelling van de huishoudens. Nederlanders worden steeds ouder, en gezinnen worden kleiner. Deze ontwikkeling leidt mogelijk tot een verschuiving in de vraag - van eengezinswoningen naar kleinere woningen. 
 
 ```{r population_growth}
+start_date <- as.Date("1995-01-01")
+
 bevolking %>% 
   select (date, kl_20_jaar, v20_40_jaar, v40_65_jaar, v65_80_jaar, gd_80_jaar) %>% 
-  filter (date >= as.Date("1995-01-01")) %>% 
+  filter (date >= start_date) %>% 
   melt (id = c('date')) %>% 
   mutate ( variable = factor(variable), 
-           variable = factor(variable, levels = rev(levels(variable)))) %>% 
+           variable = factor(variable, levels = rev(levels(variable)),
+                             labels = c("> 80 jaar",
+                                        "65 tot 80 jaar",
+                                        "40 tot 65 jaar",
+                                        "20 tot 40 jaar",
+                                        "< 20 jaar")
+                             )) %>% 
   mutate (value = value / 1000) %>% 
   ggplot ( aes( x = date, y = value, fill = variable) ) +
   geom_area(color = "darkgrey", stat = "identity", alpha = 0.8) +
   labs(
-    title = "Bevolkingsgroei",
-    subtitle = "1995 tot 2020",
+    title = "Samenstelling bevolking",
+    subtitle = paste(year(start_date), "tot",year(max(bevolking$date))),
     y = "Aantal (x 1000)",
     x = '',
-    caption = "Bron: CBS, Bevolking; kerncijfers"
-    )  
+    caption = "Bron: CBS, Bevolking; kerncijfers",
+    fill = ''
+    )
 ```
 
 De groei van de Nederlandse bevolking wordt in de laatste jaren steeds meer bepaald door migratie. Het geboorteoverschot (aantal nieuw geborenen -/- aantal sterfgevallen is nog nooit zo laag geweest). Mogelijk leidt dit tot een verschuiving in de vraag naar meer woningen in de steden. Dit zou verder onderzocht moeten worden.
 
 ```{r population_details}
+start_date <- as.Date("1995-01-01")
+
 bevolking %>%
   select (date, geboorteoverschot, migratiesaldo) %>% 
-  filter (date >= as.Date("1970-01-01")) %>% 
+  filter (date >= start_date) %>% 
   melt (id = c('date')) %>% 
   mutate (value = value / 1000) %>% 
   drop_na %>% 
   ggplot(aes (x = date, y=value, fill = variable)) +
   geom_bar(stat="identity") +
   labs(
-    title = "Bevolkingsgroei",
+    title = "Bevolkingsgroei per jaar",
+    subtitle = paste(year(start_date), "tot",year(max(bevolking$date))),
     y = "Aantal (x 1000)",
     x = '',
     fill = '',
@@ -280,10 +260,11 @@ bevolking %>%
 Het CBS maakt regelmatig een prognose van de verwachte groei. Hier zien we dat deze trend zich de aankomende jaren voortzet. De groei komt voornamelijk door de groei van het aantal eenpersoonshuishoudens. De laatste prognoses zijn overigens van 2019. In de prognose zien we een afvlakking van de groei van het aantal huishoudens rond 2040.
 
 ```{r population_prognose}
+start_date <- as.Date("1995-01-01")
 
 aantal_hh <- 
   bevolking %>% 
-  filter( date >= as.Date("1970-01-01")) %>%
+  filter( date >= start_date) %>%
   select (date,
             eenpersoonshuishoudens,
             meerpersoonshuishoudens) %>% 
@@ -310,9 +291,10 @@ aantal_hh %>%
                 fill= type_huishouden,
                 alpha = 0.1
                  )) +
-  geom_vline(xintercept=max(aantal_hh$date), color="darkgray", size=1) +
+  geom_vline(xintercept=max(aantal_hh$date), color="darkgrey", size=1, linetype = 'dashed') +
   labs(
     title = "Prognose aantal huishoudens",
+    subtitle = paste(year(start_date), "tot",year(max(prognose_hh$date))),
     y = "Aantal (x 1000)",
     x = '',
     caption = "Bron: CBS, Bevolking; kerncijfers"
@@ -320,9 +302,9 @@ aantal_hh %>%
   theme(legend.title = element_blank()) +
   guides(alpha = FALSE) +
   annotate("text", x = max(aantal_hh$date), y = 0,
-           label = c(" Prognose") , color="black", hjust = 0, vjust = 1,
-           size=3)
-
+           label = c(" Prognose") , color="black", hjust = 0, vjust = 1.5,
+           size=3) +
+  scale_y_continuous(breaks = seq(0, 10000, by = 1000))
 
 ```
 
@@ -333,6 +315,7 @@ Wanneer we een wat langere termijn trend kijken naar het aantal gerealiseerde ni
 
 
 ```{r houses}
+start_date <- as.Date("1995-01-01")
 
 voorraad_woningen %>%
   select(date,
@@ -345,22 +328,30 @@ voorraad_woningen %>%
   mutate (sloop = - sloop ) %>% 
   mutate (Overige_onttrekking = - Overige_onttrekking) %>% 
   mutate (correctie = - correctie) %>% 
-  filter( date >= as.Date("1970-01-01")) %>% 
+  filter( date >= start_date) %>% 
   melt (id = c('date')) %>% 
   mutate (value = value / 1000) %>% 
+  mutate (variable = factor(variable, labels = c('nieuwbouw',
+                                                 'overige toevoegingen',
+                                                 'sloop',
+                                                 'overige onttrekkingen',
+                                                 'correctie' ))) %>% 
   ggplot(aes(x=date, y = value, fill = variable )) +
   geom_bar(stat="identity") +
   geom_hline(yintercept  = 0, color = "steelblue") +
   labs ( title = "Ontwikkelingen woningvoorraad",
+         subtitle = paste(year(start_date), "tot",year(max(voorraad_woningen$date))),
          y = "Aantal (x 1000)",
-         x = "Jaar") + 
-    guides(fill = guide_legend(title = ''))
+         x = "Jaar",
+         caption = "Bron: CBS Voorraad woningen") + 
+  guides(fill = guide_legend(title = '')) 
 
 ```
 
 ### Samenhang Vraag en aanbod
 
 ```{r shortage_houses}
+start_date <-as.Date("1995-01-01")
 
 #Aantal huishoudens: NLHSTOTP Thomson Reuters
 df <- 
@@ -373,7 +364,7 @@ df <-
             'huishoudens',
             'woningvoorraad' ) %>%
   mutate(te_kort = (woningvoorraad - huishoudens)) %>%
-  filter(date > as.Date("2000-01-01")) %>%
+  filter(date > start_date) %>%
   melt(id = c('date')) 
 
 # Line plot
@@ -384,6 +375,7 @@ lp<-
   geom_line(aes(y=value, color = variable)) +
   labs(
     title = "Aantal huishoudens vs voorraad woningen",
+    subtitle = paste(year(start_date), "tot",year(max(df$date))),
     y = "Aantal (x 1000)",
     x = '',
     color = ''
@@ -409,61 +401,57 @@ cowplot::plot_grid(lp, bp, ncol=1, rel_heights = c(2, 1), align = 'v')
 
 In bovenstaande grafiek zien we dat het aantal woningen al decennialang gelijke tred houdt met het aantal woningen. Er is daarbij telkens wel een tekort zichtbaar. Dit is veel kleiner dan het door het CBS gerapporteerde tekort van 331.000 woningen [CBS2020b]. In deze studie is er geen verklaring gevonden voor dit verschil. In de verdere analyse wordt uitgegaan van de tekorten zoals hier berekend. Dit is het verschil tussen het aantal huishoudens en de voorraad woningen.
 
-
 ### Indicatoren Huizenprijzen
-
-*	Gem. huizenprijzen (prijsindex)
-* Besteedbaar Inkomen
-* Particulier vermogen
-* Werkloosheid
-* Rentestanden
-* Consumentenvertrouwen
-* Financiering hypotheek of eigen geld
-* Fiscale behandeling, subsidies
-* Toegang tot krediet
-* Voorkeuren van kopers
-* Percentage huur / koop woningen
-
 
 Vanwege de (structurele) te korten op de woningmarkt lijken huizenprijzen in belangrijke mate beïnvloed te worden door de financieringsmogelijkheden van de kopers. De rente is historisch laag, de inkomens zijn gestegen en het eigen vermogen is gegroeid. Dit geeft ruimte voor hogere marktprijzen. De fiscale behandeling en regelgeving speelt hier een belangrijke rol, zowel ruimte scheppend - verruimen van de leenmogelijkheden van tweeverdieners, als beperkend - beperking aftrekbaarheid tot 100% financiering.
 
-
-```{r leading_indicators}
+```{r}
+start_date = min(prijsindex_woningen_lt$date)
 
 # House price index existing homes
-prijsindex_woningen_lt %>% 
-ggplot(aes(x = date)) +
-geom_line(aes( y = huisprijsindex), color = 'steelblue') +
-labs(
-    title = "Huizenprijzen",
-    subtitle = "Index (2015 = 100)",
-    y = "",
-    x = ""
-) 
+lp_price <-
+  prijsindex_woningen_lt %>% 
+  ggplot(aes(x = date)) +
+  geom_line(aes( y = huisprijsindex), color = 'steelblue') +
+  labs(
+      title = "Huizenprijzen",
+      subtitle = "Index (2015 = 100)",
+      y = "",
+      x = "",
+      caption = "Bron: Refinitiv datastream"
+  ) 
 
 # GDP
-gdp_lt %>% 
-  ggplot( aes(x=date, y=gdp)) +
-    geom_line(color = 'steelblue') +
-    labs(
-      title = "Ontwikkeling BBP (Bruto Binnenlands Product) (j-op-j wijzigingen)",
-      y = "",
-      x = '',
-      caption = "Bron: OECD Economic Outlook"
-      ) 
+lp_gdp <-
+  gdp_lt %>% 
+    filter(date >= start_date) %>% 
+    ggplot( aes(x=date, y=gdp)) +
+      geom_line(color = 'steelblue') +
+      labs(
+        title = "Ontwikkeling BBP (Bruto Binnenlands Product)",
+        subtitle = "percentuele wijziging jaar op jaar",
+        y = "",
+        x = '',
+        caption = "Bron: OECD Economic Outlook"
+        ) 
 
 # Interest rates
-hypotheek_rente %>%
+lp_interest <-
+  hypotheek_rente %>%
+  filter(period >= start_date) %>% 
   ggplot( aes(x=period, y=hypotheek_rente)) +
   geom_line(color = 'steelblue')  +
   labs(
     title = "Hypotheekrente",
     y = "gemiddelde rente",
-    x = ''
+    x = '',
+    caption = "Bron: Refinitiv datastream"
     ) 
 
 # Employment
-werkgelegenheid_lt %>% 
+lp_employment <-
+  werkgelegenheid_lt %>% 
+  filter(date >= start_date) %>% 
   ggplot(aes(x = period, y = werkgelegenheid)) +
   geom_line(color = 'steelblue') +
   labs(
@@ -474,7 +462,9 @@ werkgelegenheid_lt %>%
   ) 
 
 # Income
-inkomen_lt %>% 
+lp_income <-
+  inkomen_lt %>% 
+  filter(date >= start_date) %>% 
   ggplot(aes(x = period, y = inkomen)) +
   geom_line(color = 'steelblue') +
   labs(
@@ -485,7 +475,9 @@ inkomen_lt %>%
   ) 
 
 # Consumer Confidence
-consumenten_vertrouwen_lt_q %>% 
+lp_consumer_conf <-
+  consumenten_vertrouwen_lt_q %>% 
+  filter(date >= start_date) %>% 
   mutate(pos = ifelse(consumer_conf >= 0,consumer_conf, 0)) %>% 
   mutate(neg = ifelse(consumer_conf < 0,consumer_conf, 0)) %>% 
   ggplot(aes(x = date)) +
@@ -493,15 +485,18 @@ consumenten_vertrouwen_lt_q %>%
   geom_area(aes(y = neg), fill = 'indianred2')  +
   geom_hline (yintercept = 0, color = 'steelblue') +
   labs(
-    title = "Indicator Consumenten vertrouwen",
+    title = "Indicator consumenten vertrouwen",
     y = "",
     x = "",
     caption = "Bron: OECD Economic Outlook"
   ) 
-  
+
+cowplot::plot_grid(lp_price, lp_gdp, lp_interest, lp_employment, lp_income,lp_consumer_conf, ncol = 2)
+
 ```
 
-Over de vermogens van huishoudens en de wijzigingen in regelgeving zijn er helaas geen langere termijn gegevens gevonden. Een veronderstelling van dit onderzoek was dat door het gewijzigde beleid en de stijgende huizenprijzen het vermogen van huishoudens zou stijgen. Daardoor heeft men ook weer meer vermogen beschikbaar voor de aanschaf van woningen wat een prijsopdrijvend effect kan hebben. Dit is door gebrek en data helaas niet verder te verifiëren.
+
+Over de vermogens van huishoudens en de wijzigingen in regelgeving zijn er helaas geen langere termijn gegevens gevonden. Een veronderstelling van dit onderzoek was dat door het gewijzigde beleid en de stijgende huizenprijzen het vermogen van huishoudens zou stijgen [@Vogt2018]. Daardoor heeft men ook weer meer vermogen beschikbaar voor de aanschaf van woningen wat een prijsopdrijvend effect kan hebben. Dit is door gebrek en data helaas niet verder te verifiëren.
 
 ### Huizenprijzen voorspellen
 
@@ -538,16 +533,14 @@ corrplot(corMatrix,
             tl.cex = 0.8,
             tl.col = "black", 
             tl.srt = 45,
-         mar=c(0, 0, 4, 0) # http://stackoverflow.com/a/14754408/54964
+         mar=c(0, 0, 4, 0) # correction titles http://stackoverflow.com/a/14754408/54964
          ) 
 
 ```
 
 #### Regressie Huizenprijzen
 
-Regressie model zou rekening moeten houden met het tijdskarakter van dit soort reeksen. We vinden hiervan voorbeelden in de econometrie [@Hanck2020]. 
-
-In deze studie is uitgegaan van een eenvoudig model om deze tijdseffecten mee te nemen in de regressieanalyse. Voor het lineair model met tijdsreekscorrectie worden van alle voorspellende factoren vier kwartalen historische waarde meegenomen als mogelijke voorspelling van de huizenprijzen.
+Regressie model zou rekening moeten houden met het tijdskarakter van dit soort reeksen. We vinden hiervan voorbeelden in de econometrie [@Hanck2020]. In deze studie is uitgegaan van een eenvoudig model om deze tijdseffecten mee te nemen in de regressieanalyse. Voor het lineair model met tijdsreekscorrectie worden van alle voorspellende factoren vier kwartalen historische waarde meegenomen als mogelijke voorspelling van de huizenprijzen.
 
 ```{r regression_houseprices}
 
@@ -607,7 +600,6 @@ df_test <- df_rm_huizenprijzen %>%
 
 Lineair regressie modellen voor de verschillende indicatoren laten zien dat BBP de beste fit geeft voor de huizenprijzen. Maar de onderlinge verschillen zijn klein. De residuen na deze correlatie geven geen duidelijk patroon aan. Het lijkt daarmee alsof dit de beste enkelvoudige voorspeller is van de huisprijzen. 
 
-Met behulp van de caret library [@R-caret] kan een optimalisatie worden uitgevoerd om het best passende model te selecteren. We zien hier dat het model gebruik maakt van alle beschikbare data, en dan komt tot een veel betere fit op de aangeboden training data.
 
 ```{r regression_houseprices_lm}
 
@@ -645,8 +637,13 @@ lm_multi = lm(huisprijsindex_yoy~date+
 
 tab_model(lm_multi,
           title = 'Multple regressie model')
+```
 
+\newline
 
+Met behulp van de caret module [@R-caret] kan een optimalisatie worden uitgevoerd om het best passende model te selecteren. We zien hier dat het model gebruik maakt van alle beschikbare data, en dan tot nog een betere fit komt op de aangeboden training data.
+
+```{r}
 # The carot model can train the best multiple regression model optimizing RMSE (Root Mean Squared Error).
 lm_compute <- train(
   huisprijsindex_yoy ~ ., 
@@ -662,16 +659,18 @@ tab_model(lm_compute$finalModel,
           )
 ```
 
-Tot slot is gekeken of nog een beter passend model verkregen kan worden met MARS (multivariate adaptive regression splines [Friedman (1991a, 1991b)]. Deze methode splits de regressie in meerdere 'splines'. Waardoor in theorie een betere fit gevonden kan worden door rekening te houden met een non-lineaire relatie over de tijd.
+\newline
 
-Het MARS model kiest zelf de meest relevante parameters. Wanneer met dit model geprobeerd wordt om de prijsontwikkeling van de afgelopen 5 jaar te voorspellen geeft dit model een goede fit.
+Tot slot is gekeken of nog een beter passend model verkregen kan worden met MARS (multivariate adaptive regression splines [@Friedman2007]. Deze methode splits de regressie in meerdere 'splines'. Hierbij is gebruik gemaakt van het R package earth [@R-earth]. Waardoor in theorie een betere fit gevonden moet kunnen worden.
+
+Het MARS model wordt geoptimaliseerd om zo de meest relevante factoren te vinden. Wanneer met dit model geprobeerd wordt om de prijsontwikkeling van de afgelopen 5 jaar te voorspellen geeft dit model een goede fit.
 
 ```{r regression_mars_model}
 
 # Simple MARS model
 
 # Tuning the model
-# Optimal number of defrees and number of variables to prune is calculated
+# Optimal number of degrees and number of variables to prune is calculated
 
 # create a tuning grid 
 hyper_grid <- expand.grid(
@@ -702,7 +701,7 @@ ggplot(tuned_mars) +
     ) 
 ```
 
-Door middel van de optimalisatie wordt hier het aantal factoren en de mate van interactie tussen de factoren (product degree) geselecteerd. De belangrijkste factoren staan hieronder genoemd.
+Door middel van de optimalisatie wordt hier het aantal factoren en de mate van interactie tussen de factoren (product degree) geselecteerd. 
 
 ```{r regression_houseprices_mars}
 
@@ -712,8 +711,11 @@ fit <- earth(huisprijsindex_yoy~., df_train,
              degree = tuned_mars$bestTune$degree, nprune = tuned_mars$bestTune$nprune)
 
 # summarize the importance of input variables
-kable(print(evimp(fit))
-      )
+kable(tidy(print(evimp(fit))),
+      caption = "Belangrijkse indicatoren MARS model huizenprijzen",
+      digits = 3
+      ) %>% kable_styling()
+  
 
 # make predictions for MARS model
 train_predictions <- predict(fit, df_train)
@@ -788,46 +790,53 @@ df_result %>%
 
 ```
 
-
-In dit geval geeft het lineair regressie model duidelijk een minder goede fit dan het time series model en het MARS model. Het MARS model sluit heel goed aan bij de ontwikkeling van de huizenprijzen over de afgelopen vijf jaar.
+Het lineair regressie model geeft duidelijk een minder goede fit dan het time series model en het MARS model. Het MARS model sluit heel goed aan bij de ontwikkeling van de huizenprijzen over de afgelopen vijf jaar.
 
 ### Regionale verschillen
 
-Er bestaan grote regionale verschillen in huisprijzen, en in de prijsontwikkeling over de tijd.
+Er bestaan grote regionale verschillen in huisprijzen. Door het ontbreken van gedetailleerde tijdsreeksen is de ontwikkeling van de regionale verschillen over de tijd is in deze studie niet verder onderzocht.
 
-```{r regional_sales}
-# boxplot
+```{r histogram verkooppijzen}
+# histogram
 verkoopprijs_regio %>% 
-  filter(date >= as.Date('1995-01-01')
-             ) %>% 
+  filter(date == as.Date('2020-01-01')) %>% 
   drop_na(verkoopprijs) %>% 
   mutate(verkoopprijs = verkoopprijs / 1000) %>% 
-  ggplot(aes(y = verkoopprijs, x = jaar, fill = jaar) ) +
-  geom_boxplot() +
-  labs(title = "Distributie verkoopprijzen",
-       subtitle = "gemiddelde verkoopprijs per gemeente",
+  ggplot(aes(x = verkoopprijs, color = verkoopprijs) ) +
+  geom_histogram(bins = 30,fill = 'steelblue') +
+  geom_vline(aes(xintercept = median(verkoopprijs)), colour="black", linetype = 'dotted') +
+  geom_vline(aes(xintercept = mean(verkoopprijs)), colour="orange", linetype = 'dotted') +
+  geom_text(aes(label=paste("Gemiddele verkoopprijs is ", 
+                            format(round(mean(verkoopprijs*1000)), nsmall=0, big.mark=","), "EUR."),y=40,x=mean(verkoopprijs)),
+            vjust=-1,hjust = 0, col='orange',size=5) +
+  labs(title = "Distributie verkoopprijzen 2020",
         x = "Verkoopprijs (x 1000 eur)") +
-  theme(legend.position = "none") +
-  theme(axis.text.x = element_text(angle = 60, hjust = 1))
+  theme(legend.position = "none") 
+
+```
+
+
+```{r regional_sales}
+
 
 # Create a thematic map
 verkoopprijs_regio %>%
-  filter(date >= as.Date('2015-01-01')
+  filter(date == as.Date('2020-01-01')
            ) %>% 
   mutate(verkoopprijs = verkoopprijs / 1000) %>% 
   ggplot() +
   geom_sf(aes(fill = verkoopprijs)) +
-  facet_wrap(~jaar) +
   scale_fill_viridis_c(option = "inferno") +
-  labs(title = "Gemiddelde verkoopprijzen woningen", 
+  labs(title = "Gemiddelde verkoopprijzen woningen 2020", 
        subtitle = "",
        fill = "(x 1000 eur)") +
   theme_void()
 
 ```
 
-
 ## Aantal transacties
+
+### Ontwikkeling aantal transacties
 
 Het aantal transacties heeft in de crisis jaren 2009 - 2012 een duidelijke terugval laten zien. Sindsdien zien we een snelle inhaalbeweging, en nog steeds zien we aanzienlijk hogere transactie volumes dan voorheen.
 
@@ -854,7 +863,7 @@ verkochte_woningen_per_type_per_kwartaal %>%
 
 Wanneer gekeken wordt naar de transactie volumes valt de piek op in appartementen in het laatste kwartaal van 2020. Dit is te verklaren door de wijziging in de regelgeving voor beleggers. Particuliere beleggers op de woningmarkt moeten vanaf 2021 8% overdrachtsbelasting betalen. Dit heeft gezorgd voor een eenmalige piek in aankopen door deze groep. Tegelijkertijd is er begin 2021 een vrijstelling van overdrachtsbelasting voor jongeren tot 35 jaar. Jongeren hebben daarom veelal de aankoop uitgesteld naar het eerste kwartaal van 2021. Deze effecten van regelgeving zien we terug in de data.
 
-Voorspellen van aantal transacties
+### Voorspellen van aantal transacties
 
 Ook hier wordt eerst gekeken naar de correlaties tussen de variabelen. Wederom is de data omgerekend naar jaar-op-jaar percentuele wijzigingen om de factoren vergelijkbaar te maken. Het aantal transacties is slechts heel beperkt gecorreleerd aan de geselecteerde variabelen. Opmerkelijk is dat we bijna geen correlatie zien tussen het aantal transacties en het aantal huishoudens.
 
@@ -884,11 +893,11 @@ corrplot(corMatrix,
 
 ```
 
-Voorspellen aantal transacties
+\newline
 
 Ook is het mogelijk om net als bij de huizenprijzen, een MARS model toe te passen op het aantal transacties. Het MARS model selecteert als de belangrijkste voorspellers: aantal huishoudens, BBP, tijdsfactor (het aantal transacties in de vorige periode) en het consumentenvertrouwen.
 
-Het MARS model geeft op basis van deze gegevens geen goede voorspelling. Ergens gaat het mis met de data in 2020. Mogelijk dat de effecten van de COVID-crisis hier onvoorziene invloeden hebben op de voorspelling.
+Het MARS model geeft op basis van deze gegevens geen goede voorspelling. Mogelijk dat de effecten van de COVID-crisis hier onvoorziene invloeden hebben op de voorspelling.
 
 ```{r sales_mars}
 # Add Lineair regression model - for number of households and transactions...
@@ -944,7 +953,10 @@ fit <- earth(verkocht_yoy~., df_train,
 # summary(fit)
 
 # summarize the importance of input variables
-kable(print(evimp(fit)))
+kable(tidy(print(evimp(fit))),
+      caption = "Belangrijkse indicatoren MARS model transacties",
+      digits = 3) %>% 
+      kable_styling()
 
 # make predictions
 train_predictions <- predict(fit, df_train)
@@ -981,9 +993,9 @@ df_result %>%
 ```
 
 
-Seizoensinvloeden bij het aantal transacties
+### Tijdreeksanalyse transactievolumes
 
-Om de ontwikkeling van de transactievolumes verder te analyseren is een tijdreeksanalyse uitgevoerd op de data. De ACf (auto correlatie) plot toont dat meer recente data significant is, wat een trend aangeeft in de data. De PACF plot (partial auto-correlation function) toont dat recente data en seizoensinvloeden een goede indicatie geven voor het modeleren van de trend.
+Om de ontwikkeling van de transactievolumes verder te analyseren is een tijdreeksanalyse uitgevoerd op de data [@Hyndman2018]. De ACf (auto correlatie) plot toont dat meer recente data significant is, wat een trend aangeeft in de data. De PACF plot (partial auto-correlation function) toont dat recente data en seizoensinvloeden een goede indicatie geven voor het modeleren van de trend.
 
 De uiteindelijke voorspelling laat het seizoenspatroon zien. Verder wordt door dit model de recente trend doorgetrokken, terwijl eigenlijk verwacht zou mogen worden dat op termijn de volumes op de huizenmarkt terugkeren naar een stabiel niveau.
 
@@ -993,65 +1005,146 @@ De uiteindelijke voorspelling laat het seizoenspatroon zien. Verder wordt door d
 #   group_by (yearqtr) %>% 
 #   summarise(totaal = sum(verkochte_bestaande_woningen) / 1000 )
 
+
+#' calculate_aic
+#'
+#' Calculate best fit model using AIC
+#'
+#' @param ts 
+#'
+#' @return dataset with models ordered by AIC
+calculate_aic<-function(ts) {
+  
+  # https://stackoverflow.com/questions/37998486/sorting-arima-aic-in-r
+  # Order is a matrix describing the p, d, q values to be tested 
+  order.matrix <- matrix(0, nrow = 3, ncol = 4 * 2 * 4)
+  aic.vec <- numeric(4 * 2 * 4)
+  k <- 1
+  for (p in 1:4) for (d in 0:1) for (q in 1:4) {
+    order.matrix[, k] <- c(p,d,q)
+    aic.vec[k] <- AIC(arima(vwts, order=c(p, d, q), seasonal= c(0,1,1)))
+    k <- k+1
+    }
+  ind <- order(aic.vec, decreasing = FALSE)
+  aic.vec <- aic.vec[ind]
+  order.matrix <- order.matrix[, ind]
+  order.matrix <- t(order.matrix)
+  result <- cbind(order.matrix, aic.vec)
+  colnames(result) <- c("p", "d", "q", "AIC")
+  
+  return (result)
+}
+
 # Time series object
 vwts <- ts(verkochte_woningen_per_kwartaal["totaal"], 
               start = c(1995, 1), frequency = 4)
 
-v1 <- 
-  vwts %>%
-  autoplot() +
+
+# Aantal tranascties per kwartaal
+v<-vwts %>%
+  autoplot(color = 'steelblue') +
+  geom_point(color = 'steelblue') +
   geom_smooth() +
   labs(
     title = "Transacties bestaande koopwoningen per kwartaal",
-    y = "(x 1000)",
+    y = "(Aantal x 1000)",
     x = ''
     ) 
-
-v2 <- 
-  vwts %>% 
-  ggsubseriesplot() +
-  labs(
-    title = "Seizoensplot",
-    y = "(x 1000)",
-    x = ''
-    ) 
-
-# Plot it
-cowplot::plot_grid(v1, v2, ncol=1, rel_heights = c(1, 1))
 
 # ACF plot
-# Visualizes how much the most recent value of the series is correlated with past values of the series
-o1 <- ggAcf(vwts, lag.max = 16) +
+# Visualizes how much the most recent value of the series 
+# is correlated with past values of the series
+acf <- ggAcf(vwts, lag.max = 16, color = 'steelblue') +
   labs(
-    title = "ACF Plot seizoensinvloeden Verkopen Bestaande Koopwoningen",
+    title = "ACF Plot Correlatie voorgaande perioden",
     y = "Correlatie",
     x = "Aantal perioden lag"
     ) 
 
 # PACF Plot
-# Visualizes whether certain lags are good for modeling or not; useful for data with a seasonal pattern
-o2 <- ggPacf(vwts, lag.max = 16) +
+# Visualizes whether certain lags are good for modeling or not; 
+# useful for data with a seasonal pattern
+pacf <- ggPacf(vwts, lag.max = 16, color = 'steelblue') +
   labs(
-    title = "PACF Plot seizoensinvloeden Verkopen Bestaande Koopwoningen",
+    title = "PACF Plot seizoensinvloeden",
     y = "Correlatie",
     x = "Aantal perioden lag"
     ) 
 
 # Plot both
-cowplot::plot_grid(o1, o2, ncol = 1)
+cowplot::plot_grid(v, cowplot::plot_grid(acf, pacf), ncol = 1, rel_heights = c(1.5, 1))
 
-# Take first difference of the plot + seseonal effects
+# Take first difference of the plot + seasonal effects
 # Lag 1 year - lag 1 quarter - remainder fits model for Arima
-vwts %>% 
-  diff(lag=4) %>% 
-  diff() %>% 
-  ggtsdisplay(main = "Eerst orde verschil en seizoensinvloed")
+vwts_diff <-
+  vwts %>% 
+    diff(lag=4) %>% 
+    diff()
 
-# Eventualy I got this model - which seems to fit beter then auto arima
-fit <-
-  Arima(vwts, order=c(0,1,4), seasonal=c(0,1,1))
-checkresiduals(fit)
+v1<-vwts_diff %>%
+  autoplot(color = 'steelblue') +
+  geom_point(color = 'steelblue') +
+  geom_smooth() +
+  labs(
+    title = "Transactievolumes gecorrigeerd voor seizoensinvloed",
+    y = "(Aantal x 1000)",
+    x = ''
+    ) 
 
+# ACF plot
+# Visualizes how much the most recent value of the series 
+# is correlated with past values of the series
+acf1 <- ggAcf(vwts_diff, lag.max = 16, color = 'steelblue') +
+  labs(
+    title = "ACF Plot Correlatie voorgaande perioden",
+    y = "Correlatie",
+    x = "Aantal perioden lag"
+    ) 
+
+# PACF Plot
+# Visualizes whether certain lags are good for modeling or not; 
+# useful for data with a seasonal pattern
+pacf1 <- ggPacf(vwts, lag.max = 16, color = 'steelblue') +
+  labs(
+    title = "PACF Plot seizoensinvloeden",
+    y = "Correlatie",
+    x = "Aantal perioden lag"
+    ) 
+
+# Plot both
+cowplot::plot_grid(v1, cowplot::plot_grid(acf1, pacf1), ncol = 1, rel_heights = c(1.5, 1))
+
+
+# Dickey-Fuller Test shows data should be differenced once.
+kable(tidy(adf.test(vwts,alternative = "stationary")),
+      caption = "ADF Test Transactie volumes",
+      digits = 3) %>% 
+  kable_styling()
+kable(tidy(adf.test(diff(vwts),alternative = "stationary")),
+      caption = "ADF Test Eerste orde verschil",
+      digits = 3
+      ) %>% 
+  kable_styling()
+kable(tidy(adf.test(diff(diff(vwts),lag=4),alternative = "stationary")),
+      caption = "ADF Test Eerste orde verschil and sezoenscorrectie",
+      digits = 3
+      ) %>% 
+  kable_styling()
+
+# Calculate Best Akaike Information Critera (AIC) model
+kable(head(calculate_aic(vwts)),
+      caption = "Selectie ARIMA model op basis van Akaike Information Criteria (AIC)",
+      digits = 3) %>% 
+  kable_styling()
+
+# An Arima 2,1,2 model seems to be the best fit - and we need seasonal correction
+# Fit final model - fits beter then auto arima
+fit <- Arima(vwts, order=c(2,1,2), seasonal=c(0,1,1))
+
+# Check if residuals are nominal distributed
+checkresiduals(fit, test = FALSE)
+
+# Fit the regression model and show projection
 fit %>% 
   forecast(h=12) %>% 
   autoplot() +
