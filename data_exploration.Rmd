@@ -790,7 +790,7 @@ df_result %>%
 
 ```
 
-Het lineair regressie model geeft duidelijk een minder goede fit dan het time series model en het MARS model. Het MARS model sluit heel goed aan bij de ontwikkeling van de huizenprijzen over de afgelopen vijf jaar.
+Het lineair regressiemodel geeft duidelijk een minder goede fit dan het time series model en het MARS model. Het MARS model sluit heel goed aan bij de ontwikkeling van de huizenprijzen over de afgelopen vijf jaar.
 
 ### Regionale verschillen
 
@@ -988,7 +988,7 @@ df_result %>%
     y = "Aantal transacties",
     x = '',
     linetype = 'dataset'
-  ) 
+  ) + guides(color = FALSE)
 
 ```
 
@@ -1142,7 +1142,7 @@ kable(head(calculate_aic(vwts)),
 fit <- Arima(vwts, order=c(2,1,2), seasonal=c(0,1,1))
 
 # Check if residuals are nominal distributed
-checkresiduals(fit, test = FALSE)
+checkresiduals(fit, test = FALSE, color = 'steelblue' )
 
 # Fit the regression model and show projection
 fit %>% 
