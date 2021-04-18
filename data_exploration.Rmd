@@ -12,7 +12,6 @@ output:
       number_sections: true
 bibliography: [bibliography.bib, Bibliography of packages.bib]
 csl: apa-6th-edition.csl
-# nocite: '@*'
 ---
 
 ```{r setup, include=FALSE}
@@ -24,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.width=8
 
 De volksbank is het moederbedrijf van ASN, SNS, BLG en Regiobank. Als de vierde bank van Nederland, financiert de volksbank hypotheken, beheert ze spaargeld en biedt de bank klanten een betaalrekening. Binnen de afdeling Financial Markets van de Volksbank, hebben de macro-economen van de Volksbank als taak de toestand in de economie te monitoren en toe te lichten aan directie en beleidsmakers. Een belangrijk onderdeel daarvan heeft betrekking met de ontwikkeling van de hypotheekmarkt in Nederland. De huizenmarkt is een belangrijke factor in de beleidsontwikkeling van de bank, met betrekking tot de hypotheekproductie.
 
-Voor deze analyse is de PPDAC cyclus (Problem, Plan, Data, Analysis, and Conclusions) gevolgd. Een methode voor het uitvoeren van statistisch onderzoek [@OldfordR.J.MacKay2000]. In deze studie is gebruik gemaakt van R [@R-base] voor analyse en presentatie van de data. 
+Voor deze analyse is de PPDAC cyclus (Problem, Plan, Data, Analysis, and Conclusions) gevolgd; een methode voor het uitvoeren van statistisch onderzoek [@OldfordR.J.MacKay2000]. In deze studie is gebruik gemaakt van R [@R-base] voor analyse en presentatie van de data. 
 
 # Probleemstelling
 
